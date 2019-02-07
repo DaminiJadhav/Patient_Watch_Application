@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Patient_Watch_Application</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="Phone_number">Enter Phone Number</string>
+    <string name="otp_number">Enter Otp Number</string>
+    <string name="verify">Verify</string>
+    <string name="continue_activity">Continue</string>
+    <string name="empty_phone_no">Phone number cannot be empty!</string>
+    <string name="invalid_phone_no">Invalid phone number</string>
+    <string name="empty_otp_no">Otp cannot be empty !</string>
+    <string name="otp">OTP</string>
+    <string name="success">Success</string>
+    <string name="tab_to_add">Tab to add picture</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="local_area_locality">Local/Area Locality</string>
+    <string name="email_id">Email-Id</string>
+    <string name="register">Register</string>
+    <string name="empty_firstname">First name cannot be empty!</string>
+    <string name="empty_lastname">Last name cannot be empty!</string>
+    <string name="empty_age">Age cannot be empty!</string>
+    <string name="empty_area">area cannot be empty!</string>
+    <string name="empty_emailid">Email-Id cannot be empty!</string>
+    <string name="invalid_email_id">Invalid Email-Id</string>
+    <string name="enter_alphabetical_charater">Enter Only Alphabetical Character</string>
+    <string name="please_select_gender">Please select gender</string>
+    <string name="last_phone_number">Please Enter last phone number</string>
+    <string name="my_medicine">My Medicine</string>
+    <string name="upcoming_medicine_reminders">Upcoming Medicine Reminders</string>
+    <string name="my_vitals">My Vitals</string>
+
+
+</resources>

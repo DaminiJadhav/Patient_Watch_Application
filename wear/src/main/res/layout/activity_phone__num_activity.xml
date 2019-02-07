@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterPhoneNumberActivity"
+    tools:deviceIds="wear"
+    >
+
+    <FrameLayout
+        style="@style/match_match"
+        android:padding="@dimen/inner_frame_layout_padding">
+
+        <LinearLayout
+            style="@style/linear_layout_vertical"
+           >
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout1"
+                 android:id="@+id/textinput_layout"
+               >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_ed_txt"
+                    style="@style/match_wrap"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:hint="@string/Phone_number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/generate_opt_btn"
+                android:text="@string/continue_activity"
+                style="@style/btn_style1"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</androidx.wear.widget.BoxInsetLayout>

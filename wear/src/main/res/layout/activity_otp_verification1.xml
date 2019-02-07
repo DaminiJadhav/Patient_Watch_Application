@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OtpActivity"
+    >
+
+    <FrameLayout
+        style="@style/match_match"
+        android:padding="@dimen/inner_frame_layout_padding">
+
+        <LinearLayout
+            style="@style/linear_layout_vertical"
+           >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout1"
+                app:boxBackgroundMode="outline"
+                android:id="@+id/otp_txt"
+              >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/match_wrap"
+                    android:id="@+id/otp_ed_txt"
+                    android:inputType="numberPassword"
+                    android:maxLength="4"
+                    android:hint="@string/otp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/verify_otp_btn1"
+                style="@style/btn_style"
+                android:text="@string/verify"
+                />
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+</androidx.wear.widget.BoxInsetLayout>

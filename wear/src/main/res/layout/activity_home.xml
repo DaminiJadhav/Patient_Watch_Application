@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+
+        <LinearLayout
+            style="@style/linear_layout_vertical"
+            >
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewpager">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout1"
+                        android:id="@+id/success_txtinputlayout">
+            <TextView
+                style="@style/match_wrap"
+                android:layout_gravity="center"
+                android:text="@string/success"
+                android:id="@+id/json_data_txt"/>
+
+            <TextView
+                style="@style/match_wrap"
+                android:layout_gravity="center"
+                android:id="@+id/json_data_txt2"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.viewpager.widget.ViewPager>
+        </LinearLayout>
+
+
+</androidx.wear.widget.BoxInsetLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+    <style name="wrap_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="match_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="match_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextViewStyle" parent="match_wrap">
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextViewStyle1" parent="match_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="linear_layout_vertical" parent="match_match">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linear_layout_horizontal" parent="match_match">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="TextInputLayout1" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/marginLeft</item>
+        <item name="android:layout_marginRight">@dimen/marginRight</item>
+    </style>
+
+
+
+    <style name="margintop" parent="wrap_wrap">
+         <item name="android:layout_marginTop">@dimen/screen_percentage_15</item>
+    </style>
+
+    <style name="btn_style" parent="match_wrap">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/marginLeft</item>
+        <item name="android:layout_marginRight">@dimen/marginRight</item>
+    </style>
+
+    <style name="btn_style1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/marginLeft</item>
+        <item name="android:layout_marginRight">@dimen/marginRight</item>
+        <item name="android:background">@drawable/shape</item>
+    </style>
+
+
+
+    <style name="progressbar">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="ImageViewStyle">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="materialcardview" parent="match_match">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:minHeight">100dp</item>
+    </style>
+
+
+</resources>
