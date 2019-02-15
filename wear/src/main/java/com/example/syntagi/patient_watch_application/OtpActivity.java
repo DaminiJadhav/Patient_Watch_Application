@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
-import com.example.syntagi.patient_watch_application.Model1.OtpResponse;
+import com.example.syntagi.patient_watch_application.models.OtpResponse;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

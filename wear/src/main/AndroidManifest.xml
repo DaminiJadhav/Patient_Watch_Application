@@ -27,13 +27,11 @@
 
         <activity
             android:name=".EnterPhoneNumberActivity"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name" />
         <activity android:name=".OtpActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".PatientRegistration" />
-        <activity android:name=".FirstPage">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <!-- <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED"/> -->
@@ -41,6 +39,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MyMedicineList" />
+        <activity android:name=".MyVitalList"></activity>
     </application>
 
 </manifest>

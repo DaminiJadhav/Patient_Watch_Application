@@ -26,9 +26,9 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="TextViewStyle1" parent="match_wrap">
-        <item name="android:gravity">center</item>
-        <item name="android:layout_marginTop">20dp</item>
+    <style name="TextViewStyle1" parent="wrap_wrap">
+        <item name="android:layout_marginLeft">@dimen/marginLeft_45</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="linear_layout_vertical" parent="match_match">
@@ -79,6 +79,13 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+
+    <style name="ImageViewStyle1">
+        <item name="android:width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+
     <style name="ImageViewStyle">
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">70dp</item>
@@ -86,9 +93,23 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="ImageViewStyle2" parent="wrap_wrap">
+        <item name="android:layout_gravity">center</item>
+        <!--<item name="android:layout_marginTop">@dimen/marginTop2</item>-->
+    </style>
+
+
     <style name="materialcardview" parent="match_match">
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:minHeight">100dp</item>
+    </style>
+
+    <style name="relative_ellipse_textview">
+        <item name="android:layout_width">22dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:gravity">center</item>
     </style>
 
 

@@ -35,6 +35,7 @@
     <string name="my_medicine">My Medicine</string>
     <string name="upcoming_medicine_reminders">Upcoming Medicine Reminders</string>
     <string name="my_vitals">My Vitals</string>
+    <string name="medicine_name_dose_2">Medicine Name(Dose 2)</string>
 
 
 </resources>

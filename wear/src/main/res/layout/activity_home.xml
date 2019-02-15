@@ -11,8 +11,7 @@
             style="@style/linear_layout_vertical"
             >
             <androidx.viewpager.widget.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+               style="@style/match_match"
                 android:id="@+id/viewpager">
 
 

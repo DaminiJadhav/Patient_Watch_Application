@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
-import com.example.syntagi.patient_watch_application.Model1.LoginData;
-import com.example.syntagi.patient_watch_application.Model1.LoginResponse;
-import com.example.syntagi.patient_watch_application.Model1.PatientData;
+import com.example.syntagi.patient_watch_application.models.LoginData;
+import com.example.syntagi.patient_watch_application.models.LoginResponse;
+import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -22,7 +22,6 @@ import com.google.gson.Gson;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import androidx.annotation.Nullable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -63,6 +62,7 @@ public class EnterPhoneNumberActivity extends WearableActivity {
                                 .build();
                         apiInterface = retrofit.create(ApiInterface.class);
                         sendPost(number);
+
                 }
             }
         });
@@ -100,19 +100,15 @@ public class EnterPhoneNumberActivity extends WearableActivity {
                            Toast.makeText(EnterPhoneNumberActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                            progressDoalog.dismiss();
                            return;
-//                        if (loginResponse.getError().equals("PT_NF")){
-//                            Toast.makeText(EnterPhoneNumberActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
-//
-//                        }
                     }
                     LoginData loginResponseData = loginResponse.getData();
                     PatientData patientData = loginResponseData.getPatientData();
 
                     Gson gson=new Gson();
-                        String JsonStr=gson.toJson(loginResponseData,LoginData.class);
-                        SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(EnterPhoneNumberActivity.this).edit();
-                        editor.putString(USER_KEY,JsonStr);
-                        editor.apply();
+                    String JsonStr=gson.toJson(loginResponseData,LoginData.class);
+                    SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(EnterPhoneNumberActivity.this).edit();
+                    editor.putString(USER_KEY,JsonStr);
+                    editor.apply();
 
 
                     if (patientData != null) {

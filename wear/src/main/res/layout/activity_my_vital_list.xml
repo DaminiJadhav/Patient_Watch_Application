@@ -4,11 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    >
-    <ImageView
-       style="@style/ImageViewStyle"
-        android:src="@drawable/logo"/>
+    tools:context=".MyVitalList">
+
+   <ScrollView
+       style="@style/wrap_wrap"
+       android:id="@+id/scrollView">
 
 
+           <TextView
+               android:id="@+id/vital_data"
+               style="@style/wrap_wrap"
+               android:layout_gravity="center"
+               />
+
+   </ScrollView>
 </androidx.wear.widget.BoxInsetLayout>

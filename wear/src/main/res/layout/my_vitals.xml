@@ -3,41 +3,40 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        style="@style/linear_layout_vertical">
 
         <com.google.android.material.card.MaterialCardView
             style="@style/materialcardview"
             >
-            <LinearLayout
-                style="@style/linear_layout_vertical">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout1">
+            <LinearLayout style="@style/linear_layout_vertical">
 
-            <TextView
-             style="@style/TextViewStyle1"
-             android:text="@string/my_vitals"
-             android:id="@+id/myvitals"/>
+                <ImageView
+                    android:id="@+id/iv_vitals"
+                    style="@style/ImageViewStyle2"
+                    android:src="@drawable/ic_vitals" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <RelativeLayout
+                    style="@style/wrap_wrap"
+                    android:layout_marginTop="@dimen/marginTop_10"
+                    >
 
-            <ImageView
-                style="@style/ImageViewStyle"
-                android:src="@drawable/ic_vital"/>
+                    <TextView
+                        android:id="@+id/myvitals"
+                        style="@style/TextViewStyle1"
+                        android:text="@string/my_vitals"
+                        />
+                    <TextView
+                        style="@style/relative_ellipse_textview"
+                        android:background="@drawable/ic_ellipse"
 
-            <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputLayout1">
+                        android:text="4" />
 
-                <TextView
-                    style="@style/TextViewStyle1"
-                    android:text="@string/my_vitals"
-                    android:id="@+id/myvitals1"
-                    android:textSize="20sp"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+
             </LinearLayout>
 
+
+
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+
 
 </androidx.wear.widget.BoxInsetLayout>

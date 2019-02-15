@@ -4,11 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    >
-    <ImageView
-       style="@style/ImageViewStyle"
-        android:src="@drawable/logo"/>
+    tools:context=".MyMedicineList">
 
+    <ScrollView
+        style="@style/match_match"
+        android:id="@+id/scrollView">
+    <LinearLayout
+        style="@style/linear_layout_vertical">
+
+            <TextView
+            style="@style/wrap_wrap"
+            android:id="@+id/medicine_data"
+            />
+    </LinearLayout>
+    </ScrollView>
 
 </androidx.wear.widget.BoxInsetLayout>

@@ -1,52 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-       style="@style/linear_layout_vertical"
-        >
 
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/materialcardview"
-            >
+            style="@style/materialcardview">
 
-            <LinearLayout
-                style="@style/linear_layout_vertical">
+            <LinearLayout style="@style/linear_layout_vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputLayout1">
+                <ImageView
+                    android:id="@+id/iv_medicine"
+                    style="@style/ImageViewStyle2"
+                    android:src="@drawable/ic_medicine1" />
 
-                 <TextView
-                   style="@style/TextViewStyle1"
-                   android:text="@string/my_medicine"
-                   android:id="@+id/mymedicine"
-                     />
+                <RelativeLayout
+                  style="@style/wrap_wrap"
+                    android:layout_marginTop="@dimen/marginTop_10"
+                    >
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/mymedicine"
+                    style="@style/TextViewStyle1"
+                    android:layout_marginLeft="@dimen/marginLeft_30"
+                    android:text="@string/my_medicine"
+                   />
+                    <TextView
+                       style="@style/relative_ellipse_textview"
+                        android:background="@drawable/ic_ellipse"
+                        android:text="4" />
 
-             <ImageView
-                 style="@style/ImageViewStyle"
-                 android:src="@drawable/ic_medicine"
-                />
-      <com.google.android.material.textfield.TextInputLayout
-          style="@style/TextInputLayout1">
-
-          <TextView
-               style="@style/TextViewStyle1"
-                android:text="@string/my_medicine"
-                android:id="@+id/mymedicine1"
-                android:textSize="20sp"
-                />
-
-      </com.google.android.material.textfield.TextInputLayout>
-
-
+                </RelativeLayout>
 
             </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+
 </androidx.wear.widget.BoxInsetLayout>
