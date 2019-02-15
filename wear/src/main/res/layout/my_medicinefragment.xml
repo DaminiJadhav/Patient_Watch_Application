@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         style="@style/linear_layout_horizontal">
 
         <TextView
-         android:layout_width="0dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/success"
-            android:id="@+id/medicinenametxt"
+            android:id="@+id/tv_medicine_name"
             android:layout_weight="1"
-           />
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/enddatetxt"
-            android:text="@string/success"
+            android:id="@+id/tv_medicine_end_date"
             android:layout_weight="1"
             />
 
     </LinearLayout>
-
-
-</androidx.wear.widget.BoxInsetLayout>
+</LinearLayout>

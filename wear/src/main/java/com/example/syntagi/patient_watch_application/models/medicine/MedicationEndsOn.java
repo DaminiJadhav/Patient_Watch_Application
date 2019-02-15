@@ -33,4 +33,6 @@ public class MedicationEndsOn implements Serializable{
     public void setPrescriptionId(String prescriptionId) {
         this.prescriptionId = prescriptionId;
     }
+
+
 }
