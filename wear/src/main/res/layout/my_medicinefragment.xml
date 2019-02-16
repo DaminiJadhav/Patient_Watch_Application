@@ -2,22 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        style="@style/linear_layout_horizontal">
+
+    <LinearLayout style="@style/linear_layout_horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/tv_medicine_name"
-            android:layout_weight="1"
-            />
+            style="@style/linelayhorizontal_weight"
+            android:layout_weight="1.5" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/tv_medicine_end_date"
-            android:layout_weight="1"
-            />
+            style="@style/linelayhorizontal_weight"
+            android:layout_weight="1" />
 
     </LinearLayout>
 </LinearLayout>

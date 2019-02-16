@@ -14,10 +14,10 @@
             style="@style/match_match"
             android:id="@+id/medicine_viewpager">
 
-            <TextView
-            style="@style/wrap_wrap"
-            android:id="@+id/medicine_data"
-            />
+                <TextView
+                style="@style/wrap_wrap"
+                android:id="@+id/medicine_data"
+                />
         </androidx.viewpager.widget.ViewPager>
     </LinearLayout>
 

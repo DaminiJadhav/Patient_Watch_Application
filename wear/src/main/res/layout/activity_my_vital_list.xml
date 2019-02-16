@@ -10,10 +10,10 @@
        style="@style/wrap_wrap"
        android:id="@+id/scrollView">
 
-
            <TextView
                android:id="@+id/vital_data"
                style="@style/wrap_wrap"
+               android:text="@string/success"
                android:layout_gravity="center"
                />
 

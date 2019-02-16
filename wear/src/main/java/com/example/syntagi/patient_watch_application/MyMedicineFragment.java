@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
@@ -17,16 +15,8 @@ import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -62,13 +52,11 @@ public class MyMedicineFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(),MyMedicineList.class);
                 startActivity(intent);
-
             }
         });
 
         medicineList(patientId);
         return view;
-
     }
 
     public void medicineList(String patientId) {
@@ -94,8 +82,6 @@ public class MyMedicineFragment extends Fragment {
                     SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
                     editor.putString("Medicine",JsonStr);
                     editor.apply();
-
-
                 } else {
                     Toast.makeText(getContext(), "Code is:" + response.code(), Toast.LENGTH_SHORT).show();
                 }
@@ -107,7 +93,4 @@ public class MyMedicineFragment extends Fragment {
         });
 
     }
-
-
-
 }
