@@ -1,19 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <LinearLayout style="@style/linear_layout_horizontal">
 
-        <TextView
-            android:id="@+id/tv_medicine_name"
-            style="@style/linelayhorizontal_weight"
-            android:layout_weight="1.5" />
 
-        <TextView
-            android:id="@+id/tv_medicine_end_date"
-            style="@style/linelayhorizontal_weight"
-            android:layout_weight="1" />
+        <LinearLayout
+            android:id="@+id/medicinenamelinearlayout"
+           style="@style/linear_layout_horizontal_match_wrap">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_medicine_name"
+                style="@style/match_wrap" />
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/medicinenamelinearlayout"
+        >
+
+        <TableLayout
+           android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TableRow>
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="46dp"
+                    android:src="@drawable/ic_brkfast"/>
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="46dp"
+                    android:src="@drawable/ic_lunch"/>
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="46dp"
+                    android:src="@drawable/ic_eve"/>
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="46dp"
+                    android:src="@drawable/ic_dinner"/>
+            </TableRow>
+
+            <TableRow>
+               <TextView
+                   style="@style/wrap_wrap"
+                   android:id="@+id/txt_morningdose"
+                   android:layout_gravity="center"
+                    />
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:id="@+id/txt_noondose"
+                    android:layout_gravity="center"/>
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:id="@+id/txt_eveningdose"
+                    android:layout_gravity="center"/>
+                <TextView
+                    style="@style/wrap_wrap"
+                    android:id="@+id/txt_nightdose"
+                    android:layout_gravity="center"/>
+            </TableRow>
+
+        </TableLayout>
+
+
+    </RelativeLayout>
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_medicine_end_date"-->
+        <!--style="@style/linelayhorizontal_weight"-->
+        <!--android:layout_weight="1" />-->
+        <include layout="@layout/activity_medicine_enddate_header" />
+
+
 </LinearLayout>
