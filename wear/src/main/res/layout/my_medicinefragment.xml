@@ -16,53 +16,46 @@
         </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+       style="@style/match_wrap"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/medicinenamelinearlayout"
         >
 
         <TableLayout
-           android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+          style="@style/match_wrap"
             >
             <TableRow>
                 <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="46dp"
+                    style="@style/width47_height46"
                     android:src="@drawable/ic_brkfast"/>
                 <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="46dp"
+                    style="@style/width47_height46"
                     android:src="@drawable/ic_lunch"/>
                 <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="46dp"
+                    style="@style/width47_height46"
                     android:src="@drawable/ic_eve"/>
                 <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="46dp"
+                    style="@style/width47_height46"
                     android:src="@drawable/ic_dinner"/>
             </TableRow>
 
             <TableRow>
                <TextView
-                   style="@style/wrap_wrap"
+                  style="@style/TextViewStyle_layoutgravity"
                    android:id="@+id/txt_morningdose"
-                   android:layout_gravity="center"
                     />
                 <TextView
-                    style="@style/wrap_wrap"
+                    style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_noondose"
-                    android:layout_gravity="center"/>
+                   />
                 <TextView
-                    style="@style/wrap_wrap"
+                    style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_eveningdose"
-                    android:layout_gravity="center"/>
+                    />
                 <TextView
-                    style="@style/wrap_wrap"
+                    style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_nightdose"
-                    android:layout_gravity="center"/>
+                    />
             </TableRow>
 
         </TableLayout>
@@ -70,12 +63,32 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!--<TextView-->
-        <!--android:id="@+id/tv_medicine_end_date"-->
-        <!--style="@style/linelayhorizontal_weight"-->
-        <!--android:layout_weight="1" />-->
-        <include layout="@layout/activity_medicine_enddate_header" />
+        <TextView
+            android:id="@+id/tv_medicine_end_date"
+            style="@style/wrap_wrap"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1" />
+
+        <ImageView
+           android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/medicinedetail"
+            android:layout_margin="@dimen/margin_3"
+            android:id="@+id/iv_showmedicineicon"/>
+
+
+
+    </RelativeLayout>
+
+
+
+        <!--<include layout="@layout/activity_medicine_enddate_header" />-->
 
 
 </LinearLayout>

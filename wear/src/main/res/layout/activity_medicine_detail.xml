@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MedicineDetailActivity">
+
+    <!--<androidx.wear.widget.drawer.WearableNavigationDrawerView-->
+       <!--style="@style/match_wrap"-->
+        <!--android:id="@+id/wear_navigation_drawer"/>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:id="@+id/lay_header_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+            <!--<View-->
+                <!--style="@style/line_vertical"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginBottom="16dp"-->
+                <!--/>-->
+            <LinearLayout
+                android:id="@+id/lay_other_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

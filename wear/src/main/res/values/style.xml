@@ -22,7 +22,16 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="width47_height46">
+        <item name="android:layout_width">47dp</item>
+        <item name="android:layout_height">46dp</item>
+    </style>
+
     <style name="TextViewStyle" parent="match_wrap">
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextViewStyle_layoutgravity" parent="wrap_wrap">
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -90,7 +99,7 @@
 
 
     <style name="ImageViewStyle1">
-        <item name="android:width">40dp</item>
+        <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
     </style>
 
@@ -130,6 +139,31 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
     </style>
+
+    <style name="lay_cintainer" parent="match_wrap">
+        <item name="android:weightSum">10</item>
+    </style>
+
+    <style name="tv_popup_sub_title" parent="match_wrap">
+        <item name="android:layout_weight">4</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">10sp</item>
+
+    </style>
+
+    <style name="tv_popup_title" parent="match_wrap">
+        <item name="android:textColor">@color/title_color_dialog</item>
+        <item name="android:layout_weight">6</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="tv_popup_sutitile_blue" parent="tv_popup_sub_title">
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+
 
 
 </resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_cintainer"
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp">
+
+    <LinearLayout style="@style/lay_cintainer"
+        android:id="@+id/lay_header">
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/tv_popup_title"
+            android:text="@string/description"
+            android:textStyle="bold" />
+
+        <RelativeLayout style="@style/tv_popup_sub_title">
+
+            <TextView
+                android:id="@+id/tv_tag"
+                style="@style/tv_popup_sub_title"
+                android:text="SAFE"
+                android:textColor="@color/dark_gray"
+                android:layout_width="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:background="#F0F8DC"
+                />
+            <TextView
+                android:layout_toRightOf="@id/tv_tag"
+                android:id="@+id/tv_category"
+                style="@style/tv_popup_sub_title"
+                android:text=""
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout style="@style/lay_cintainer"
+        android:layout_below="@+id/lay_header"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"/>
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/tv_popup_sub_title"
+            android:text="Research studies with animals haven't found a risk to unborn babies, but it hasn't been properly studied in humans."
+            android:textColor="@color/dark_gray"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
+</RelativeLayout>

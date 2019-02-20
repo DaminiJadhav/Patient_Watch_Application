@@ -5,6 +5,7 @@ import com.example.syntagi.patient_watch_application.models.LoginResponse;
 import com.example.syntagi.patient_watch_application.models.OtpResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.Post;
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -32,5 +33,7 @@ public interface ApiInterface {
     @GET("/syntagi/prescription/getPatientCurrentMedications")
     Call<CurrentMedicineResponse> medicine(@Query("patientId") String patientId, @Header("authToken") String token,@Header("roleType") int roleType);
 
+    @GET("/syntagi/medicines/getById")
+    Call<MedicineDetailData> getMedicineById(@Query("id")String id,@Header("authToken")String token,@Header("roleType") int roleType);
 
 }
