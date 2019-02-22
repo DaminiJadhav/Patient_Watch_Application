@@ -42,7 +42,6 @@
         <activity android:name=".MyMedicineList" />
         <activity android:name=".MyVitalList" />
         <activity android:name=".MedicineDetailActivity"/>
-
         <activity android:name=".MedicineEnddateHeader"></activity>
     </application>
 

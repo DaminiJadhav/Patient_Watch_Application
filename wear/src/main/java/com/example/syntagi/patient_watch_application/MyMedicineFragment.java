@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
@@ -15,6 +16,8 @@ import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
 import com.google.gson.Gson;
 import java.util.Map;
 import androidx.annotation.NonNull;
@@ -31,15 +34,19 @@ public class MyMedicineFragment extends Fragment {
     private static final String USER_KEY = "Patient_Data";
     private String patientId;
     ImageView imageView;
+    TextView noofmedicine;
 
     Retrofit retrofit = null;
     ApiInterface apiInterface = null;
+    GetMedicineData getMedicineData;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_medicine, container, false);
         imageView = view.findViewById(R.id.iv_medicine);
+        noofmedicine=view.findViewById(R.id.medicinecount);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String json = sharedPreferences.getString(USER_KEY, "");
         Gson gson = new Gson();
@@ -47,6 +54,7 @@ public class MyMedicineFragment extends Fragment {
         if (loginData != null) {
             patientId = loginData.getPatientData().getPatientId();
         }
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +83,9 @@ public class MyMedicineFragment extends Fragment {
                     GetMedicineData medicineData = currentMedicineResponse.getData();
                     if (medicineData != null) {
                         Map<String, MedicationEndsOn> medicationEndsOnMap = medicineData.getCurrentMedicines();
+                        if (medicationEndsOnMap!=null){
+                            noofmedicine.setText("" +medicationEndsOnMap.size());
+                        }
 
                     }
                     Gson gson=new Gson();
@@ -93,4 +104,7 @@ public class MyMedicineFragment extends Fragment {
         });
 
     }
+
+
+
 }

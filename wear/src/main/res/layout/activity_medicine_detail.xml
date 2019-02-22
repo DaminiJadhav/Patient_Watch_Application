@@ -13,20 +13,14 @@
         <!--android:id="@+id/wear_navigation_drawer"/>-->
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      style="@style/match_wrap">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            style="@style/linear_layout_vertical_match_wrap"            android:padding="8dp">
 
             <LinearLayout
                 android:id="@+id/lay_header_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                style="@style/linear_layout_vertical_match_wrap" />
             <!--<View-->
                 <!--style="@style/line_vertical"-->
                 <!--android:layout_marginTop="8dp"-->
@@ -34,9 +28,7 @@
                 <!--/>-->
             <LinearLayout
                 android:id="@+id/lay_other_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+               style="@style/linear_layout_vertical_match_wrap" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

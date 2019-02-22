@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_title"
         style="@style/tv_popup_title"
-        android:text="Price:" />
+        android:text="@string/price" />
 
     <TextView
         android:id="@+id/tv_value"

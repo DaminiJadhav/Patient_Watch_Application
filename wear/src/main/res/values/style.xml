@@ -22,9 +22,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="width47_height46">
-        <item name="android:layout_width">47dp</item>
-        <item name="android:layout_height">46dp</item>
+    <style name="image_width41_height40">
+        <item name="android:layout_width">41dp</item>
+        <item name="android:layout_height">40dp</item>
     </style>
 
     <style name="TextViewStyle" parent="match_wrap">
@@ -36,8 +36,10 @@
     </style>
 
     <style name="TextViewStyle1" parent="wrap_wrap">
-        <item name="android:layout_marginLeft">@dimen/marginLeft_45</item>
-        <item name="android:textSize">20sp</item>
+        <!--<item name="android:layout_marginLeft">@dimen/marginLeft_45</item>-->
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
     <style name="linear_layout_vertical" parent="match_match">
@@ -112,9 +114,13 @@
     </style>
 
     <style name="ImageViewStyle2" parent="wrap_wrap">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/marginTop_25</item>
         <!--<item name="android:layout_marginTop">@dimen/marginTop2</item>-->
     </style>
+
 
 
     <style name="materialcardview" parent="match_match">
@@ -125,9 +131,11 @@
     <style name="relative_ellipse_textview">
         <item name="android:layout_width">22dp</item>
         <item name="android:layout_height">22dp</item>
-        <item name="android:layout_centerInParent">true</item>
+        <!--<item name="android:layout_centerInParent">true</item>-->
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+
+         <item name="android:gravity">center</item>
     </style>
 
     <style name="linelayhorizontal_weight" >
@@ -161,8 +169,6 @@
         <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">10sp</item>
     </style>
-
-
 
 
 

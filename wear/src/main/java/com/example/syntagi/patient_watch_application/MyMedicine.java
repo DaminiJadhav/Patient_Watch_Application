@@ -1,16 +1,21 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -46,16 +51,22 @@ public class  MyMedicine extends Fragment {
         tvMedicineEndDate.setText("End date:  " +medicineData.getEndDate());
         final MedicineData medicineData1=medicineData.getMedication();
 
-
         List<MedicineFrequency> medicineFrequencies=medicineData1.getFrequencies();
-                for (int i=0;i<medicineFrequencies.size();i++)
+
+        for (int i=0;i<medicineFrequencies.size();i++)
         {
-
-            morningdose.setText("" +medicineFrequencies.get(i).getMorningDose());
-            lunchdose.setText("" +medicineFrequencies.get(i).getNoonDose());
-            eveningdose.setText("" +medicineFrequencies.get(i).getEveningDose());
-            nightdose.setText("" +medicineFrequencies.get(i).getNightDose());
-
+            if (medicineFrequencies.get(i).getMorningDose()>0){
+                morningdose.setText("" +medicineFrequencies.get(i).getMorningDose());
+            }
+            if (medicineFrequencies.get(i).getNoonDose()>0){
+                lunchdose.setText("" +medicineFrequencies.get(i).getNoonDose());
+            }
+            if (medicineFrequencies.get(i).getEveningDose()>0){
+                eveningdose.setText("" +medicineFrequencies.get(i).getEveningDose());
+            }
+            if (medicineFrequencies.get(i).getNightDose()>0){
+                nightdose.setText("" +medicineFrequencies.get(i).getNightDose());
+            }
         }
 
     iv_showmedicine.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +76,7 @@ public class  MyMedicine extends Fragment {
 
         }
     });
+
 
 
 

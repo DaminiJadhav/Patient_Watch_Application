@@ -2,40 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
-
-
 
         <LinearLayout
             android:id="@+id/medicinenamelinearlayout"
+            android:layout_margin="@dimen/margin_3"
            style="@style/linear_layout_horizontal_match_wrap">
 
             <TextView
                 android:id="@+id/tv_medicine_name"
-                style="@style/match_wrap" />
+                style="@style/match_wrap"
+                android:textStyle="bold"
+                />
         </LinearLayout>
 
     <RelativeLayout
        style="@style/match_wrap"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
         android:layout_below="@+id/medicinenamelinearlayout"
         >
 
         <TableLayout
           style="@style/match_wrap"
+           android:layout_centerInParent="true"
             >
             <TableRow>
                 <ImageView
-                    style="@style/width47_height46"
-                    android:src="@drawable/ic_brkfast"/>
+                    style="@style/image_width41_height40"
+                    android:src="@drawable/ic_brkfast"
+                    />
                 <ImageView
-                    style="@style/width47_height46"
+                    style="@style/image_width41_height40"
                     android:src="@drawable/ic_lunch"/>
                 <ImageView
-                    style="@style/width47_height46"
+                    style="@style/image_width41_height40"
                     android:src="@drawable/ic_eve"/>
                 <ImageView
-                    style="@style/width47_height46"
+                    style="@style/image_width41_height40"
                     android:src="@drawable/ic_dinner"/>
             </TableRow>
 
@@ -43,18 +48,23 @@
                <TextView
                   style="@style/TextViewStyle_layoutgravity"
                    android:id="@+id/txt_morningdose"
+                   android:textSize="10dp"
+
                     />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_noondose"
+                    android:textSize="10dp"
                    />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_eveningdose"
+                    android:textSize="10dp"
                     />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_nightdose"
+                    android:textSize="10dp"
                     />
             </TableRow>
 
@@ -63,23 +73,41 @@
 
     </RelativeLayout>
 
+    <!--<LinearLayout-->
+       <!--style="@style/linear_layout_horizontal_match_wrap"-->
+        <!--android:id="@+id/ll_reminder">-->
+
+
+        <!--<TextView-->
+            <!--style="@style/wrap_wrap"-->
+            <!--android:id="@+id/tv_reminder"-->
+            <!--android:text="Reminder"/>-->
+
+        <!--<Switch-->
+           <!--style="@style/wrap_wrap"-->
+            <!--android:layout_marginLeft="@dimen/marginRight_80"/>-->
+    <!--</LinearLayout>-->
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        style="@style/match_wrap"
+        android:layout_margin="@dimen/margin_3">
+
 
         <TextView
             android:id="@+id/tv_medicine_end_date"
             style="@style/wrap_wrap"
             android:layout_alignParentBottom="true"
+            android:textSize="12sp"
             android:layout_weight="1" />
 
+
+
         <ImageView
-           android:layout_width="25dp"
-            android:layout_height="25dp"
+           android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/medicinedetail"
-            android:layout_margin="@dimen/margin_3"
             android:id="@+id/iv_showmedicineicon"/>
 
 

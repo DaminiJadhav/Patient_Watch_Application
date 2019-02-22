@@ -37,6 +37,7 @@
     <string name="my_vitals">My Vitals</string>
     <string name="medicine_name_dose_2">Medicine Name(Dose 2)</string>
     <string name="description">Description:</string>
+    <string name="price">Price:</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
@@ -27,13 +29,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MedicineDetailActivity extends AppCompatActivity {
-
+  ProgressDialog progressDoalog;
     //    WearableNavigationDrawerView navigationDrawerView;
     private LinearLayout layHeader;
     private LinearLayout layOther;
     Retrofit retrofit = null;
     ApiInterface apiInterface = null;
     private MedicineData medicineData;
+
 
     public static void startActivity(Fragment context, MedicineData medicineData) {
         Intent intent = new Intent(context.getActivity(), MedicineDetailActivity.class);
@@ -69,6 +72,12 @@ public class MedicineDetailActivity extends AppCompatActivity {
     }
 
     private void fetchMedicineDetail(String medicineId) {
+
+        progressDoalog = new ProgressDialog(MedicineDetailActivity.this);
+        progressDoalog.setMessage("Loading....");
+        progressDoalog.setMax(5);
+        // show it
+        progressDoalog.show();
         retrofit = new Retrofit.Builder().baseUrl("http://13.127.133.104:8082")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -79,7 +88,7 @@ public class MedicineDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     MedicineDetailData medicineDetailData = response.body();
                     if (medicineDetailData!=null){
-                        setData(medicineDetailData);
+                          setData(medicineDetailData);
                     }
                 }
             }
@@ -123,6 +132,8 @@ public class MedicineDetailActivity extends AppCompatActivity {
                 addDescriptionData("How it works:", medicineDetailData.getSideHowItsWorks());
             }
         }
+        progressDoalog.dismiss();
+
     }
 
 
@@ -178,6 +189,5 @@ public class MedicineDetailActivity extends AppCompatActivity {
             }
         }
     }
-
 
 }

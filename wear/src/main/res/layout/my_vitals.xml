@@ -16,7 +16,8 @@
 
                 <RelativeLayout
                     style="@style/wrap_wrap"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/marginBottom_5"
+                    android:layout_marginRight="@dimen/marginRight"
                     >
 
                     <TextView
@@ -27,7 +28,6 @@
                     <TextView
                         style="@style/relative_ellipse_textview"
                         android:background="@drawable/ic_ellipse"
-
                         android:text="4" />
 
                 </RelativeLayout>
