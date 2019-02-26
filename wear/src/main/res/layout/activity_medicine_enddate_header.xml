@@ -4,18 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MedicineEnddateHeader">
+    tools:context=".AlarmActivity">
 
-    <RelativeLayout
-        style="@style/match_wrap">
 
-        <TextView
-           style="@style/match_wrap"
-            android:layout_alignParentBottom="true"
-            android:text="End Date:"
-            android:id="@+id/headerenddate"/>
+    <ScrollView
+        style="@style/wrap_wrap">
 
-    </RelativeLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/linear_layout_vertical_match_wrap">
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="900dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ToggleButton
+                android:id="@+id/toggleButton"
+                style="@style/toggle_button"
+                 android:onClick="OnToggleClicked" />
+
+            <TextView
+                android:id="@+id/tv_reminder"
+                 style="@style/wrap_wrap"
+                android:text="" />
+
+        </LinearLayout>
+    </ScrollView>
+    <!--<RelativeLayout-->
+        <!--style="@style/match_wrap">-->
+
+        <!--<TextView-->
+           <!--style="@style/match_wrap"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:text="End Date:"-->
+            <!--android:id="@+id/headerenddate"/>-->
+
+    <!--</RelativeLayout>-->
+
 
 
 </LinearLayout>

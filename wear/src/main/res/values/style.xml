@@ -170,6 +170,11 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="toggle_button" parent="wrap_wrap">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/margin_20</item>
+        <item name="android:checked">false</item>
+    </style>
 
 
 </resources>

@@ -75,7 +75,8 @@ public class MedicineDetailActivity extends AppCompatActivity {
 
         progressDoalog = new ProgressDialog(MedicineDetailActivity.this);
         progressDoalog.setMessage("Loading....");
-        progressDoalog.setMax(5);
+
+//        progressDoalog.setMax(5);
         // show it
         progressDoalog.show();
         retrofit = new Retrofit.Builder().baseUrl("http://13.127.133.104:8082")

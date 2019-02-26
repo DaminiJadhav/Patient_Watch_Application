@@ -8,7 +8,7 @@
         <LinearLayout
             android:id="@+id/medicinenamelinearlayout"
             android:layout_margin="@dimen/margin_3"
-           style="@style/linear_layout_horizontal_match_wrap">
+            style="@style/linear_layout_horizontal_match_wrap">
 
             <TextView
                 android:id="@+id/tv_medicine_name"
@@ -73,20 +73,23 @@
 
     </RelativeLayout>
 
-    <!--<LinearLayout-->
-       <!--style="@style/linear_layout_horizontal_match_wrap"-->
-        <!--android:id="@+id/ll_reminder">-->
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="@dimen/margin_3"
+       >
 
+        <TextView
+            style="@style/wrap_wrap"
+            android:id="@+id/tv_reminder"
+            android:text="Reminder"/>
 
-        <!--<TextView-->
-            <!--style="@style/wrap_wrap"-->
-            <!--android:id="@+id/tv_reminder"-->
-            <!--android:text="Reminder"/>-->
-
-        <!--<Switch-->
-           <!--style="@style/wrap_wrap"-->
-            <!--android:layout_marginLeft="@dimen/marginRight_80"/>-->
-    <!--</LinearLayout>-->
+       <Switch
+           style="@style/wrap_wrap"
+           android:layout_alignParentRight="true"
+            android:id="@+id/reminderswitch"
+            />
+   </RelativeLayout>
 
     <RelativeLayout
         style="@style/match_wrap"
@@ -107,6 +110,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/margin_5"
             android:src="@drawable/medicinedetail"
             android:id="@+id/iv_showmedicineicon"/>
 
