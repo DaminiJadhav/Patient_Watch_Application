@@ -22,7 +22,7 @@ private static AlarmActivity inst;
     AlarmManager alarmManager;
     TimePicker alarmTimePicker;
     ToggleButton toggleButton;
-
+    MediaPlayer mediaPlayer;
     int mHour,mMin;
 
     public static AlarmActivity instance(){
@@ -44,14 +44,12 @@ private static AlarmActivity inst;
         alarmTimePicker=findViewById(R.id.timePicker);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.alarm_ring);
-        mediaPlayer.start();
-
         alarmTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
                 mHour=hourOfDay;
                 mMin=minute;
+
 //                if (view==alarmTimePicker){
 //                    startService(new Intent(AlarmActivity.this,AlarmService.class));
 //                }
@@ -80,12 +78,16 @@ private static AlarmActivity inst;
                 }
 
             }
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,REPEAT_TIME,pendingIntent);
-//            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,AlarmManager.INTERVAL_DAY,pendingIntent);
-//            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),REPEAT_TIME,pendingIntent);
-//            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),REPEAT_TIME,pendingIntent);
-//            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),AlarmManager.INTERVAL_HALF_DAY,pendingIntent);
+            if (mediaPlayer!=null){
+                mediaPlayer.reset();
+                mediaPlayer.release();
+            }
 
+            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.alarm_ring);
+            mediaPlayer.setLooping(false);
+            mediaPlayer.start();
+
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,REPEAT_TIME,pendingIntent);
         }
         else {
             alarmManager.cancel(pendingIntent);

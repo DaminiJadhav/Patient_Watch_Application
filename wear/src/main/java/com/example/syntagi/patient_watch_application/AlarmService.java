@@ -1,17 +1,21 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.audiofx.BassBoost;
-import android.provider.Settings;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 public class AlarmService extends IntentService {
     private NotificationManager alarmNotificationManager;
@@ -33,34 +37,54 @@ public class AlarmService extends IntentService {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, AlarmActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+//        try {
+//            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+//            r.play();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
+
+
+        Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.alarm_ring);
+//        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder alamNotificationBuilder=new NotificationCompat.Builder(this,"channel_id")
-                .setContentTitle("Alarm").setSmallIcon(R.drawable.android)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-                .setContentText(msg).setAutoCancel(true);
+                                                                        .setContentTitle("Reminder")
+                                                                        .setSmallIcon(R.drawable.reminder)
+                                                                        .setSound(soundUri,AudioManager.STREAM_NOTIFICATION)
+                                                                        .setVibrate(new long[] {1000,1000,1000,1000,1000})
+                                                                        .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
+                                                                        .setContentText(msg).setAutoCancel(true);
 
-//        NotificationCompat.Builder alamNotificationBuilder = new NotificationCompat.Builder(
-//                this).setContentTitle("Alarm").setSmallIcon(R.drawable.android)
-//                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-//                .setContentText(msg);
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+//            if (soundUri!=null){
+//                alamNotificationBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+//                AudioAttributes audioAttributes=new AudioAttributes.Builder()
+//                                                                   .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                                                                   .setUsage(AudioAttributes.USAGE_ALARM)
+//                                                                   .build();
+//                NotificationChannel notificationChannel=new NotificationChannel("CH_ID","Testing_Audio",NotificationManager.IMPORTANCE_HIGH);
+//                notificationChannel.setSound(soundUri,audioAttributes);
+//                alarmNotificationManager.createNotificationChannel(notificationChannel);
+//
+//            }
+//        }
 
+
+
+//        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//        alamNotificationBuilder.setSound(uri);
+//        //vibrate
+//        long[] v = {500,1000};
+//        alamNotificationBuilder.setVibrate(v);
 
         alamNotificationBuilder.setContentIntent(contentIntent);
         alarmNotificationManager.notify(1, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
     }
 
-//    @Override
-//    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-////        return super.onStartCommand(intent, flags, startId);
-//         palyer=MediaPlayer.create(this,R.raw.alarm_ring);
-//        palyer.setLooping(true);
-//        palyer.start();
-//        return START_STICKY;
-//    }
-//
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        palyer.stop();
-//    }
+
 }
