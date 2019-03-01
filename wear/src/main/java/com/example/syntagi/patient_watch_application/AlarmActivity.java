@@ -2,9 +2,14 @@ package com.example.syntagi.patient_watch_application;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -16,14 +21,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AlarmActivity extends AppCompatActivity {
     private static final long REPEAT_TIME =10000;
-    TextView enddatetext,setreminder;
-private static AlarmActivity inst;
+    TextView setreminder;
+    private static AlarmActivity inst;
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
     TimePicker alarmTimePicker;
     ToggleButton toggleButton;
     MediaPlayer mediaPlayer;
-    int mHour,mMin;
+    int mHour,mMin ;
+    String am_pm;
+    Ringtone ringtone;
+
 
     public static AlarmActivity instance(){
         return inst;
@@ -47,16 +55,23 @@ private static AlarmActivity inst;
         alarmTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                mHour=hourOfDay;
-                mMin=minute;
+                mHour = hourOfDay;
+                mMin = minute;
 
+                if (mHour >= 12) {
+                    am_pm = "PM";
+                    mHour = mHour - 12;
+                } else {
+                    am_pm = "AM";
+                }
 //                if (view==alarmTimePicker){
 //                    startService(new Intent(AlarmActivity.this,AlarmService.class));
 //                }
-//                setreminder.setText(setreminder.getText().toString()+ ""+ mHour + ":" +mMin);
+
+                setreminder.setText("Time is -" + mHour + ":" +mMin + "\t" +am_pm );
+                //  setreminder.setText(setreminder.getText().toString() + "" +mHour+ ":" +mMin );
             }
         });
-
     }
     public void OnToggleClicked(View view) {
         long time;
@@ -84,8 +99,13 @@ private static AlarmActivity inst;
             }
 
             MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.alarm_ring);
-            mediaPlayer.setLooping(false);
             mediaPlayer.start();
+
+
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+
+//            ringtone.play();
 
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,REPEAT_TIME,pendingIntent);
         }
@@ -100,4 +120,17 @@ private static AlarmActivity inst;
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (ringtone!=null){
+            ringtone.play();
+        }
+    }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        ringtone.stop();
+//    }
 }

@@ -1,5 +1,6 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class MyMedicineFragment extends Fragment {
     ImageView imageView;
     TextView noofmedicine;
 
+    ProgressDialog progressDialog;
     Retrofit retrofit = null;
     ApiInterface apiInterface = null;
     GetMedicineData getMedicineData;
@@ -104,7 +107,6 @@ public class MyMedicineFragment extends Fragment {
         });
 
     }
-
 
 
 }

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.medicine.Interactions;
@@ -91,11 +92,15 @@ public class MedicineDetailActivity extends AppCompatActivity {
                           setData(medicineDetailData);
                     }
                 }
+                else {
+                    Toast.makeText(MedicineDetailActivity.this,"Code:" +response.code(),Toast.LENGTH_LONG).show();
+                }
+
             }
 
             @Override
             public void onFailure(Call<MedicineDetailData> call, Throwable t) {
-
+                Toast.makeText(MedicineDetailActivity.this,"Error",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -183,9 +188,9 @@ public class MedicineDetailActivity extends AppCompatActivity {
         textView.setText(getHtmlText(text));
         if (!TextUtils.isEmpty(colorCode)) {
             try {
-
                 textView.setBackgroundColor(Color.parseColor(colorCode));
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

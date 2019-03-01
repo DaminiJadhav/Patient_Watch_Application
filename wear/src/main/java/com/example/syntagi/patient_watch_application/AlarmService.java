@@ -18,6 +18,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 public class AlarmService extends IntentService {
+    Ringtone ringtone;
     private NotificationManager alarmNotificationManager;
 
     public AlarmService() {
@@ -38,26 +39,25 @@ public class AlarmService extends IntentService {
                 new Intent(this, AlarmActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 
-//        try {
+
 //            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//            r.play();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//             ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+//            ringtone.play();
+//
 
 
 
 
         Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.alarm_ring);
-//        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder alamNotificationBuilder=new NotificationCompat.Builder(this,"channel_id")
                                                                         .setContentTitle("Reminder")
                                                                         .setSmallIcon(R.drawable.reminder)
+
                                                                         .setSound(soundUri,AudioManager.STREAM_NOTIFICATION)
                                                                         .setVibrate(new long[] {1000,1000,1000,1000,1000})
                                                                         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                                                                         .setContentText(msg).setAutoCancel(true);
+
 
 //        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
 //            if (soundUri!=null){
@@ -68,6 +68,12 @@ public class AlarmService extends IntentService {
 //                                                                   .build();
 //                NotificationChannel notificationChannel=new NotificationChannel("CH_ID","Testing_Audio",NotificationManager.IMPORTANCE_HIGH);
 //                notificationChannel.setSound(soundUri,audioAttributes);
+
+
+
+
+
+
 //                alarmNotificationManager.createNotificationChannel(notificationChannel);
 //
 //            }

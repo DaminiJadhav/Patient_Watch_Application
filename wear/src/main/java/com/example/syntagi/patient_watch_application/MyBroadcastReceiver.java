@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.widget.Toast;
 
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
+
 import java.io.IOException;
 
 import static androidx.legacy.content.WakefulBroadcastReceiver.startWakefulService;
@@ -24,6 +26,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 //        Toast.makeText(context, "ALARM ........", Toast.LENGTH_SHORT).show();
 //            AlarmActivity inst=AlarmActivity.instance();
 //            inst.setAlarmText("Alarm ! Wake Up !Wake Up");
+
 
         Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -59,11 +62,13 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             Vibrator v= (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
             v.vibrate(20000);
         }
+
         Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
         if (ringtone!=null){
             ringtone.play();
 
         }
+
 
            ComponentName componentName=new ComponentName(context.getPackageName(),AlarmService.class.getName());
            startWakefulService(context, (intent.setComponent(componentName)));

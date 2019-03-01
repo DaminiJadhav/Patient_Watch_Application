@@ -144,6 +144,7 @@ public class  MyMedicine extends Fragment {
         cr.insert(reminderUri,values);
 
 
+
     }
    public String getCalenderUriBase(boolean eventUri){
      Uri calenderUri=null;
