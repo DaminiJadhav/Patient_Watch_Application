@@ -114,55 +114,6 @@ public class  MyMedicine extends Fragment {
     });
         return view;
     }
-
-
-    private void addReminderInCalender(){
-        String eventUriString = "content://com.android.calendar/events";
-        Calendar cal=Calendar.getInstance();
-        Uri eventUri=Uri.parse(getCalenderUriBase(true) + "events");
-        ContentResolver cr=getActivity().getContentResolver();
-        TimeZone timeZone=TimeZone.getDefault();
-        ContentValues values=new ContentValues();
-        values.put(CalendarContract.Events.CALENDAR_ID,1);
-        values.put(CalendarContract.Events.TITLE, "Reminder 01");
-        values.put(CalendarContract.Events.DESCRIPTION, "A test Reminder.");
-        values.put(CalendarContract.Events.ALL_DAY, 0);
-        values.put(CalendarContract.Events.DTSTART, cal.getTimeInMillis() + 1 * 60 * 1000);
-        values.put(CalendarContract.Events.DTEND, cal.getTimeInMillis() + 2 * 60 * 1000);
-        values.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
-        values.put(CalendarContract.Events.HAS_ALARM, 1);
-        Uri uri=cr.insert(eventUri,values);
-//        Uri uri=cr.insert(eventUri,values);
-//        Uri uri=curactivity.getApplicationContext().getContentResolver().insert(Uri.parse(eventUriString),values);
-        Toast.makeText(getContext(), "Event add-- ID ", Toast.LENGTH_SHORT).show();
-
-        Uri reminderUri=Uri.parse(getCalenderUriBase(true) + "Reminder");
-        values=new ContentValues();
-        values.put(CalendarContract.Reminders.EVENT_ID,Long.parseLong(uri.getLastPathSegment()));
-        values.put(CalendarContract.Reminders.METHOD,CalendarContract.Reminders.METHOD_ALERT);
-        values.put(CalendarContract.Reminders.MINUTES,10);
-        cr.insert(reminderUri,values);
-
-
-
-    }
-   public String getCalenderUriBase(boolean eventUri){
-     Uri calenderUri=null;
-     try{
-         if (Build.VERSION.SDK_INT<=7){
-             calenderUri=(eventUri) ? Uri.parse("content://calendar/") : Uri.parse("content://calendar/calendars");
-         }
-         else {
-             calenderUri=(eventUri) ? Uri.parse("content://com.android.calendar/") : Uri.parse("content://com.android.calendar/calendars");
-         }
-     }catch (Exception e){
-         e.printStackTrace();
-     }
-    return calenderUri.toString();
-    }
-
-
-
     public void onstart(){
         onstart();
     }

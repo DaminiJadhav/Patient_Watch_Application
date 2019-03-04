@@ -1,11 +1,8 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -13,13 +10,7 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.widget.Toast;
 
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
-
-import java.io.IOException;
-
-import static androidx.legacy.content.WakefulBroadcastReceiver.startWakefulService;
-
-public class MyBroadcastReceiver extends BroadcastReceiver {
+public class AlarmReceiver extends BroadcastReceiver {
     MediaPlayer mediaPlayer;
        @Override
     public void onReceive(Context context, Intent intent) {
@@ -30,15 +21,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-
-
-//           mediaPlayer=new MediaPlayer();
-//           if (mediaPlayer!=null){
-//               mediaPlayer.reset();
-//               mediaPlayer.release();
-//           }
-//           MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.alarm_ring);
-//           mediaPlayer.start();
 
 
 //           try {
@@ -57,7 +39,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         if (alarmUri == null)
         {
-
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Vibrator v= (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
             v.vibrate(20000);
@@ -68,16 +49,19 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             ringtone.play();
 
         }
+           Intent  intent1 = new Intent(context,AlarmService.class);
+           if (intent1!=null){
+               context.startService(intent1);
+           }
+           else {
+               context.stopService(intent1);
+           }
 
-
-           ComponentName componentName=new ComponentName(context.getPackageName(),AlarmService.class.getName());
-           startWakefulService(context, (intent.setComponent(componentName)));
-           setResultCode(Activity.RESULT_OK);
+//           ComponentName componentName=new ComponentName(context.getPackageName(),AlarmService.class.getName());
+//           startWakefulService(context, (intent.setComponent(componentName)));
+//           setResultCode(Activity.RESULT_OK);
 
     }
 
-//    private Object getSystemService(String audioService) {
-//           return audioService;
-//    }
 
 }

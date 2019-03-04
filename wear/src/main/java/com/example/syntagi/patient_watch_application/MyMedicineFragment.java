@@ -9,17 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
 import com.google.gson.Gson;
 import java.util.Map;
 import androidx.annotation.NonNull;
@@ -57,15 +53,6 @@ public class MyMedicineFragment extends Fragment {
         if (loginData != null) {
             patientId = loginData.getPatientData().getPatientId();
         }
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(),MyMedicineList.class);
-                startActivity(intent);
-            }
-        });
-
         medicineList(patientId);
         return view;
     }
@@ -88,6 +75,14 @@ public class MyMedicineFragment extends Fragment {
                         Map<String, MedicationEndsOn> medicationEndsOnMap = medicineData.getCurrentMedicines();
                         if (medicationEndsOnMap!=null){
                             noofmedicine.setText("" +medicationEndsOnMap.size());
+                            imageView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent=new Intent(getContext(),MyMedicineList.class);
+                                    startActivity(intent);
+                                }
+                            });
+
                         }
 
                     }

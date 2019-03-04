@@ -2,8 +2,6 @@ package com.example.syntagi.patient_watch_application;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.media.MediaPlayer;
@@ -69,9 +67,9 @@ public class AlarmActivity extends AppCompatActivity {
 //                }
 
                 setreminder.setText("Time is -" + mHour + ":" +mMin + "\t" +am_pm );
-                //  setreminder.setText(setreminder.getText().toString() + "" +mHour+ ":" +mMin );
             }
         });
+
     }
     public void OnToggleClicked(View view) {
         long time;
@@ -80,10 +78,9 @@ public class AlarmActivity extends AppCompatActivity {
             Calendar calendar=Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY,alarmTimePicker.getHour());
             calendar.set(Calendar.MINUTE,alarmTimePicker.getMinute());
-            Intent intent=new Intent(this,MyBroadcastReceiver.class);
+            Intent intent=new Intent(this,AlarmReceiver.class);
             pendingIntent=PendingIntent.getBroadcast(this,0,intent,0);
             time=(calendar.getTimeInMillis()-(calendar.getTimeInMillis()%60000));
-//            alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
             if (System.currentTimeMillis()>time){
                 if (calendar.AM_PM==0){
                     time=time+(1000)*60*60*12;
@@ -110,6 +107,7 @@ public class AlarmActivity extends AppCompatActivity {
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,REPEAT_TIME,pendingIntent);
         }
         else {
+
             alarmManager.cancel(pendingIntent);
             setAlarmText("Alarm");
             Toast.makeText(this, "Alarm off", Toast.LENGTH_SHORT).show();
@@ -128,9 +126,10 @@ public class AlarmActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        ringtone.stop();
-//    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent=new Intent(AlarmActivity.this,AlarmService.class);
+        stopService(intent);
+    }
 }

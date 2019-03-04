@@ -56,7 +56,7 @@
             android:enabled="true" />
 
         <receiver
-            android:name=".MyBroadcastReceiver"
+            android:name=".AlarmReceiver"
             android:process=":remote" />
 
         <activity android:name=".MyMedicineList" />
