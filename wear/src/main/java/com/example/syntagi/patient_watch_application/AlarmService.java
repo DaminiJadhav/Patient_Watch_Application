@@ -34,11 +34,6 @@ public class AlarmService extends IntentService {
                 new Intent(this, AlarmActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 
-//            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//             ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//            ringtone.play();
-//
-
 
 
 
@@ -51,35 +46,6 @@ public class AlarmService extends IntentService {
                                                                         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                                                                         .setContentText(msg)
                                                                         .setAutoCancel(true);
-
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
-//            if (soundUri!=null){
-//                alamNotificationBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
-//                AudioAttributes audioAttributes=new AudioAttributes.Builder()
-//                                                                   .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-//                                                                   .setUsage(AudioAttributes.USAGE_ALARM)
-//                                                                   .build();
-//                NotificationChannel notificationChannel=new NotificationChannel("CH_ID","Testing_Audio",NotificationManager.IMPORTANCE_HIGH);
-//                notificationChannel.setSound(soundUri,audioAttributes);
-
-
-
-
-
-
-//                alarmNotificationManager.createNotificationChannel(notificationChannel);
-//
-//            }
-//        }
-
-
-
-//        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        alamNotificationBuilder.setSound(uri);
-//        //vibrate
-//        long[] v = {500,1000};
-//        alamNotificationBuilder.setVibrate(v);
-
 
 
 

@@ -60,6 +60,7 @@ public class PatientData extends PatientProfileData implements Serializable {
         this.fcmToken = fcmToken;
     }
 
+
     public int getSourceType() {
         return sourceType;
     }

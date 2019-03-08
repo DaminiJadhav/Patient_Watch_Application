@@ -22,21 +22,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
-
-//           try {
-//
-//               mediaPlayer.setDataSource(context,alarmUri);
-//               final AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-//               if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM)!=0){
-//                   mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-//                   mediaPlayer.setLooping(true);
-//                   mediaPlayer.prepare();
-//                   mediaPlayer.start();
-//               }
-//           } catch (IOException e) {
-//               e.printStackTrace();
-//           }
-
         if (alarmUri == null)
         {
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -56,10 +41,6 @@ public class AlarmReceiver extends BroadcastReceiver {
            else {
                context.stopService(intent1);
            }
-
-//           ComponentName componentName=new ComponentName(context.getPackageName(),AlarmService.class.getName());
-//           startWakefulService(context, (intent.setComponent(componentName)));
-//           setResultCode(Activity.RESULT_OK);
 
     }
 

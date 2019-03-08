@@ -59,6 +59,7 @@ public class MyMedicineList extends AppCompatActivity {
         public int getCount() {
             return fragments.size();
         }
+
     }
 
 }

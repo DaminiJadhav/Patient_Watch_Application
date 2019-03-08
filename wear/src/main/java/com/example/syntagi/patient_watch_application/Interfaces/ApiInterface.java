@@ -6,6 +6,8 @@ import com.example.syntagi.patient_watch_application.models.OtpResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.Post;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
+import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
+import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -35,5 +37,9 @@ public interface ApiInterface {
 
     @GET("/syntagi/medicines/getById")
     Call<MedicineDetailData> getMedicineById(@Query("id")String id,@Header("authToken")String token,@Header("roleType") int roleType);
+
+    @GET("/syntagi/chartEntries/getVitalChartData")
+    Call<GroupedVitalChartResponse> getAllVitalData(@Query("grouping") String grouping,@Query("patientId") String patientId);
+
 
 }

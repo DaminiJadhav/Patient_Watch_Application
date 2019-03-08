@@ -2,14 +2,9 @@ package com.example.syntagi.patient_watch_application;
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +17,7 @@ import com.example.syntagi.patient_watch_application.models.medicine.MedicationE
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
 
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +27,8 @@ import androidx.fragment.app.Fragment;
 import static android.content.Context.ALARM_SERVICE;
 
 public class  MyMedicine extends Fragment {
-    ImageView iv_showmedicine;
+    TextView reminder;
+    ImageView iv_showmedicine,brkfast,lunch,eve,dinner;
     MedicationEndsOn medicineData;
     Switch aSwitch;
     AlarmManager alarmManager;
@@ -64,6 +58,11 @@ public class  MyMedicine extends Fragment {
         lunchdose=view.findViewById(R.id.txt_noondose);
         eveningdose=view.findViewById(R.id.txt_eveningdose);
         nightdose=view.findViewById(R.id.txt_nightdose);
+        reminder=view.findViewById(R.id.tv_reminder);
+        brkfast=view.findViewById(R.id.iv_brkfast);
+        lunch=view.findViewById(R.id.iv_lunch);
+        eve=view.findViewById(R.id.iv_eve);
+        dinner=view.findViewById(R.id.iv_dinner);
         aSwitch=view.findViewById(R.id.reminderswitch);
 
         aSwitch.setOnClickListener(new View.OnClickListener() {
@@ -93,16 +92,41 @@ public class  MyMedicine extends Fragment {
         {
             if (medicineFrequencies.get(i).getMorningDose()>0){
                 morningdose.setText("" +medicineFrequencies.get(i).getMorningDose());
+                brkfast.setVisibility(View.VISIBLE);
             }
+            else {
+                brkfast.setVisibility(View.INVISIBLE);
+                reminder.setVisibility(View.INVISIBLE);
+                aSwitch.setVisibility(View.INVISIBLE);
+            }
+
             if (medicineFrequencies.get(i).getNoonDose()>0){
                 lunchdose.setText("" +medicineFrequencies.get(i).getNoonDose());
+                lunch.setVisibility(View.VISIBLE);
+            }
+            else {
+                lunch.setVisibility(View.INVISIBLE);
+                reminder.setVisibility(View.INVISIBLE);
+                aSwitch.setVisibility(View.INVISIBLE);
             }
             if (medicineFrequencies.get(i).getEveningDose()>0){
                 eveningdose.setText("" +medicineFrequencies.get(i).getEveningDose());
             }
+            else {
+                eve.setVisibility(View.INVISIBLE);
+                reminder.setVisibility(View.INVISIBLE);
+                aSwitch.setVisibility(View.INVISIBLE);
+            }
             if (medicineFrequencies.get(i).getNightDose()>0){
                 nightdose.setText("" +medicineFrequencies.get(i).getNightDose());
             }
+            else {
+                dinner.setVisibility(View.INVISIBLE);
+                reminder.setVisibility(View.INVISIBLE);
+                aSwitch.setVisibility(View.INVISIBLE);
+            }
+
+
         }
 
     iv_showmedicine.setOnClickListener(new View.OnClickListener() {

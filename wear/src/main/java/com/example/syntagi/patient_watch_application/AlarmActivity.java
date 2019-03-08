@@ -66,7 +66,8 @@ public class AlarmActivity extends AppCompatActivity {
 //                    startService(new Intent(AlarmActivity.this,AlarmService.class));
 //                }
 
-                setreminder.setText("Time is -" + mHour + ":" +mMin + "\t" +am_pm );
+//                setreminder.setText("Time is -" + mHour + ":" +mMin + "\t" +am_pm );
+
             }
         });
 

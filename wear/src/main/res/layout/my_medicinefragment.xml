@@ -32,16 +32,20 @@
                 <ImageView
                     style="@style/image_width41_height40"
                     android:src="@drawable/ic_brkfast"
+                    android:id="@+id/iv_brkfast"
                     />
                 <ImageView
                     style="@style/image_width41_height40"
-                    android:src="@drawable/ic_lunch"/>
+                    android:src="@drawable/ic_lunch"
+                    android:id="@+id/iv_lunch"/>
                 <ImageView
                     style="@style/image_width41_height40"
-                    android:src="@drawable/ic_eve"/>
+                    android:src="@drawable/ic_eve"
+                    android:id="@+id/iv_eve"/>
                 <ImageView
                     style="@style/image_width41_height40"
-                    android:src="@drawable/ic_dinner"/>
+                    android:src="@drawable/ic_dinner"
+                    android:id="@+id/iv_dinner"/>
             </TableRow>
 
             <TableRow>
