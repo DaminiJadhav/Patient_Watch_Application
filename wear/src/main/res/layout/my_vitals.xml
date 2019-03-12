@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/lay_container"
     >
-
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_vital"
+    >
         <com.google.android.material.card.MaterialCardView
             style="@style/materialcardview"
             >
@@ -39,6 +42,13 @@
 
 
         </com.google.android.material.card.MaterialCardView>
-
-
 </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/lay_container"
+        >
+    </FrameLayout>
+
+</RelativeLayout>

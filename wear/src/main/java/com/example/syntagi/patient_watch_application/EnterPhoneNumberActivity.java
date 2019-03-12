@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EnterPhoneNumberActivity extends WearableActivity {
     private static final String USER_KEY = "Patient_Data";
+    private static final String  KEY_CONNECTIONS="Patient_Details";
     TextInputLayout textInputLayout;
     TextInputEditText phone_no_ed;
     Button btn;
@@ -106,21 +108,29 @@ public class EnterPhoneNumberActivity extends WearableActivity {
 
                     Gson gson=new Gson();
                     String JsonStr=gson.toJson(loginResponseData,LoginData.class);
+                    String JsonStrData=gson.toJson(patientData,PatientData.class);
                     SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(EnterPhoneNumberActivity.this).edit();
                     editor.putString(USER_KEY,JsonStr);
+                    editor.putString(KEY_CONNECTIONS, JsonStrData);
                     editor.apply();
+                    finish();
 
 
                     if (patientData != null) {
                         Bundle bundle = new Bundle();
                         bundle.putString("PhoneNumber", phone_no_ed.getText().toString().trim());
-                       // bundle.putSerializable("Patient_Data",patientData);
+//                        bundle.putSerializable("Patient_Data",patientData);
                         Intent intent = new Intent(EnterPhoneNumberActivity.this, OtpActivity.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         progressDoalog.dismiss();
-
                     }
+
+//                    Gson gson1=new Gson();
+//                    String jsonStrData1=gson1.toJson(patientData,PatientData.class);
+//                    SharedPreferences.Editor editor1= PreferenceManager.getDefaultSharedPreferences(EnterPhoneNumberActivity.this).edit();
+//                    editor1.putString(KEY_CONNECTIONS,jsonStrData1);
+//                    editor1.apply();
 
                 } else {
                     Toast.makeText(EnterPhoneNumberActivity.this, "code is" + response.code(), Toast.LENGTH_SHORT).show();

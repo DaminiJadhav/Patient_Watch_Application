@@ -39,7 +39,7 @@ public interface ApiInterface {
     Call<MedicineDetailData> getMedicineById(@Query("id")String id,@Header("authToken")String token,@Header("roleType") int roleType);
 
     @GET("/syntagi/chartEntries/getVitalChartData")
-    Call<GroupedVitalChartResponse> getAllVitalData(@Query("grouping") String grouping,@Query("patientId") String patientId);
+    Call<GroupedVitalChartResponse> getAllVitalData(@Query("grouping") String grouping,@Query("patientId") String patientId,@Header("authToken") String authToken,@Header("roleType") String roleType);
 
 
 }

@@ -1,69 +1,76 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStructure;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.example.syntagi.patient_watch_application.models.PatientData;
+import com.google.gson.Gson;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 
 public class MyVitalsFragment extends Fragment {
+
     ImageView  imageView;
-    LinearLayout layout;
+    FrameLayout frameLayout;
+    LinearLayout linearLayout;
+    private static final String  KEY_CONNECTIONS="Patient_Details";
+        Context context;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        final View view= inflater.inflate(R.layout.my_vitals,container,false);
-       layout = view.findViewById(R.id.lay_container);
          imageView= view.findViewById(R.id.iv_vitals);
+         frameLayout=view.findViewById(R.id.lay_container);
+         linearLayout=view.findViewById(R.id.ll_vital);
+
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                swapFragment();
-//                clickmethod();
+
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                final String json = sharedPreferences.getString(KEY_CONNECTIONS,"");
+//                String jsondata=sharedPreferences.getStringSet(KEY_CONNECTIONS,"");
+                Gson gson = new Gson();
+                PatientData patientData = gson.fromJson(json, PatientData.class);
+                if (patientData!=null){
+                    Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+                }
+             else {
+                    Toast.makeText(getContext(),"Patient Data Null",Toast.LENGTH_SHORT).show();
+                }
+
+//                Bundle bundle=new Bundle();
+//                if (bundle!=null){
+//                   PatientData patient_data= (PatientData) getIntent().getSerializable("Patient_Data");
+//                }
+
+                frameLayout.setVisibility(v.VISIBLE);
+                linearLayout.setVisibility(v.INVISIBLE);
+                getFragmentManager().beginTransaction().add(R.id.lay_container,VitalFragment.getInstance(patientData,null),getTag()).commit();
             }
         });
-
         return view;
     }
 
-
-    private void swapFragment() {
-      getFragmentManager().beginTransaction().add(R.id.lay_container,VitalFragment.getInstance()).commit();
-    }
-
-    public void myClickMethod(View v){
-        VitalFragment.myClickMethod(v);
-    }
-
-    public void clickmethod(){
-        VitalFragment vitalFragment = new VitalFragment();
-            Bundle extras=getIntent().getExtras();
-            if (extras!=null){
-                vitalFragment.setArguments(extras);
-                getFragmentManager().beginTransaction().add(R.id.lay_container,VitalFragment.getInstance()).commit();
-
-
-        }
-
-//            FragmentManager fragmentManager = getFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.add(R.id.lay_container, vitalFragment);
-//            fragmentTransaction.commit();
-    }
-
-    private Intent getIntent() {
+    private Bundle getIntent() {
         return null;
     }
-
 
 }

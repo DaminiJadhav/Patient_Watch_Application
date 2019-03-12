@@ -1,7 +1,9 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
+import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartResponse;
@@ -16,6 +19,7 @@ import com.example.syntagi.patient_watch_application.models.vitals.VitalChartDat
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +27,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,9 +44,12 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     private TextView tvVitalCount;
     private ArrayList<GroupedVitalChartData> dataList = new ArrayList<>();
 
+    String patientid;
     Retrofit retrofit=null;
     ApiInterface apiInterface=null;
     String getVitalChatDataEntries="http://13.127.133.104:8082";
+
+
 
     public static VitalFragment myClickMethod(View v) {
         VitalFragment vitalFragment=new VitalFragment();
@@ -57,7 +62,15 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_vital,container,false);
         initViews(view);
-        FragmentManager fragmentManager=getFragmentManager();
+//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getActivity());
+//        String json=sharedPreferences.getString("Patient_Data","");
+//        Gson gson=new Gson();
+//        LoginData loginData=gson.fromJson(json,LoginData.class);
+//        if (loginData!=null){
+//            patientid=loginData.getPatientData().getPatientId();
+//            Toast.makeText(getActivity(), "Patient ID:" +loginData.getPatientData().getPatientId(), Toast.LENGTH_SHORT).show();
+//        }
+//        getVitalsData(patientid);
 
         return view;
     }
@@ -67,12 +80,11 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         vitalFragment.patientData = patientData;
         vitalFragment.tvVitalCount = tvVitalCount;
         return vitalFragment;
-
     }
-    public static VitalFragment getInstance() {
+
+    public static VitalFragment getInstance(PatientData patientData) {
         VitalFragment vitalFragment = new VitalFragment();
         return vitalFragment;
-
     }
 
 
@@ -83,6 +95,18 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(6);
+
+//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getActivity());
+//        String json=sharedPreferences.getString("Patient_Data","");
+//        Gson gson=new Gson();
+//        LoginData loginData=gson.fromJson(json,LoginData.class);
+//        if (loginData!=null){
+//            patientid=loginData.getPatientData().getPatientId();
+//            Toast.makeText(getActivity(), "Patient ID:" +loginData.getPatientData().getPatientId(), Toast.LENGTH_SHORT).show();
+//        }
+//        getVitalData(patientid);
+
+
         if (patientData!=null){
             getVitalData(patientData.getPatientId());
         }
@@ -145,7 +169,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     }
 
     private void hideVisibility(int emptyView) {
-
     }
 
 
@@ -159,29 +182,29 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         return tabs.get(position);
     }
 
-    public void getVitalsData(String patienbtId){
+    public void getVitalsData(String patientId){
         retrofit=new Retrofit.Builder().baseUrl(getVitalChatDataEntries)
                                        .addConverterFactory(GsonConverterFactory.create())
                                        .build();
-
         apiInterface=retrofit.create(ApiInterface.class);
-        apiInterface.getAllVitalData("weekly",patienbtId).enqueue(new Callback<GroupedVitalChartResponse>() {
+        apiInterface.getAllVitalData("weekly",patientId,"12345678","4").enqueue(new Callback<GroupedVitalChartResponse>() {
             @Override
             public void onResponse(Call<GroupedVitalChartResponse> call, Response<GroupedVitalChartResponse> response) {
                 if (response.isSuccessful()){
-                    GroupedVitalChartResponse vitalChartResponse=response.body();
-                    if (vitalChartResponse.getError()){
-                        Toast.makeText(getContext(), vitalChartResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    GroupedVitalChartResponse groupedVitalChartResponse=response.body();
+                  if (groupedVitalChartResponse.getError()){
+                        Toast.makeText(getActivity(),"" +groupedVitalChartResponse.getMessage(),Toast.LENGTH_LONG).show();
+                  }
+//              groupedVitalChartResponse= (GroupedVitalChartResponse) groupedVitalChartResponse.getData();
+//            Toast.makeText(getContext(),"" + groupedVitalChartResponse,Toast.LENGTH_LONG).show();
                 }
-                else {
-                    Toast.makeText(getContext(), "Code is" +response.isSuccessful(), Toast.LENGTH_SHORT).show();
+               else {
+                    Toast.makeText(getActivity(),"Code" + response.code(),Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void onFailure(Call<GroupedVitalChartResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Error:" ,Toast.LENGTH_LONG).show();
             }
         });
     }

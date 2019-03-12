@@ -9,19 +9,26 @@ import android.media.AudioManager;
 import android.media.Ringtone;
 import android.net.Uri;
 import android.util.Log;
+
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
+
 import androidx.core.app.NotificationCompat;
 
 public class AlarmService extends IntentService {
     Ringtone ringtone;
     private NotificationManager alarmNotificationManager;
+    String medicineName;
 
     public AlarmService() {
+
         super("AlarmService");
     }
 
     @Override
     public void onHandleIntent(Intent intent) {
-
+//        MedicineDetailData medicineDetailData=new MedicineDetailData();
+//        medicineName=medicineDetailData.getMedicationName();
+//        sendNotification(medicineName);
           sendNotification("Wake Up! Wake Up!");
     }
 
