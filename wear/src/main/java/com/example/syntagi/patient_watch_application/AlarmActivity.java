@@ -106,7 +106,9 @@ public class AlarmActivity extends AppCompatActivity {
 //            ringtone.play();
 
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time,REPEAT_TIME,pendingIntent);
-
+//            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),(24*60*60*1000),pendingIntent);
+//            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+//            alarmManager.set(AlarmManager.RTC_WAKEUP,(System.currentTimeMillis()+REPEAT_TIME),pendingIntent);
 //            long alarmTriggerTime=System.currentTimeMillis()+5*1000;
 //            alarmManager.set(AlarmManager.RTC_WAKEUP,alarmTriggerTime,pendingIntent);
         }

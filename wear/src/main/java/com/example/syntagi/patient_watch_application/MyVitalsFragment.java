@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.google.gson.Gson;
@@ -46,20 +45,14 @@ public class MyVitalsFragment extends Fragment {
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 final String json = sharedPreferences.getString(KEY_CONNECTIONS,"");
-//                String jsondata=sharedPreferences.getStringSet(KEY_CONNECTIONS,"");
                 Gson gson = new Gson();
                 PatientData patientData = gson.fromJson(json, PatientData.class);
                 if (patientData!=null){
-                    Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
                 }
-             else {
-                    Toast.makeText(getContext(),"Patient Data Null",Toast.LENGTH_SHORT).show();
+                else {
+//                    Toast.makeText(getContext(),"Patient Data Null",Toast.LENGTH_LONG).show();
                 }
-
-//                Bundle bundle=new Bundle();
-//                if (bundle!=null){
-//                   PatientData patient_data= (PatientData) getIntent().getSerializable("Patient_Data");
-//                }
 
                 frameLayout.setVisibility(v.VISIBLE);
                 linearLayout.setVisibility(v.INVISIBLE);

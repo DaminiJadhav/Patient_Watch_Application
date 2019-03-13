@@ -10,16 +10,13 @@
         android:layout_margin="@dimen/margin_5"
         >
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+           style="@style/linear_layout_vertical"
             android:id="@+id/lay_vitals"
           >
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_my_vital"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/match_wrap"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:tabIndicatorHeight="4dp"
                 app:tabIndicatorColor="@color/white"
@@ -27,8 +24,7 @@
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager_my_vital"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+               style="@style/match_match"
                 android:layout_below="@+id/tab_layout_my_vital"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -37,11 +33,18 @@
         <TextView
             android:id="@+id/emptyView"
             android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap_wrap"
             android:layout_centerInParent="true"
             android:text="No Vitals added!"
             android:textSize="20dp"
             />
+
+        <TextView
+            style="@style/wrap_wrap"
+            android:id="@+id/tv_vitaldata"
+            android:layout_margin="@dimen/margin_5"
+           />
+
+
     </RelativeLayout>
 </LinearLayout>

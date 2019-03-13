@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
 
         fragments.add(new MyMedicineFragment());
         fragments.add(new MyVitalsFragment());
-
         firstnametxt = findViewById(R.id.json_data_txt);
         phonenumbertxt=findViewById(R.id.json_data_txt2);
         viewPager=findViewById(R.id.viewpager);

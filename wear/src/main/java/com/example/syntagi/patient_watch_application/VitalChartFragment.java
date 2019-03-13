@@ -80,11 +80,6 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
 
         graphUtil.invalidateGraph();
     }
-
-
-
-
-
     @Override
     public String getTitle(float position) {
         if ((position - 1) < dataList.size()) {

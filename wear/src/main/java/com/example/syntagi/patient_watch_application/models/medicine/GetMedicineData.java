@@ -3,8 +3,6 @@ package com.example.syntagi.patient_watch_application.models.medicine;
 import java.io.Serializable;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-
 public class GetMedicineData implements Serializable {
     private Map<String, MedicationEndsOn> currentMedicines;
 

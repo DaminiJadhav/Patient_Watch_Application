@@ -1,6 +1,5 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

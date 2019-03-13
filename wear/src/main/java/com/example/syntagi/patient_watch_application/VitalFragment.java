@@ -1,17 +1,13 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
-import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartResponse;
@@ -19,11 +15,8 @@ import com.example.syntagi.patient_watch_application.models.vitals.VitalChartDat
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -41,10 +34,9 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private CustomPagerAdapter pagerAdapter;
-    private TextView tvVitalCount;
+    private TextView tvVitalCount,vitaltxtdata;
     private ArrayList<GroupedVitalChartData> dataList = new ArrayList<>();
 
-    String patientid;
     Retrofit retrofit=null;
     ApiInterface apiInterface=null;
     String getVitalChatDataEntries="http://13.127.133.104:8082";
@@ -61,17 +53,9 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_vital,container,false);
+        tvVitalCount=view.findViewById(R.id.emptyView);
+        vitaltxtdata=view.findViewById(R.id.tv_vitaldata);
         initViews(view);
-//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getActivity());
-//        String json=sharedPreferences.getString("Patient_Data","");
-//        Gson gson=new Gson();
-//        LoginData loginData=gson.fromJson(json,LoginData.class);
-//        if (loginData!=null){
-//            patientid=loginData.getPatientData().getPatientId();
-//            Toast.makeText(getActivity(), "Patient ID:" +loginData.getPatientData().getPatientId(), Toast.LENGTH_SHORT).show();
-//        }
-//        getVitalsData(patientid);
-
         return view;
     }
 
@@ -82,10 +66,10 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         return vitalFragment;
     }
 
-    public static VitalFragment getInstance(PatientData patientData) {
-        VitalFragment vitalFragment = new VitalFragment();
-        return vitalFragment;
-    }
+//    public static VitalFragment getInstance(PatientData patientData) {
+//        VitalFragment vitalFragment = new VitalFragment();
+//        return vitalFragment;
+//    }
 
 
     public void initViews(View view) {
@@ -95,18 +79,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(6);
-
-//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getActivity());
-//        String json=sharedPreferences.getString("Patient_Data","");
-//        Gson gson=new Gson();
-//        LoginData loginData=gson.fromJson(json,LoginData.class);
-//        if (loginData!=null){
-//            patientid=loginData.getPatientData().getPatientId();
-//            Toast.makeText(getActivity(), "Patient ID:" +loginData.getPatientData().getPatientId(), Toast.LENGTH_SHORT).show();
-//        }
-//        getVitalData(patientid);
-
-
         if (patientData!=null){
             getVitalData(patientData.getPatientId());
         }
@@ -165,10 +137,11 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     }
 
     private void showVisibility(int emptyView) {
-
+//       tvVitalCount.setVisibility(View.VISIBLE);
     }
 
     private void hideVisibility(int emptyView) {
+//        tvVitalCount.setVisibility(View.INVISIBLE);
     }
 
 
@@ -182,6 +155,8 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         return tabs.get(position);
     }
 
+
+
     public void getVitalsData(String patientId){
         retrofit=new Retrofit.Builder().baseUrl(getVitalChatDataEntries)
                                        .addConverterFactory(GsonConverterFactory.create())
@@ -190,21 +165,28 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         apiInterface.getAllVitalData("weekly",patientId,"12345678","4").enqueue(new Callback<GroupedVitalChartResponse>() {
             @Override
             public void onResponse(Call<GroupedVitalChartResponse> call, Response<GroupedVitalChartResponse> response) {
+
                 if (response.isSuccessful()){
                     GroupedVitalChartResponse groupedVitalChartResponse=response.body();
-                  if (groupedVitalChartResponse.getError()){
-                        Toast.makeText(getActivity(),"" +groupedVitalChartResponse.getMessage(),Toast.LENGTH_LONG).show();
-                  }
-//              groupedVitalChartResponse= (GroupedVitalChartResponse) groupedVitalChartResponse.getData();
-//            Toast.makeText(getContext(),"" + groupedVitalChartResponse,Toast.LENGTH_LONG).show();
-                }
-               else {
+
+                      if (groupedVitalChartResponse.getError()){
+                            Toast.makeText(getActivity(),"" +groupedVitalChartResponse.getMessage(),Toast.LENGTH_LONG).show();
+                      }
+
+                      List<GroupedVitalChartData> dataList=groupedVitalChartResponse.getData();
+                      if (!CollectionUtils.isEmpty(dataList)){
+                          dataList.addAll(dataList);
+                          vitaltxtdata.setText("Vital Data : " +dataList.get(1).getxValue());
+                      }
+                        setPagerAdapter();
+                    }
+                else {
                     Toast.makeText(getActivity(),"Code" + response.code(),Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<GroupedVitalChartResponse> call, Throwable t) {
-                Toast.makeText(getActivity(),"Error:" ,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Error" ,Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -227,6 +209,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
 //
 //        }
 //    }
+
     public void refreshPatient(PatientData patientData) {
         this.patientData=patientData;
         getVitalData(patientData.getPatientId());

@@ -5,31 +5,38 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
+import com.google.gson.Gson;
 
 import androidx.core.app.NotificationCompat;
 
 public class AlarmService extends IntentService {
-    Ringtone ringtone;
     private NotificationManager alarmNotificationManager;
     String medicineName;
-
     public AlarmService() {
-
         super("AlarmService");
     }
 
     @Override
     public void onHandleIntent(Intent intent) {
-//        MedicineDetailData medicineDetailData=new MedicineDetailData();
-//        medicineName=medicineDetailData.getMedicationName();
-//        sendNotification(medicineName);
-          sendNotification("Wake Up! Wake Up!");
+//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
+//        String json=sharedPreferences.getString("Medicine","");
+//        Gson gson=new Gson();
+//        GetMedicineData getMedicineData=gson.fromJson(json,GetMedicineData.class);
+//        if (getMedicineData!=null){
+//            medicineName=getMedicineData.getCurrentMedicines().get(1).getMedication().getMedicineName();
+//                    sendNotification(medicineName);
+//        }
+
+        sendNotification("Wake Up! Wake Up!");
     }
 
     private void sendNotification(String msg) {

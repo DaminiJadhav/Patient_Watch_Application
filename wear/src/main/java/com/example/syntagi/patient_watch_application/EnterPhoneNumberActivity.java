@@ -113,7 +113,7 @@ public class EnterPhoneNumberActivity extends WearableActivity {
                     editor.putString(USER_KEY,JsonStr);
                     editor.putString(KEY_CONNECTIONS, JsonStrData);
                     editor.apply();
-                    finish();
+
 
 
                     if (patientData != null) {
