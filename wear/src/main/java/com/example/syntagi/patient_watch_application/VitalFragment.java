@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
@@ -15,8 +16,10 @@ import com.example.syntagi.patient_watch_application.models.vitals.VitalChartDat
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,7 +37,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private CustomPagerAdapter pagerAdapter;
-    private TextView tvVitalCount,vitaltxtdata;
+    private TextView tvVitalCount;
     private ArrayList<GroupedVitalChartData> dataList = new ArrayList<>();
 
     Retrofit retrofit=null;
@@ -54,7 +57,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_vital,container,false);
         tvVitalCount=view.findViewById(R.id.emptyView);
-        vitaltxtdata=view.findViewById(R.id.tv_vitaldata);
         initViews(view);
         return view;
     }
@@ -82,7 +84,10 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         if (patientData!=null){
             getVitalData(patientData.getPatientId());
         }
+
     }
+
+
 
 
     private void getVitalData(String patientId) {
@@ -114,7 +119,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         }
         VitalsModelResponse vitalsModelResponse = VitalsModelResponse.getSaved();
         if (vitalsModelResponse != null) {
-
             List<Vital> vitalList = vitalsModelResponse.getData();
             for (Vital vital : vitalList) {
                 if (existVitals.contains(vital.getVitalId())) {
@@ -128,21 +132,27 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         if (tvVitalCount!=null){
             tvVitalCount.setText(String.valueOf(fragments.size()));
         }
-        viewPager.setAdapter(pagerAdapter);
-        if (!CollectionUtils.isEmpty(fragments)) {
-            hideVisibility(R.id.emptyView);
+         viewPager.setAdapter(pagerAdapter);
+        if (!CollectionUtils.isEmpty( fragments)) {
+            tvVitalCount.setVisibility(View.GONE);
         } else {
-            showVisibility(R.id.emptyView);
+//            tvVitalCount.setVisibility(View.VISIBLE);
+
         }
     }
 
-    private void showVisibility(int emptyView) {
-//       tvVitalCount.setVisibility(View.VISIBLE);
-    }
+//    private void showVisibility(int... emptyView) {
+//        for (int ids:emptyView){
+//            getView().findViewById(ids).setVisibility(View.VISIBLE);
+//        }
+//    }
 
-    private void hideVisibility(int emptyView) {
-//        tvVitalCount.setVisibility(View.INVISIBLE);
-    }
+//    private void hideVisibility(int... emptyView) {
+//        for (int ids:emptyView){
+//            getView().findViewById(ids).setVisibility(View.GONE);
+//        }
+//
+//    }
 
 
     @Override
@@ -154,6 +164,11 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     public CharSequence getPageTitle(int position, Object listItem) {
         return tabs.get(position);
     }
+
+//    @Override
+//    public int getViewID() {
+//        return R.layout.fragment_vital;
+//    }
 
 
 
@@ -175,8 +190,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
 
                       List<GroupedVitalChartData> dataList=groupedVitalChartResponse.getData();
                       if (!CollectionUtils.isEmpty(dataList)){
-                          dataList.addAll(dataList);
-                          vitaltxtdata.setText("Vital Data : " +dataList.get(1).getxValue());
+                          VitalFragment.this.dataList.addAll(dataList);
                       }
                         setPagerAdapter();
                     }
@@ -190,6 +204,8 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
             }
         });
     }
+
+
 
 
 //    @Override
@@ -222,28 +238,4 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
             initViews(getView());
         }
     }
-
-
-//    class myVitalAdapter extends FragmentPagerAdapter{
-//
-//        public myVitalAdapter(FragmentManager fm) {
-//            super(fm);
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            Fragment fragment=null;
-//            if (position==0){
-//                fragment=new VitalChartFragment();
-//            }
-//            return fragment;
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return 1;
-//        }
-//    }
-
-
 }

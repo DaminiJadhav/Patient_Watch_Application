@@ -9,17 +9,27 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.net.Uri;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.syntagi.patient_watch_application.charting.formatter.IFillFormatter;
 import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
+import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
+import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
 import com.google.gson.Gson;
+
+import java.util.Map;
 
 import androidx.core.app.NotificationCompat;
 
 public class AlarmService extends IntentService {
     private NotificationManager alarmNotificationManager;
+    GetMedicineData getMedicineData;
+    MedicationEndsOn medicineData;
     String medicineName;
     public AlarmService() {
         super("AlarmService");
@@ -29,12 +39,14 @@ public class AlarmService extends IntentService {
     public void onHandleIntent(Intent intent) {
 //        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
 //        String json=sharedPreferences.getString("Medicine","");
-//        Gson gson=new Gson();
-//        GetMedicineData getMedicineData=gson.fromJson(json,GetMedicineData.class);
-//        if (getMedicineData!=null){
-//            medicineName=getMedicineData.getCurrentMedicines().get(1).getMedication().getMedicineName();
-//                    sendNotification(medicineName);
+//        if (!TextUtils.isEmpty(json)){
+//                Gson gson=new Gson();
+//                getMedicineData=gson.fromJson(json,GetMedicineData.class);
+//                medicationEndsOnMap=getMedicineData.getCurrentMedicines();
+//                medicineName= medicationEndsOnMap.get(1).getMedication().getMedicineName();
+//                Toast.makeText(AlarmService.this,"Medicine Name :" +medicineName,Toast.LENGTH_LONG).show();
 //        }
+
 
         sendNotification("Wake Up! Wake Up!");
     }

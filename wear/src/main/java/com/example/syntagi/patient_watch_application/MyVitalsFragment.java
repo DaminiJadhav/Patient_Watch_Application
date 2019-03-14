@@ -50,9 +50,6 @@ public class MyVitalsFragment extends Fragment {
                 if (patientData!=null){
 //                    Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
                 }
-                else {
-//                    Toast.makeText(getContext(),"Patient Data Null",Toast.LENGTH_LONG).show();
-                }
 
                 frameLayout.setVisibility(v.VISIBLE);
                 linearLayout.setVisibility(v.INVISIBLE);
@@ -62,8 +59,5 @@ public class MyVitalsFragment extends Fragment {
         return view;
     }
 
-    private Bundle getIntent() {
-        return null;
-    }
 
 }

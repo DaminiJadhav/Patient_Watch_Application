@@ -25,11 +25,12 @@ public class BPChartFragment extends Fragment implements GraphUtil.GraphListener
     private List<GroupedVitalChartData> dataList;
     private Vital vital;
     private GraphUtil graphUtil;
+    CombinedChart combinedChart;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_custom_graph,container,false);
+        View view = inflater.inflate(R.layout.fragment_custom_graph, container, false);
         initViews(view);
         return view;
     }
@@ -38,36 +39,35 @@ public class BPChartFragment extends Fragment implements GraphUtil.GraphListener
         BPChartFragment BPChartFragment = new BPChartFragment();
         BPChartFragment.dataList = dataList;
         BPChartFragment.vital = vital;
-       return BPChartFragment;
+        return BPChartFragment;
     }
 
 
     public void initViews(View view) {
-        CombinedChart combinedChart = view.findViewById(R.id.web_view);
-
-        graphUtil=new GraphUtil(combinedChart,getContext(),this);
+        combinedChart = view.findViewById(R.id.web_view_chart);
+        graphUtil = new GraphUtil(combinedChart, getContext(),
+                this);
         setDataList(dataList);
     }
 
     private void setDataList(List<GroupedVitalChartData> data) {
-        if(!CollectionUtils.isEmpty(data)){
+        if (!CollectionUtils.isEmpty(data)) {
             ArrayList<Entry> candleEntryArrayListOpen = new ArrayList<>();
             ArrayList<Entry> candleEntryArrayListClose = new ArrayList<>();
-            for(int x=1;x<=data.size();x++){
+            for (int x = 1; x <= data.size(); x++) {
                 GroupedVitalChartData vitalChartData = data.get(x - 1);
-                if(vitalChartData.getBpSystolic()!=0f){
+                if (vitalChartData.getBpSystolic() != 0f) {
                     candleEntryArrayListOpen.add(new Entry(x, (int) vitalChartData.getBpSystolic()));
                 }
-                if(vitalChartData.getBpDiastolic()!=0f){
+                if (vitalChartData.getBpDiastolic() != 0f) {
                     candleEntryArrayListClose.add(new Entry(x, (int) vitalChartData.getBpDiastolic()));
                 }
             }
-            graphUtil.addLineGraph(candleEntryArrayListOpen,"B.P(Systolic)", ContextCompat.getColor(getContext(),R.color.color_pulse_rate), LineDataSet.Mode.CUBIC_BEZIER);
-            graphUtil.addLineGraph(candleEntryArrayListClose,"B.P(Systolic)", ContextCompat.getColor(getContext(),R.color.color_body_weight), LineDataSet.Mode.CUBIC_BEZIER);
+            graphUtil.addLineGraph(candleEntryArrayListOpen, "B.P(Systolic)", ContextCompat.getColor(getContext(), R.color.color_pulse_rate), LineDataSet.Mode.CUBIC_BEZIER);
+            graphUtil.addLineGraph(candleEntryArrayListClose, "B.P(Systolic)", ContextCompat.getColor(getContext(), R.color.color_body_weight), LineDataSet.Mode.CUBIC_BEZIER);
         }
         graphUtil.invalidateGraph();
     }
-
 
 
     @Override

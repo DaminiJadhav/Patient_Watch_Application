@@ -46,6 +46,9 @@
     <dimen name="marginBottom_5">5dp</dimen>
     <dimen name="marginBottom_10">10dp</dimen>
 
+    <dimen name="padding_5dp">5dp</dimen>
+
+
 
 
 

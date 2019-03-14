@@ -1,14 +1,11 @@
 package com.example.syntagi.patient_watch_application.models.vitals;
 
-import android.text.TextUtils;
-
 import com.example.syntagi.patient_watch_application.Vital;
 import com.example.syntagi.patient_watch_application.models.BaseApiResponse;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 /**
  * Created by raghu on 22/8/16.
