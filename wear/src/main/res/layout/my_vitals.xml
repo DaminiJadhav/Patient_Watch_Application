@@ -33,19 +33,15 @@
                     <TextView
                         style="@style/relative_ellipse_textview"
                         android:background="@drawable/ic_ellipse"
-                        android:text="4" />
-
-                </RelativeLayout>
-
+                        android:id="@+id/tv_vitalcount"
+                        />
+               </RelativeLayout>
             </LinearLayout>
-
-
-
         </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/match_match"
         android:visibility="invisible"
         android:id="@+id/lay_container"
         >

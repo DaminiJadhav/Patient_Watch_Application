@@ -5,51 +5,53 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.AudioManager;
-import android.media.Ringtone;
 import android.net.Uri;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.syntagi.patient_watch_application.charting.formatter.IFillFormatter;
-import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
-import com.google.gson.Gson;
 
-import java.util.Map;
-
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+
 
 public class AlarmService extends IntentService {
     private NotificationManager alarmNotificationManager;
-    GetMedicineData getMedicineData;
-    MedicationEndsOn medicineData;
+    MedicineData medicineData;
     String medicineName;
     public AlarmService() {
         super("AlarmService");
     }
 
     @Override
-    public void onHandleIntent(Intent intent) {
-//        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
-//        String json=sharedPreferences.getString("Medicine","");
-//        if (!TextUtils.isEmpty(json)){
-//                Gson gson=new Gson();
-//                getMedicineData=gson.fromJson(json,GetMedicineData.class);
-//                medicationEndsOnMap=getMedicineData.getCurrentMedicines();
-//                medicineName= medicationEndsOnMap.get(1).getMedication().getMedicineName();
-//                Toast.makeText(AlarmService.this,"Medicine Name :" +medicineName,Toast.LENGTH_LONG).show();
-//        }
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
 
+        intent=this.getIntent();
+        if (intent!=null){
+            Bundle bundle=intent.getExtras();
+            if (bundle!=null){
+//                if (bundle.containsKey("NotifivationMessage"))
+                medicineData= (MedicineData) bundle.getSerializable("medicineDetails");
+                medicineName=medicineData.getMedicineName();
+                Toast.makeText(AlarmService.this,"Medicine Name : " +medicineName,Toast.LENGTH_LONG).show();
+                sendNotification(medicineName);
+            }
+        }
 
-        sendNotification("Wake Up! Wake Up!");
+        return  super.onStartCommand(intent, flags, startId);
     }
+
+    @Override
+    public void onHandleIntent(Intent intent) {
+        sendNotification("Medicine Time !!!!");
+    }
+
+    private Intent getIntent() {
+        return null;
+    }
+
 
     private void sendNotification(String msg) {
         Log.d("AlarmService", "Preparing to send notification...: " + msg);
@@ -58,10 +60,6 @@ public class AlarmService extends IntentService {
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, AlarmActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-
-
 
         Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.alarm_ring);
         NotificationCompat.Builder alamNotificationBuilder=new NotificationCompat.Builder(this,"channel_id")
@@ -86,7 +84,6 @@ public class AlarmService extends IntentService {
         NotificationManager manager= (NotificationManager) context.getSystemService(cancelnotification);
         manager.cancel(notifyId);
 
+
     }
-
-
 }

@@ -410,7 +410,7 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     public enum Mode {
         LINEAR,
         STEPPED,
-        CUBIC_BEZIER,
+            CUBIC_BEZIER,
         HORIZONTAL_BEZIER
     }
 }

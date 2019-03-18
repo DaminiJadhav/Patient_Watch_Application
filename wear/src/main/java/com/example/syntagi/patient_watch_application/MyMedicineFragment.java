@@ -88,9 +88,12 @@ public class MyMedicineFragment extends Fragment {
                     }
                     Gson gson=new Gson();
                     String JsonStr=gson.toJson(medicineData,GetMedicineData.class);
-                    SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-                    editor.putString("Medicine",JsonStr);
-                    editor.apply();
+                    if (JsonStr!=null){
+                        SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+                        editor.putString("Medicine",JsonStr);
+                        editor.apply();
+                    }
+
                 } else {
                     Toast.makeText(getContext(), "Code is:" + response.code(), Toast.LENGTH_SHORT).show();
                 }

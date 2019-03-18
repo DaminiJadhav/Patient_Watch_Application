@@ -1,5 +1,6 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -44,13 +45,10 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     ApiInterface apiInterface=null;
     String getVitalChatDataEntries="http://13.127.133.104:8082";
 
-
-
-    public static VitalFragment myClickMethod(View v) {
-        VitalFragment vitalFragment=new VitalFragment();
-        return vitalFragment;
-    }
-
+//    public static VitalFragment myClickMethod(View v) {
+//        VitalFragment vitalFragment=new VitalFragment();
+//        return vitalFragment;
+//    }
 
     @Nullable
     @Override
@@ -87,9 +85,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
 
     }
 
-
-
-
     private void getVitalData(String patientId) {
         this.dataList.clear();
         getVitalsData(patientId);
@@ -115,9 +110,9 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         }
         if (isBloodPressureExist) {
             tabs.add("Blood Pressure");
-            fragments.add(BPChartFragment.getInstance(dataList, VitalsModelResponse.getByName("B.P")));
+            fragments.add(BPChartFragment.getInstance(dataList, VitalsModelResponse.getByName("B.P",getContext())));
         }
-        VitalsModelResponse vitalsModelResponse = VitalsModelResponse.getSaved();
+        VitalsModelResponse vitalsModelResponse = VitalsModelResponse.getSaved(getContext());
         if (vitalsModelResponse != null) {
             List<Vital> vitalList = vitalsModelResponse.getData();
             for (Vital vital : vitalList) {
@@ -165,13 +160,6 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         return tabs.get(position);
     }
 
-//    @Override
-//    public int getViewID() {
-//        return R.layout.fragment_vital;
-//    }
-
-
-
     public void getVitalsData(String patientId){
         retrofit=new Retrofit.Builder().baseUrl(getVitalChatDataEntries)
                                        .addConverterFactory(GsonConverterFactory.create())
@@ -189,6 +177,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
                       }
 
                       List<GroupedVitalChartData> dataList=groupedVitalChartResponse.getData();
+
                       if (!CollectionUtils.isEmpty(dataList)){
                           VitalFragment.this.dataList.addAll(dataList);
                       }

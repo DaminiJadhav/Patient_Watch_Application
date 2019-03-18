@@ -81,9 +81,11 @@ public class  MyMedicine extends Fragment {
                 }
             }
         });
+        if (medicineData!=null){
+            tvMedicineName.setText("" +medicineData.getMedication().getMedicineName());
+            tvMedicineEndDate.setText("End date:  " +medicineData.getEndDate());
+        }
 
-        tvMedicineName.setText("" +medicineData.getMedication().getMedicineName());
-        tvMedicineEndDate.setText("End date:  " +medicineData.getEndDate());
         final MedicineData medicineData1=medicineData.getMedication();
 
         List<MedicineFrequency> medicineFrequencies=medicineData1.getFrequencies();

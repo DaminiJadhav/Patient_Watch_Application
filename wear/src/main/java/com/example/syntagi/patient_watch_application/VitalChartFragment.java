@@ -33,6 +33,7 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
         View view=inflater.inflate(R.layout.fragment_candle_graph,container,false);
         initViews(view);
         return view;
+
     }
 
     public static VitalChartFragment getInsatance(ArrayList<GroupedVitalChartData> dataList, Vital vital) {
@@ -71,14 +72,16 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
                 }
             }
         }
+        int colorCode = ContextCompat.getColor(getContext(), R.color.color_accent);
+        if (vital!=null) {
+            if (vital.getColorCode() != null) {
+                colorCode = Color.parseColor(vital.getColorCode());
+            }
 
-        int colorCode =ContextCompat.getColor(getContext(),R.color.color_accent);
-        if (vital.getColorCode() != null) {
-            colorCode = Color.parseColor(vital.getColorCode());
+            graphUtil.addLineGraph(lineEntriesList, vital.getVitalName(), colorCode, LineDataSet.Mode.CUBIC_BEZIER);
+
+            graphUtil.invalidateGraph();
         }
-        graphUtil.addLineGraph(lineEntriesList, vital.getVitalName(), colorCode, LineDataSet.Mode.CUBIC_BEZIER);
-
-        graphUtil.invalidateGraph();
     }
     @Override
     public String getTitle(float position) {

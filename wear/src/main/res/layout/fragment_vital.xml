@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   style="@style/match_match"
+    style="@style/match_match"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         android:id="@+id/lay_child_container"
-       style="@style/match_match"
+        style="@style/match_match"
         android:layout_margin="@dimen/margin_5"
         >
         <LinearLayout
-           style="@style/linear_layout_vertical"
+            style="@style/linear_layout_vertical"
             android:id="@+id/lay_vitals"
           >
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_my_vital"
-                style="@style/match_wrap"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:tabIndicatorHeight="4dp"
                 app:tabIndicatorColor="@color/white"
-                app:tabMode="scrollable" />
+                app:tabMode="scrollable"
+                />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager_my_vital"
                 style="@style/match_match"
                 android:layout_below="@+id/tab_layout_my_vital"
-                android:layout_gravity="center"
-                android:padding="@dimen/padding_5dp"
+                android:layout_margin="@dimen/margin_10"
+                android:paddingTop="@dimen/paddingTop_5dp"
                 />
 
         </LinearLayout>
@@ -37,9 +39,6 @@
             android:text="No Vitals added!"
             android:textSize="20dp"
             />
-
-
-
 
     </RelativeLayout>
 </LinearLayout>

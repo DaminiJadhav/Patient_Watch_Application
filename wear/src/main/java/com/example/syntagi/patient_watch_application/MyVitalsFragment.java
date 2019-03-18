@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.syntagi.patient_watch_application.models.PatientData;
+import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,8 @@ public class MyVitalsFragment extends Fragment {
     ImageView  imageView;
     FrameLayout frameLayout;
     LinearLayout linearLayout;
+    TextView totalvitalcount;
+
     private static final String  KEY_CONNECTIONS="Patient_Details";
         Context context;
 
@@ -36,7 +40,15 @@ public class MyVitalsFragment extends Fragment {
          imageView= view.findViewById(R.id.iv_vitals);
          frameLayout=view.findViewById(R.id.lay_container);
          linearLayout=view.findViewById(R.id.ll_vital);
+         totalvitalcount=view.findViewById(R.id.tv_vitalcount);
 
+            SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getContext());
+            String vitaljson=sharedPreferences.getString("VitalData","");
+            Gson gson=new Gson();
+            VitalsModelResponse vitalsModelResponse=gson.fromJson(vitaljson,VitalsModelResponse.class);
+            if (vitalsModelResponse!=null){
+                totalvitalcount.setText("" + vitalsModelResponse.getData().size());
+            }
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +65,7 @@ public class MyVitalsFragment extends Fragment {
 
                 frameLayout.setVisibility(v.VISIBLE);
                 linearLayout.setVisibility(v.INVISIBLE);
-                getFragmentManager().beginTransaction().add(R.id.lay_container,VitalFragment.getInstance(patientData,null),getTag()).commit();
+                getFragmentManager().beginTransaction().add(R.id.lay_container,VitalFragment.getInstance(patientData,totalvitalcount),getTag()).commit();
             }
         });
         return view;
