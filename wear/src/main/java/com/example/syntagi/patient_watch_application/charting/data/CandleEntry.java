@@ -4,13 +4,15 @@ package com.example.syntagi.patient_watch_application.charting.data;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Subclass of Entry that holds all values for one entry in a CandleStickChart.
  * 
  * @author Philipp Jahoda
  */
 @SuppressLint("ParcelCreator")
-public class CandleEntry extends Entry {
+public class CandleEntry extends Entry implements Serializable {
 
     /** shadow-high value */
     private float mShadowHigh = 0f;

@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * 
  * @author Philipp Jahoda
  */
-public abstract class BarLineScatterCandleBubbleDataSet<T extends Entry> extends DataSet<T> implements IBarLineScatterCandleBubbleDataSet<T> {
+public abstract class BarLineScatterCandleBubbleDataSet<T extends Entry> extends DataSet<T> implements IBarLineScatterCandleBubbleDataSet<T>,Serializable {
 
     /** default highlight color */
     protected int mHighLightColor = Color.rgb(255, 187, 115);

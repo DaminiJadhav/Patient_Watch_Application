@@ -8,6 +8,8 @@ import com.example.syntagi.patient_watch_application.charting.data.ScatterData;
 import com.example.syntagi.patient_watch_application.charting.interfaces.dataprovider.ScatterDataProvider;
 import com.example.syntagi.patient_watch_application.charting.renderer.ScatterChartRenderer;
 
+import java.io.Serializable;
+
 
 /**
  * The ScatterChart. Draws dots, triangles, squares and custom shapes into the
@@ -16,7 +18,7 @@ import com.example.syntagi.patient_watch_application.charting.renderer.ScatterCh
  *
  * @author Philipp Jahoda
  */
-public class ScatterChart extends BarLineChartBase<ScatterData> implements ScatterDataProvider {
+public class ScatterChart extends BarLineChartBase<ScatterData> implements ScatterDataProvider,Serializable {
 
     public ScatterChart(Context context) {
         super(context);

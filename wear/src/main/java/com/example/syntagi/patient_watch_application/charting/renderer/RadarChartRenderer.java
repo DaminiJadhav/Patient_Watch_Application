@@ -18,8 +18,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 
-public class RadarChartRenderer extends LineRadarRenderer {
+
+public class RadarChartRenderer extends LineRadarRenderer implements Serializable {
 
     protected RadarChart mChart;
 

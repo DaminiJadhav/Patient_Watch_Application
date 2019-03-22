@@ -2,10 +2,12 @@ package com.example.syntagi.patient_watch_application.charting.data;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Created by Philipp Jahoda on 02/06/16.
  */
-public abstract class BaseEntry {
+public abstract class BaseEntry implements Serializable {
 
     /** the y value */
     private float y = 0f;

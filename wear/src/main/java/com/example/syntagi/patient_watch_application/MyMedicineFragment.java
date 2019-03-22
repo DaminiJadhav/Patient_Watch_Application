@@ -34,10 +34,8 @@ public class MyMedicineFragment extends Fragment {
     ImageView imageView;
     TextView noofmedicine;
 
-    ProgressDialog progressDialog;
     Retrofit retrofit = null;
     ApiInterface apiInterface = null;
-    GetMedicineData getMedicineData;
 
 
     @Nullable

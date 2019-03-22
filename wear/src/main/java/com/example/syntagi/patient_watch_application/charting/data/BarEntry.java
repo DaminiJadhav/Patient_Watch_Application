@@ -4,13 +4,15 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import com.example.syntagi.patient_watch_application.charting.highlight.Range;
 
+import java.io.Serializable;
+
 /**
  * Entry class for the BarChart. (especially stacked bars)
  *
  * @author Philipp Jahoda
  */
 @SuppressLint("ParcelCreator")
-public class BarEntry extends Entry {
+public class BarEntry extends Entry implements Serializable {
 
     /**
      * the values the stacked barchart holds

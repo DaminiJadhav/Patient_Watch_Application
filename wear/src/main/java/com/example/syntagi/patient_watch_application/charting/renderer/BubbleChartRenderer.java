@@ -18,13 +18,14 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Bubble chart implementation: Copyright 2015 Pierre-Marc Airoldi Licensed
  * under Apache License 2.0 Ported by Daniel Cohen Gindi
  */
-public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
+public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer implements Serializable {
 
     protected BubbleDataProvider mChart;
     protected BubbleData bubbleData;

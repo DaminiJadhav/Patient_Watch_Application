@@ -11,6 +11,7 @@ import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
 /**
@@ -19,7 +20,7 @@ import java.lang.ref.WeakReference;
  *
  * @author Philipp Jahoda
  */
-public class MarkerView extends RelativeLayout implements IMarker {
+public class MarkerView extends RelativeLayout implements IMarker,Serializable {
 
     private MPPointF mOffset = new MPPointF();
     private MPPointF mOffset2 = new MPPointF();

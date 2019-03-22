@@ -16,6 +16,7 @@ import com.example.syntagi.patient_watch_application.charting.data.ScatterData;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 /**
  * Renderer class that is responsible for rendering multiple different data-types.
  */
-public class CombinedChartRenderer extends DataRenderer {
+public class CombinedChartRenderer extends DataRenderer implements Serializable {
 
     /**
      * all rederers for the different kinds of data this combined-renderer can draw

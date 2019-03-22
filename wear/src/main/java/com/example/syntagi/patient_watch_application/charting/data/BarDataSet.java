@@ -6,10 +6,11 @@ import android.graphics.Color;
 
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarDataSet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> implements IBarDataSet {
+public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> implements IBarDataSet,Serializable {
 
     /**
      * the maximum number of bars that are stacked upon each other, this value

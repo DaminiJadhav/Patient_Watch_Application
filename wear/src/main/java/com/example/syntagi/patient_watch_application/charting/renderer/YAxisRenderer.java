@@ -15,9 +15,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class YAxisRenderer extends AxisRenderer {
+public class YAxisRenderer extends AxisRenderer implements Serializable {
 
     protected YAxis mYAxis;
 

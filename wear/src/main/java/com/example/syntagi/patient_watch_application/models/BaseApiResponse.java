@@ -3,7 +3,7 @@ package com.example.syntagi.patient_watch_application.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BaseApiResponse {
+public class BaseApiResponse  {
     @SerializedName("error")
     @Expose
     private Boolean error;

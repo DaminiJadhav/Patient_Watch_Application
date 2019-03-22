@@ -5,8 +5,10 @@ import android.graphics.DashPathEffect;
 
 import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplate;
 
+import java.io.Serializable;
 
-public class LegendEntry {
+
+public class LegendEntry implements Serializable {
     public LegendEntry() {
 
     }

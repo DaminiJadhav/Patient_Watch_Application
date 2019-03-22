@@ -14,13 +14,15 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.datapro
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarDataSet;
 import com.example.syntagi.patient_watch_application.charting.renderer.BarChartRenderer;
 
+import java.io.Serializable;
+
 
 /**
  * Chart that draws bars.
  *
  * @author Philipp Jahoda
  */
-public class BarChart extends BarLineChartBase<BarData> implements BarDataProvider {
+public class BarChart extends BarLineChartBase<BarData> implements BarDataProvider,Serializable {
 
     /**
      * flag that indicates whether the highlight should be full-bar oriented, or single-value?

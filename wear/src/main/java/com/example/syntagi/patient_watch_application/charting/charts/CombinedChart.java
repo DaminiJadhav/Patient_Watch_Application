@@ -16,6 +16,8 @@ import com.example.syntagi.patient_watch_application.charting.highlight.Highligh
 import com.example.syntagi.patient_watch_application.charting.interfaces.dataprovider.CombinedDataProvider;
 import com.example.syntagi.patient_watch_application.charting.renderer.CombinedChartRenderer;
 
+import java.io.Serializable;
+
 
 /**
  * This chart class allows the combination of lines, bars, scatter and candle
@@ -23,7 +25,7 @@ import com.example.syntagi.patient_watch_application.charting.renderer.CombinedC
  *
  * @author Philipp Jahoda
  */
-public class CombinedChart extends BarLineChartBase<CombinedData> implements CombinedDataProvider {
+public class CombinedChart extends BarLineChartBase<CombinedData> implements CombinedDataProvider,Serializable {
 
     /**
      * if set to true, all values are drawn above their bars, instead of below

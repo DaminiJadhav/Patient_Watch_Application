@@ -7,6 +7,8 @@ import android.view.View;
 import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 /**
  * Runnable that is used for viewport modifications since they cannot be
  * executed at any time. This can be used to delay the execution of viewport
@@ -16,7 +18,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHand
  * 
  * @author Philipp Jahoda
  */
-public abstract class ViewPortJob extends ObjectPool.Poolable implements Runnable {
+public abstract class ViewPortJob extends ObjectPool.Poolable implements Runnable,Serializable {
 
     protected float[] pts = new float[2];
 

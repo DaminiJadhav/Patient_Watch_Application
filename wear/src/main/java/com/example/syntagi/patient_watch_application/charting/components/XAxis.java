@@ -3,6 +3,8 @@ package com.example.syntagi.patient_watch_application.charting.components;
 
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 /**
  * Class representing the x-axis labels settings. Only use the setter methods to
  * modify it. Do not access public variables directly. Be aware that not all
@@ -10,7 +12,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  *
  * @author Philipp Jahoda
  */
-public class XAxis extends AxisBase {
+public class XAxis extends AxisBase implements Serializable {
 
     /**
      * width of the x-axis labels in pixels - this is automatically

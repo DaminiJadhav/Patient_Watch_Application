@@ -10,10 +10,11 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class YAxisRendererRadarChart extends YAxisRenderer {
+public class YAxisRendererRadarChart extends YAxisRenderer implements Serializable {
 
     private RadarChart mChart;
 

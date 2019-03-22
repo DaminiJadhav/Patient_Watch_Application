@@ -1,13 +1,14 @@
 
 package com.example.syntagi.patient_watch_application.charting.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Class for describing width and height dimensions in some arbitrary
  * unit. Replacement for the android.Util.SizeF which is available only on API >= 21.
  */
-public final class FSize extends ObjectPool.Poolable{
+public final class FSize extends ObjectPool.Poolable implements Serializable {
 
     // TODO : Encapsulate width & height
 

@@ -12,6 +12,7 @@ import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalC
 
 import com.google.android.gms.common.util.CollectionUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

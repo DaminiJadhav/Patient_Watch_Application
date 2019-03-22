@@ -7,10 +7,11 @@ import android.graphics.Color;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IRadarDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RadarDataSet extends LineRadarDataSet<RadarEntry> implements IRadarDataSet {
+public class RadarDataSet extends LineRadarDataSet<RadarEntry> implements IRadarDataSet,Serializable {
 
     /// flag indicating whether highlight circle should be drawn or not
     protected boolean mDrawHighlightCircleEnabled = false;

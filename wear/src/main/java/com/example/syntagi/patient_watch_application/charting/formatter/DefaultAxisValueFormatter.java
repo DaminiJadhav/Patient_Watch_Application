@@ -3,12 +3,13 @@ package com.example.syntagi.patient_watch_application.charting.formatter;
 
 import com.example.syntagi.patient_watch_application.charting.components.AxisBase;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
  * Created by philipp on 02/06/16.
  */
-public class DefaultAxisValueFormatter implements IAxisValueFormatter
+public class DefaultAxisValueFormatter implements IAxisValueFormatter,Serializable
 {
 
     /**

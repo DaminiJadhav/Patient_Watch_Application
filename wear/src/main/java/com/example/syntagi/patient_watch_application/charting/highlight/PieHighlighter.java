@@ -5,10 +5,12 @@ import com.example.syntagi.patient_watch_application.charting.charts.PieChart;
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IPieDataSet;
 
+import java.io.Serializable;
+
 /**
  * Created by philipp on 12/06/16.
  */
-public class PieHighlighter extends PieRadarHighlighter<PieChart> {
+public class PieHighlighter extends PieRadarHighlighter<PieChart> implements Serializable {
 
     public PieHighlighter(PieChart chart) {
         super(chart);

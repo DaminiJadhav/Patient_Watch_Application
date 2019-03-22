@@ -8,12 +8,14 @@ import com.example.syntagi.patient_watch_application.charting.data.CandleData;
 import com.example.syntagi.patient_watch_application.charting.interfaces.dataprovider.CandleDataProvider;
 import com.example.syntagi.patient_watch_application.charting.renderer.CandleStickChartRenderer;
 
+import java.io.Serializable;
+
 /**
  * Financial chart type that draws candle-sticks (OHCL chart).
  *
  * @author Philipp Jahoda
  */
-public class CandleStickChart extends BarLineChartBase<CandleData> implements CandleDataProvider {
+public class CandleStickChart extends BarLineChartBase<CandleData> implements CandleDataProvider,Serializable {
 
     public CandleStickChart(Context context) {
         super(context);

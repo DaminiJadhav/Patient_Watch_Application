@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatterCandleBubbleDataSet<? extends Entry>> {
+public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatterCandleBubbleDataSet<? extends Entry>> implements Serializable {
 
     private ArrayList<ChartData> data;
 

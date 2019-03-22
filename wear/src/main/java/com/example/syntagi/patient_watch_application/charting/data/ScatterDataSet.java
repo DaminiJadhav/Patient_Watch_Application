@@ -15,10 +15,11 @@ import com.example.syntagi.patient_watch_application.charting.renderer.scatter.T
 import com.example.syntagi.patient_watch_application.charting.renderer.scatter.XShapeRenderer;
 import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> implements IScatterDataSet {
+public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> implements IScatterDataSet,Serializable {
 
     /**
      * the size the scattershape will have, in density pixels

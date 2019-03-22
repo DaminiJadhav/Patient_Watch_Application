@@ -4,7 +4,9 @@ package com.example.syntagi.patient_watch_application.charting.buffer;
 import com.example.syntagi.patient_watch_application.charting.data.BarEntry;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarDataSet;
 
-public class BarBuffer extends AbstractBuffer<IBarDataSet> {
+import java.io.Serializable;
+
+public class BarBuffer extends AbstractBuffer<IBarDataSet> implements Serializable {
 
     protected int mDataSetIndex = 0;
     protected int mDataSetCount = 1;

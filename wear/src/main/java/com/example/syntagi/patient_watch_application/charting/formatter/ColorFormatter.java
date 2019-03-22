@@ -10,7 +10,7 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
  *
  * @author Philipp Jahoda
  */
-public interface ColorFormatter {
+public interface ColorFormatter  {
 
     /**
      * Returns the color to be used for the given Entry at the given index (in the entries array)

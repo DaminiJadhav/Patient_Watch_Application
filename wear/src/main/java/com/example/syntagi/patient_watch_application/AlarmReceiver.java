@@ -18,7 +18,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 //        Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
-           Toast.makeText(context,"Medicine Time !!!!",Toast.LENGTH_LONG).show();
+           Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
         if (alarmUri == null)

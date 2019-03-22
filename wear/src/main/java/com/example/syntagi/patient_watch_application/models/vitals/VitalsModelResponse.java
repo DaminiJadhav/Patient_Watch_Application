@@ -10,16 +10,16 @@ import com.example.syntagi.patient_watch_application.Vital;
 import com.example.syntagi.patient_watch_application.models.BaseApiResponse;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 import okhttp3.internal.cache.DiskLruCache;
 
 /**
  * Created by raghu on 22/8/16.
  */
-public class VitalsModelResponse extends BaseApiResponse {
+public class VitalsModelResponse extends BaseApiResponse implements Serializable{
     private List<Vital> data;
     public List<Vital> getData() {
         if(data==null){
@@ -38,11 +38,8 @@ public class VitalsModelResponse extends BaseApiResponse {
         return new Gson().fromJson(json,VitalsModelResponse.class);
     }
     public void save(Context context) {
-//        Preferences.saveData(AppConstants.PREF_KEYS.VITALS_RESPONCE,new Gson().toJson(this));
         Gson gson=new Gson();
         String vitaljson=gson.toJson(this);
-//        SharedPreferences sharedPreferences=context.getSharedPreferences("Preference",Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor=sharedPreferences.edit();
         SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putString(AppConstants.PREF_KEYS.VITALS_RESPONCE,vitaljson);
         editor.apply();

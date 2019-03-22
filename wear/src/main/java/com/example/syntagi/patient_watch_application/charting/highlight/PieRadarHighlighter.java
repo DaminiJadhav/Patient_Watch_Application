@@ -4,13 +4,14 @@ package com.example.syntagi.patient_watch_application.charting.highlight;
 import com.example.syntagi.patient_watch_application.charting.charts.PieChart;
 import com.example.syntagi.patient_watch_application.charting.charts.PieRadarChartBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by philipp on 12/06/16.
  */
-public abstract class PieRadarHighlighter<T extends PieRadarChartBase> implements IHighlighter
+public abstract class PieRadarHighlighter<T extends PieRadarChartBase> implements IHighlighter,Serializable
 {
 
     protected T mChart;

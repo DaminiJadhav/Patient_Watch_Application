@@ -5,10 +5,12 @@ import android.graphics.Paint;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 /**
  * Created by Philipp Jahoda on 17/09/16.
  */
-public class Description extends ComponentBase {
+public class Description extends ComponentBase implements Serializable {
 
     /**
      * the text used in the description

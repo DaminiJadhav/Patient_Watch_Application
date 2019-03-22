@@ -21,13 +21,15 @@ import com.example.syntagi.patient_watch_application.charting.listener.PieRadarC
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 /**
  * Baseclass of PieChart and RadarChart.
  *
  * @author Philipp Jahoda
  */
 public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<? extends Entry>>>
-        extends Chart<T> {
+        extends Chart<T> implements Serializable {
 
     /**
      * holds the normalized version of the current rotation angle of the chart

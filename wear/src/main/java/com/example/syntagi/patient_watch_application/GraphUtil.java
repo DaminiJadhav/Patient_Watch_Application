@@ -27,12 +27,13 @@ import com.example.syntagi.patient_watch_application.charting.data.ScatterData;
 import com.example.syntagi.patient_watch_application.charting.data.ScatterDataSet;
 import com.example.syntagi.patient_watch_application.charting.formatter.IAxisValueFormatter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.fragment.app.FragmentActivity;
 
-public class GraphUtil {
+public class GraphUtil implements Serializable {
     private XAxis xAxis;
     private ArrayList<ChartData> chartData = new ArrayList<>();
 

@@ -7,6 +7,8 @@ import android.graphics.Paint;
 
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * The limit line is an additional feature for all Line-, Bar- and
@@ -15,7 +17,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  * 
  * @author Philipp Jahoda
  */
-public class LimitLine extends ComponentBase {
+public class LimitLine extends ComponentBase implements Serializable {
 
     /** limit / maximum (the y-value or xIndex) */
     private float mLimit = 0f;

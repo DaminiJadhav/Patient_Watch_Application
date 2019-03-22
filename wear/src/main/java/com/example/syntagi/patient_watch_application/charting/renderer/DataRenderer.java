@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
+import android.se.omapi.SEService;
 
 import com.example.syntagi.patient_watch_application.charting.animation.ChartAnimator;
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
@@ -16,12 +17,14 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 /**
  * Superclass of all render classes for the different data types (line, bar, ...).
  *
  * @author Philipp Jahoda
  */
-public abstract class DataRenderer extends Renderer {
+public abstract class DataRenderer extends Renderer implements Serializable {
 
     /**
      * the animator object used to perform animations on the chart data

@@ -4,10 +4,11 @@ package com.example.syntagi.patient_watch_application.charting.data;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBubbleDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BubbleDataSet extends BarLineScatterCandleBubbleDataSet<BubbleEntry> implements IBubbleDataSet {
+public class BubbleDataSet extends BarLineScatterCandleBubbleDataSet<BubbleEntry> implements IBubbleDataSet,Serializable {
 
     protected float mMaxSize;
     protected boolean mNormalizeSize = true;

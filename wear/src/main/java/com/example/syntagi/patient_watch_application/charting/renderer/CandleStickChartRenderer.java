@@ -21,9 +21,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
+public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer implements Serializable {
 
     protected CandleDataProvider mChart;
     protected CandleData candleData;

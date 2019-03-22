@@ -15,6 +15,8 @@ import com.example.syntagi.patient_watch_application.charting.renderer.XAxisRend
 import com.example.syntagi.patient_watch_application.charting.renderer.YAxisRendererRadarChart;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * Implementation of the RadarChart, a "spidernet"-like chart. It works best
@@ -22,7 +24,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  *
  * @author Philipp Jahoda
  */
-public class RadarChart extends PieRadarChartBase<RadarData> {
+public class RadarChart extends PieRadarChartBase<RadarData> implements Serializable {
 
     /**
      * width of the main web lines

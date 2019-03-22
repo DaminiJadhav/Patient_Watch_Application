@@ -8,12 +8,14 @@ import com.example.syntagi.patient_watch_application.charting.utils.ObjectPool;
 import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Philipp Jahoda on 19/02/16.
  */
 @SuppressLint("NewApi")
-public class AnimatedMoveViewJob extends AnimatedViewPortJob {
+public class AnimatedMoveViewJob extends AnimatedViewPortJob implements Serializable {
 
     private static ObjectPool<AnimatedMoveViewJob> pool;
 

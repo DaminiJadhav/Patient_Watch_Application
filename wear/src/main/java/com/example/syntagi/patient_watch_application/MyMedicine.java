@@ -128,14 +128,12 @@ public class  MyMedicine extends Fragment {
                 aSwitch.setVisibility(View.INVISIBLE);
             }
 
-
         }
 
     iv_showmedicine.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             MedicineDetailActivity.startActivity(MyMedicine.this,medicineData.getMedication());
-
         }
     });
         return view;

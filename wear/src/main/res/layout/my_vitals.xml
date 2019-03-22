@@ -19,6 +19,7 @@
                     style="@style/ImageViewStyle2"
                     android:src="@drawable/ic_vitals" />
 
+
                 <RelativeLayout
                     style="@style/wrap_wrap"
                     android:layout_marginBottom="@dimen/marginBottom_5"
@@ -34,6 +35,7 @@
                         style="@style/relative_ellipse_textview"
                         android:background="@drawable/ic_ellipse"
                         android:id="@+id/tv_vitalcount"
+                        android:text=""
                         />
                </RelativeLayout>
             </LinearLayout>

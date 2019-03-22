@@ -7,12 +7,14 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * Created by wajdic on 15/06/2016.
  * Created at Time 09:08
  */
-public class ChevronUpShapeRenderer implements IShapeRenderer
+public class ChevronUpShapeRenderer implements IShapeRenderer,Serializable
 {
 
 

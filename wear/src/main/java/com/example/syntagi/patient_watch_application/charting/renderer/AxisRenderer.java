@@ -12,12 +12,14 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 /**
  * Baseclass of all axis renderers.
  *
  * @author Philipp Jahoda
  */
-public abstract class AxisRenderer extends Renderer {
+public abstract class AxisRenderer extends Renderer implements Serializable {
 
     /** base axis this axis renderer works with */
     protected AxisBase mAxis;

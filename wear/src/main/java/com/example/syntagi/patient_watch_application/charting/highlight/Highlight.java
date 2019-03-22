@@ -3,12 +3,14 @@ package com.example.syntagi.patient_watch_application.charting.highlight;
 
 import com.example.syntagi.patient_watch_application.charting.components.YAxis;
 
+import java.io.Serializable;
+
 /**
  * Contains information needed to determine the highlighted value.
  *
  * @author Philipp Jahoda
  */
-public class Highlight {
+public class Highlight implements Serializable {
 
     /**
      * the x-value of the highlighted value

@@ -5,6 +5,7 @@ package com.example.syntagi.patient_watch_application.charting.formatter;
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
@@ -13,7 +14,7 @@ import java.text.DecimalFormat;
  *
  * @author Philipp Jahoda
  */
-public class DefaultValueFormatter implements IValueFormatter
+public class DefaultValueFormatter implements IValueFormatter,Serializable
 {
 
     /**

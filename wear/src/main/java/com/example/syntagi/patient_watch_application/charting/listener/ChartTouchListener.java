@@ -7,11 +7,13 @@ import android.view.View;
 import com.example.syntagi.patient_watch_application.charting.charts.Chart;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 
+import java.io.Serializable;
+
 
 /**
  * Created by philipp on 12/06/15.
  */
-public abstract class ChartTouchListener<T extends Chart<?>> extends GestureDetector.SimpleOnGestureListener implements View.OnTouchListener {
+public abstract class ChartTouchListener<T extends Chart<?>> extends GestureDetector.SimpleOnGestureListener implements View.OnTouchListener,Serializable {
 
     public enum ChartGesture {
         NONE, DRAG, X_ZOOM, Y_ZOOM, PINCH_ZOOM, ROTATE, SINGLE_TAP, DOUBLE_TAP, LONG_PRESS, FLING

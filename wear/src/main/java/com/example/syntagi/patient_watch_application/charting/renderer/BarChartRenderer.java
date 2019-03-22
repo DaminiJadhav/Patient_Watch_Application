@@ -21,9 +21,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
+public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer implements Serializable {
 
     protected BarDataProvider mChart;
     protected BarData barData;

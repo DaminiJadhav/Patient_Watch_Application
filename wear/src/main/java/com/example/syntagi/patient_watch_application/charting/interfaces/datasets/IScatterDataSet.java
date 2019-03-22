@@ -6,7 +6,7 @@ import com.example.syntagi.patient_watch_application.charting.renderer.scatter.I
 /**
  * Created by philipp on 21/10/15.
  */
-public interface IScatterDataSet extends ILineScatterCandleRadarDataSet<Entry> {
+public interface IScatterDataSet extends ILineScatterCandleRadarDataSet<Entry>  {
 
     /**
      * Returns the currently set scatter shape size

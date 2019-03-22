@@ -26,12 +26,13 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 
 
-public class LineChartRenderer extends LineRadarRenderer {
+public class LineChartRenderer extends LineRadarRenderer implements Serializable {
 
     protected LineDataProvider mChart;
 

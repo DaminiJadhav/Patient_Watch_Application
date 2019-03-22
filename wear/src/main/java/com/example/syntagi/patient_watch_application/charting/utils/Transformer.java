@@ -13,6 +13,7 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.ILineDataSet;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IScatterDataSet;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -21,7 +22,8 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class Transformer {
+public class Transformer implements Serializable
+{
 
     /**
      * matrix to map the values to the screen pixels

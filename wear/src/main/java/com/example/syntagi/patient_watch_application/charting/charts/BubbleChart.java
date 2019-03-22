@@ -8,6 +8,8 @@ import com.example.syntagi.patient_watch_application.charting.data.BubbleData;
 import com.example.syntagi.patient_watch_application.charting.interfaces.dataprovider.BubbleDataProvider;
 import com.example.syntagi.patient_watch_application.charting.renderer.BubbleChartRenderer;
 
+import java.io.Serializable;
+
 
 /**
  * The BubbleChart. Draws bubbles. Bubble chart implementation: Copyright 2015
@@ -17,7 +19,7 @@ import com.example.syntagi.patient_watch_application.charting.renderer.BubbleCha
  *
  * @author Philipp Jahoda
  */
-public class BubbleChart extends BarLineChartBase<BubbleData> implements BubbleDataProvider {
+public class BubbleChart extends BarLineChartBase<BubbleData> implements BubbleDataProvider,Serializable {
 
     public BubbleChart(Context context) {
         super(context);

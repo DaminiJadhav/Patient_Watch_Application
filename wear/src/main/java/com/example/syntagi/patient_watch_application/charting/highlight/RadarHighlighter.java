@@ -7,12 +7,13 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by philipp on 12/06/16.
  */
-public class RadarHighlighter extends PieRadarHighlighter<RadarChart> {
+public class RadarHighlighter extends PieRadarHighlighter<RadarChart> implements Serializable {
 
     public RadarHighlighter(RadarChart chart) {
         super(chart);

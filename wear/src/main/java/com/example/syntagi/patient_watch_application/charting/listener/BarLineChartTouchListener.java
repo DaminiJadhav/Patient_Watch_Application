@@ -19,6 +19,8 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * TouchListener for Bar-, Line-, Scatter- and CandleStickChart with handles all
@@ -27,7 +29,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHand
  * @author Philipp Jahoda
  */
 public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBase<? extends BarLineScatterCandleBubbleData<?
-        extends IBarLineScatterCandleBubbleDataSet<? extends Entry>>>> {
+        extends IBarLineScatterCandleBubbleDataSet<? extends Entry>>>> implements Serializable {
 
     /**
      * the original touch-matrix from the chart

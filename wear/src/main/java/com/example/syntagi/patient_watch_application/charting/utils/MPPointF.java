@@ -3,12 +3,13 @@ package com.example.syntagi.patient_watch_application.charting.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Tony Patino on 6/24/16.
  */
-public class MPPointF extends ObjectPool.Poolable {
+public class MPPointF extends ObjectPool.Poolable implements Serializable {
 
     private static ObjectPool<MPPointF> pool;
 

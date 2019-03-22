@@ -8,12 +8,13 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.datapro
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IDataSet;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Philipp Jahoda on 12/09/15.
  */
-public class CombinedHighlighter extends ChartHighlighter<CombinedDataProvider> implements IHighlighter
+public class CombinedHighlighter extends ChartHighlighter<CombinedDataProvider> implements IHighlighter,Serializable
 {
 
     /**

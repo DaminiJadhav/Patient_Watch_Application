@@ -3,9 +3,10 @@ package com.example.syntagi.patient_watch_application.charting.data;
 
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBubbleDataSet;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BubbleData extends BarLineScatterCandleBubbleData<IBubbleDataSet> {
+public class BubbleData extends BarLineScatterCandleBubbleData<IBubbleDataSet> implements Serializable {
 
     public BubbleData() {
         super();

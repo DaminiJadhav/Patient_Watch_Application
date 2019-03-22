@@ -23,6 +23,7 @@ import android.view.ViewConfiguration;
 import com.example.syntagi.patient_watch_application.charting.formatter.DefaultValueFormatter;
 import com.example.syntagi.patient_watch_application.charting.formatter.IValueFormatter;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public abstract class Utils {
+public abstract class Utils implements Serializable {
 
     private static DisplayMetrics mMetrics;
     private static int mMinimumFlingVelocity = 50;

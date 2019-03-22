@@ -1,6 +1,8 @@
 package com.example.syntagi.patient_watch_application.charting.exception;
 
-public class DrawingDataSetNotCreatedException extends RuntimeException {
+import java.io.Serializable;
+
+public class DrawingDataSetNotCreatedException extends RuntimeException implements Serializable {
 
 	/**
      * 

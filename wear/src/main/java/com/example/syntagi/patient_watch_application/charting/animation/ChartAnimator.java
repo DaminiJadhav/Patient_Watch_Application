@@ -4,13 +4,15 @@ package com.example.syntagi.patient_watch_application.charting.animation;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 
+import java.io.Serializable;
+
 /**
  * Object responsible for all animations in the Chart. ANIMATIONS ONLY WORK FOR
  * API LEVEL 11 (Android 3.0.x) AND HIGHER.
  * 
  * @author Philipp Jahoda
  */
-public class ChartAnimator {
+public class ChartAnimator implements Serializable {
 
     /** object that is updated upon animation update */
     private AnimatorUpdateListener mListener;

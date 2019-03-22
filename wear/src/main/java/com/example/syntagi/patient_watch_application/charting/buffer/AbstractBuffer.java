@@ -1,6 +1,8 @@
 
 package com.example.syntagi.patient_watch_application.charting.buffer;
 
+import java.io.Serializable;
+
 /**
  * Buffer class to boost performance while drawing. Concept: Replace instead of
  * recreate.
@@ -8,7 +10,7 @@ package com.example.syntagi.patient_watch_application.charting.buffer;
  * @author Philipp Jahoda
  * @param <T> The data the buffer accepts to be fed with.
  */
-public abstract class AbstractBuffer<T> {
+public abstract class AbstractBuffer<T> implements Serializable {
 
     /** index in the buffer */
     protected int index = 0;

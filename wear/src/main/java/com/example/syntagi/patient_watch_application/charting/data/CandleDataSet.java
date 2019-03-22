@@ -7,6 +7,7 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplate;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> implements ICandleDataSet {
+public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> implements ICandleDataSet,Serializable {
 
     /**
      * the width of the shadow of the candle

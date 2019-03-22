@@ -1,6 +1,4 @@
-
 package com.example.syntagi.patient_watch_application.charting.charts;
-
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
@@ -54,6 +52,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -64,7 +63,7 @@ import java.util.ArrayList;
 @SuppressLint("NewApi")
 public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Entry>>> extends
         ViewGroup
-        implements ChartInterface {
+        implements ChartInterface,Serializable {
 
     public static final String LOG_TAG = "MPAndroidChart";
 

@@ -9,10 +9,12 @@ import com.example.syntagi.patient_watch_application.charting.animation.ChartAni
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 /**
  * Created by Philipp Jahoda on 25/01/16.
  */
-public abstract class LineRadarRenderer extends LineScatterCandleRadarRenderer {
+public abstract class LineRadarRenderer extends LineScatterCandleRadarRenderer implements Serializable {
 
     public LineRadarRenderer(ChartAnimator animator, ViewPortHandler viewPortHandler) {
         super(animator, viewPortHandler);

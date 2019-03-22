@@ -4,12 +4,13 @@ package com.example.syntagi.patient_watch_application.charting.formatter;
 
 import com.example.syntagi.patient_watch_application.charting.components.AxisBase;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * This formatter is used for passing an array of x-axis labels, on whole x steps.
  */
-public class IndexAxisValueFormatter implements IAxisValueFormatter
+public class IndexAxisValueFormatter implements IAxisValueFormatter,Serializable
 {
     private String[] mValues = new String[] {};
     private int mValueCount = 0;

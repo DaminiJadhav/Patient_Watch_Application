@@ -11,18 +11,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        fragments.add(new MyAppointmentFragment());
         fragments.add(new MyMedicineFragment());
         fragments.add(new MyVitalsFragment());
         firstnametxt = findViewById(R.id.json_data_txt);
@@ -85,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
                                     editor.putString("VitalData",json);
                                     editor.apply();
                         }
-                        if (vitalsModelResponse.getError()){
+                            if (vitalsModelResponse.getError()){
                             Toast.makeText(HomeActivity.this,"" +vitalsModelResponse.getMessage(),Toast.LENGTH_LONG).show();
                         }
 
@@ -119,7 +118,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 }

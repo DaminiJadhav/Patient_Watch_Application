@@ -5,8 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint.Align;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-
-
 import com.example.syntagi.patient_watch_application.charting.animation.ChartAnimator;
 import com.example.syntagi.patient_watch_application.charting.buffer.BarBuffer;
 import com.example.syntagi.patient_watch_application.charting.buffer.HorizontalBarBuffer;
@@ -22,6 +20,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class HorizontalBarChartRenderer extends BarChartRenderer {
+public class HorizontalBarChartRenderer extends BarChartRenderer implements Serializable {
 
     public HorizontalBarChartRenderer(BarDataProvider chart, ChartAnimator animator,
                                       ViewPortHandler viewPortHandler) {

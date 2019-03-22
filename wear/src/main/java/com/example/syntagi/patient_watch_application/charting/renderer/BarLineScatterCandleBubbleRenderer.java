@@ -9,10 +9,12 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 /**
  * Created by Philipp Jahoda on 09/06/16.
  */
-public abstract class BarLineScatterCandleBubbleRenderer extends DataRenderer {
+public abstract class BarLineScatterCandleBubbleRenderer extends DataRenderer implements Serializable {
 
     /**
      * buffer for storing the current minimum and maximum visible x

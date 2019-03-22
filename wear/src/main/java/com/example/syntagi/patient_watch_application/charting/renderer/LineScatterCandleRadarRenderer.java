@@ -7,11 +7,13 @@ import com.example.syntagi.patient_watch_application.charting.animation.ChartAni
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.ILineScatterCandleRadarDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Philipp Jahoda on 11/07/15.
  */
-public abstract class LineScatterCandleRadarRenderer extends BarLineScatterCandleBubbleRenderer {
+public abstract class LineScatterCandleRadarRenderer extends BarLineScatterCandleBubbleRenderer implements Serializable {
 
     /**
      * path that is used for drawing highlight-lines (drawLines(...) cannot be used because of dashes)

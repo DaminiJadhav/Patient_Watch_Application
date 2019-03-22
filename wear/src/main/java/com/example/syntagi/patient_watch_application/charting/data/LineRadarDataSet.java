@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.ILineRadarDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public abstract class LineRadarDataSet<T extends Entry> extends LineScatterCandleRadarDataSet<T> implements ILineRadarDataSet<T> {
+public abstract class LineRadarDataSet<T extends Entry> extends LineScatterCandleRadarDataSet<T> implements ILineRadarDataSet<T>,Serializable {
 
     /**
      * the color that is used for filling the line surface

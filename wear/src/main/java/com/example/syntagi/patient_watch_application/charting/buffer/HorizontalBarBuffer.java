@@ -4,7 +4,9 @@ package com.example.syntagi.patient_watch_application.charting.buffer;
 import com.example.syntagi.patient_watch_application.charting.data.BarEntry;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarDataSet;
 
-public class HorizontalBarBuffer extends BarBuffer {
+import java.io.Serializable;
+
+public class HorizontalBarBuffer extends BarBuffer implements Serializable {
 
     public HorizontalBarBuffer(int size, int dataSetCount, boolean containsStacks) {
         super(size, dataSetCount, containsStacks);

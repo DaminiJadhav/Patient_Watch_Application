@@ -19,9 +19,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
+public class ScatterChartRenderer extends LineScatterCandleRadarRenderer implements Serializable {
 
     protected ScatterDataProvider mChart;
     protected ScatterData scatterData;

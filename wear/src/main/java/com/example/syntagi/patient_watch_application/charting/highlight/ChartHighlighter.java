@@ -9,13 +9,14 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.datapro
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointD;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Philipp Jahoda on 21/07/15.
  */
-public class ChartHighlighter<T extends BarLineScatterCandleBubbleDataProvider> implements IHighlighter
+public class ChartHighlighter<T extends BarLineScatterCandleBubbleDataProvider> implements IHighlighter,Serializable
 {
 
     /**

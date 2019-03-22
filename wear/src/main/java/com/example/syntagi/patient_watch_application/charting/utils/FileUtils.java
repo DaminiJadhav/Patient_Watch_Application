@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
  * 
  * @author Philipp Jahoda
  */
-public class FileUtils {
+public class FileUtils implements Serializable {
 
     private static final String LOG = "MPChart-FileUtils";
 

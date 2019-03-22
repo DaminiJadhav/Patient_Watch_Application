@@ -1,12 +1,14 @@
 
 package com.example.syntagi.patient_watch_application.charting.utils;
 
+import java.io.Serializable;
+
 /**
  * Transformer class for the HorizontalBarChart.
  * 
  * @author Philipp Jahoda
  */
-public class TransformerHorizontalBarChart extends Transformer {
+public class TransformerHorizontalBarChart extends Transformer implements Serializable {
 
     public TransformerHorizontalBarChart(ViewPortHandler viewPortHandler) {
         super(viewPortHandler);

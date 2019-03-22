@@ -7,11 +7,13 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.datapro
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IBarDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointD;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Philipp Jahoda on 22/07/15.
  */
-public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
+public class BarHighlighter extends ChartHighlighter<BarDataProvider> implements Serializable {
 
     public BarHighlighter(BarDataProvider chart) {
         super(chart);

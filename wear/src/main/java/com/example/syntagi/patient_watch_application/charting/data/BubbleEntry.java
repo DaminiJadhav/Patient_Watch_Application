@@ -4,6 +4,8 @@ package com.example.syntagi.patient_watch_application.charting.data;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Subclass of Entry that holds a value for one entry in a BubbleChart. Bubble
  * chart implementation: Copyright 2015 Pierre-Marc Airoldi Licensed under
@@ -12,7 +14,7 @@ import android.graphics.drawable.Drawable;
  * @author Philipp Jahoda
  */
 @SuppressLint("ParcelCreator")
-public class BubbleEntry extends Entry {
+public class BubbleEntry extends Entry implements Serializable {
 
     /** size value */
     private float mSize = 0f;

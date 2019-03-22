@@ -50,6 +50,8 @@
 
     <dimen name="paddingTop_5dp">5dp</dimen>
 
+    <dimen name="paddingRight_12">12dp</dimen>
+
 
 
 

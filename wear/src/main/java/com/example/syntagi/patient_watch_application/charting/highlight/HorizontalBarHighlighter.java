@@ -9,13 +9,14 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointD;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Philipp Jahoda on 22/07/15.
  */
-public class HorizontalBarHighlighter extends BarHighlighter {
+public class HorizontalBarHighlighter extends BarHighlighter implements Serializable {
 
 	public HorizontalBarHighlighter(BarDataProvider chart) {
 		super(chart);

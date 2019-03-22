@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * @author Philipp Jahoda
  */
 @SuppressLint("ParcelCreator")
-public class PieEntry extends Entry {
+public class PieEntry extends Entry implements Serializable {
 
     private String label;
 

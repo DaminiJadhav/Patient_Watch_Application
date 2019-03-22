@@ -1,5 +1,6 @@
 package com.example.syntagi.patient_watch_application.charting.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * Created by Tony Patino on 6/20/16.
  */
-public class ObjectPool<T extends ObjectPool.Poolable> {
+public class ObjectPool<T extends ObjectPool.Poolable> implements Serializable {
 
     private static int ids = 0;
 

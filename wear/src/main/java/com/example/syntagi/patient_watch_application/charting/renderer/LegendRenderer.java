@@ -21,11 +21,12 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LegendRenderer extends Renderer {
+public class LegendRenderer extends Renderer implements Serializable {
 
     /**
      * paint for the legend labels

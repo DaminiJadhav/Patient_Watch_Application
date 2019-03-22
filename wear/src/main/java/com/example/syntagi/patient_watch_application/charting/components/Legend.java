@@ -9,6 +9,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.FSize;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class Legend extends ComponentBase {
+public class Legend extends ComponentBase implements Serializable {
 
     /**
      * This property is deprecated - Use `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`,

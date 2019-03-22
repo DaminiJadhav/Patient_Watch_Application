@@ -4,6 +4,7 @@ package com.example.syntagi.patient_watch_application.charting.utils;
 import android.content.res.Resources;
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class ColorTemplate {
+public class ColorTemplate implements Serializable {
 
     /**
      * an "invalid" color that indicates that no color is set

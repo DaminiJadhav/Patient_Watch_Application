@@ -16,7 +16,8 @@
       style="@style/match_wrap">
 
         <LinearLayout
-            style="@style/linear_layout_vertical_match_wrap"            android:padding="8dp">
+            style="@style/linear_layout_vertical_match_wrap"
+            android:padding="8dp">
 
             <LinearLayout
                 android:id="@+id/lay_header_data"

@@ -2,9 +2,11 @@ package com.example.syntagi.patient_watch_application;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -15,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
+import com.example.syntagi.patient_watch_application.models.medicine.GetMedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.Interactions;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
 import com.google.android.gms.common.util.CollectionUtils;
+import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -30,7 +34,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MedicineDetailActivity extends AppCompatActivity {
   ProgressDialog progressDoalog;
-    //    WearableNavigationDrawerView navigationDrawerView;
     private LinearLayout layHeader;
     private LinearLayout layOther;
     Retrofit retrofit = null;
@@ -54,6 +57,14 @@ public class MedicineDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             medicineData = (MedicineData) bundle.getSerializable("medicineDetails");
+        }
+
+        Gson gson=new Gson();
+        String JsonStr=gson.toJson(medicineData,MedicineData.class);
+        if (JsonStr!=null){
+            SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(MedicineDetailActivity.this).edit();
+            editor.putString("getmedicinename",JsonStr);
+            editor.apply();
         }
 
         layHeader = findViewById(R.id.lay_header_data);

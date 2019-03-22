@@ -4,10 +4,11 @@ package com.example.syntagi.patient_watch_application.charting.data;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IPieDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet {
+public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet,Serializable {
 
     /** the space in pixels between the chart-slices, default 0f */
     private float mSliceSpace = 0f;

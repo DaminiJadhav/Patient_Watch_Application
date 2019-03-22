@@ -8,13 +8,15 @@ import com.example.syntagi.patient_watch_application.charting.data.LineData;
 import com.example.syntagi.patient_watch_application.charting.interfaces.dataprovider.LineDataProvider;
 import com.example.syntagi.patient_watch_application.charting.renderer.LineChartRenderer;
 
+import java.io.Serializable;
+
 
 /**
  * Chart that draws lines, surfaces, circles, ...
  *
  * @author Philipp Jahoda
  */
-public class LineChart extends BarLineChartBase<LineData> implements LineDataProvider {
+public class LineChart extends BarLineChartBase<LineData> implements LineDataProvider,Serializable {
 
     public LineChart(Context context) {
         super(context);

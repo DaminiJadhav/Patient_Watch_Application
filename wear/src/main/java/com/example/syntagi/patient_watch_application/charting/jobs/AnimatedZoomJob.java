@@ -12,12 +12,14 @@ import com.example.syntagi.patient_watch_application.charting.utils.ObjectPool;
 import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Philipp Jahoda on 19/02/16.
  */
 @SuppressLint("NewApi")
-public class AnimatedZoomJob extends AnimatedViewPortJob implements Animator.AnimatorListener {
+public class AnimatedZoomJob extends AnimatedViewPortJob implements Animator.AnimatorListener,Serializable {
 
     private static ObjectPool<AnimatedZoomJob> pool;
 

@@ -13,6 +13,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplat
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * This is the base dataset of all DataSets. It's purpose is to implement critical methods
  * provided by the IDataSet interface.
  */
-public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
+public abstract class BaseDataSet<T extends Entry> implements IDataSet<T>,Serializable {
 
     /**
      * List representing all colors that are used for this DataSet

@@ -1,5 +1,7 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import com.example.syntagi.patient_watch_application.models.vitals.VitalChartDat
 
 import com.google.android.gms.common.util.CollectionUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-public class VitalChartFragment extends Fragment implements GraphUtil.GraphListener {
+public class VitalChartFragment extends Fragment implements GraphUtil.GraphListener{
     private ArrayList<GroupedVitalChartData> dataList;
     private Vital vital;
     private GraphUtil graphUtil;
@@ -30,7 +33,7 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_candle_graph,container,false);
+        View view = inflater.inflate(R.layout.fragment_candle_graph, container, false);
         initViews(view);
         return view;
 
@@ -45,12 +48,12 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
         return chartFragment;
     }
 
-    protected void loadBundle(Bundle arguments) {
+    public void initViews(View view) {
+
+        Bundle arguments = getArguments();
         vital = (Vital) arguments.getSerializable(AppConstants.BUNDLE_KEYS.VITAL_DATA);
         dataList = (ArrayList<GroupedVitalChartData>) arguments.getSerializable(AppConstants.BUNDLE_KEYS.CHART_DATA_LIST);
-    }
 
-    public void initViews(View view) {
         CombinedChart combinedChart = view.findViewById(R.id.web_view);
         graphUtil = new GraphUtil(combinedChart, getActivity(), this);
         setDataList(dataList);
@@ -73,7 +76,7 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
             }
         }
         int colorCode = ContextCompat.getColor(getContext(), R.color.color_accent);
-        if (vital!=null) {
+        if (vital != null) {
             if (vital.getColorCode() != null) {
                 colorCode = Color.parseColor(vital.getColorCode());
             }
@@ -83,6 +86,7 @@ public class VitalChartFragment extends Fragment implements GraphUtil.GraphListe
             graphUtil.invalidateGraph();
         }
     }
+
     @Override
     public String getTitle(float position) {
         if ((position - 1) < dataList.size()) {

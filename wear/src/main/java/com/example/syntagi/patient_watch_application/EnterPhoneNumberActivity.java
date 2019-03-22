@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.LoginData;
 import com.example.syntagi.patient_watch_application.models.LoginResponse;
@@ -18,11 +17,8 @@ import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
-
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;

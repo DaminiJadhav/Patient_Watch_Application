@@ -5,6 +5,8 @@ import android.graphics.Paint;
 
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * Class representing the y-axis labels settings and its entries. Only use the setter methods to
@@ -17,7 +19,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  *
  * @author Philipp Jahoda
  */
-public class YAxis extends AxisBase {
+public class YAxis extends AxisBase implements Serializable {
 
     /**
      * indicates if the bottom y-label entry is drawn or not

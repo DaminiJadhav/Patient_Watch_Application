@@ -7,11 +7,13 @@ import com.example.syntagi.patient_watch_application.charting.utils.ObjectPool;
 import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Philipp Jahoda on 19/02/16.
  */
-public class MoveViewJob extends ViewPortJob {
+public class MoveViewJob extends ViewPortJob implements Serializable {
 
     private static ObjectPool<MoveViewJob> pool;
 

@@ -35,6 +35,8 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * Base-class of LineChart, BarChart, ScatterChart and CandleStickChart.
@@ -44,7 +46,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 @SuppressLint("RtlHardcoded")
 public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<? extends
         IBarLineScatterCandleBubbleDataSet<? extends Entry>>>
-        extends Chart<T> implements BarLineScatterCandleBubbleDataProvider {
+        extends Chart<T> implements BarLineScatterCandleBubbleDataProvider,Serializable {
 
     /**
      * the maximum number of entries to which values will be drawn

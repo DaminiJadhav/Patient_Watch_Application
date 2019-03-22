@@ -2,11 +2,13 @@ package com.example.syntagi.patient_watch_application.charting.data;
 
 import android.annotation.SuppressLint;
 
+import java.io.Serializable;
+
 /**
  * Created by philipp on 13/06/16.
  */
 @SuppressLint("ParcelCreator")
-public class RadarEntry extends Entry {
+public class RadarEntry extends Entry implements Serializable {
 
     public RadarEntry(float value) {
         super(0f, value);

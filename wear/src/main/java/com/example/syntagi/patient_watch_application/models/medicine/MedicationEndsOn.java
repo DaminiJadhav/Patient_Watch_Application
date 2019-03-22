@@ -1,8 +1,4 @@
 package com.example.syntagi.patient_watch_application.models.medicine;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class MedicationEndsOn implements Serializable{

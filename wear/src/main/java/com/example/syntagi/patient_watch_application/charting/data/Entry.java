@@ -8,6 +8,8 @@ import android.os.Parcelable;
 
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * Class representing one entry in the chart. Might contain multiple values.
@@ -15,7 +17,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  * 
  * @author Philipp Jahoda
  */
-public class Entry extends BaseEntry implements Parcelable {
+public class Entry extends BaseEntry implements Parcelable,Serializable {
 
     /** the x value */
     private float x = 0f;

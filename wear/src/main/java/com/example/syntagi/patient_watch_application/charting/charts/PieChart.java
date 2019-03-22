@@ -17,6 +17,7 @@ import com.example.syntagi.patient_watch_application.charting.renderer.PieChartR
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class PieChart extends PieRadarChartBase<PieData> {
+public class PieChart extends PieRadarChartBase<PieData> implements Serializable {
 
     /**
      * rect object that represents the bounds of the piechart, needed for

@@ -44,4 +44,8 @@ public interface ApiInterface {
 
     @GET("/syntagi/vitals/getAll")
     Call<VitalsModelResponse> getAllVitals(@Header("authToken") String authToken,@Header("roleType") String roleType);
+
+//    @GET("/syntagi/appointments/getPatientsPendingAppointments")
+//    Call<> getAppointment(@Query("patientId") String patientId,@Header("authToken") String authToken,@Header("roleType") String roleType);
+
 }

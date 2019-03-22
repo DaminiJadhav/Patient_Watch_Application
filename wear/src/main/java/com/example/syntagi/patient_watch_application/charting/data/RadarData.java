@@ -5,6 +5,7 @@ package com.example.syntagi.patient_watch_application.charting.data;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.IRadarDataSet;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class RadarData extends ChartData<IRadarDataSet> {
+public class RadarData extends ChartData<IRadarDataSet> implements Serializable {
 
     private List<String> mLabels;
 

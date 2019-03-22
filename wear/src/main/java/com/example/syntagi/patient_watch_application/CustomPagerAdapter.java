@@ -1,12 +1,13 @@
 package com.example.syntagi.patient_watch_application;
 
+import java.io.Serializable;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class CustomPagerAdapter<T> extends FragmentStatePagerAdapter {
+public class CustomPagerAdapter<T> extends FragmentStatePagerAdapter implements Serializable {
     List<T> list;
     int fragmentType;
     PagerAdapterInterface<T> listener;

@@ -1,6 +1,6 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +17,6 @@ import com.example.syntagi.patient_watch_application.models.vitals.VitalChartDat
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerAdapterInterface {
+public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerAdapterInterface{
     PatientData patientData;
     private List<String> tabs = new ArrayList<>();
     private List<Fragment> fragments = new ArrayList<>();

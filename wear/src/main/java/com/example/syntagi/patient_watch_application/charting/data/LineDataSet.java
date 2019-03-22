@@ -13,10 +13,11 @@ import com.example.syntagi.patient_watch_application.charting.interfaces.dataset
 import com.example.syntagi.patient_watch_application.charting.utils.ColorTemplate;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet {
+public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet,Serializable {
 
     /**
      * Drawing mode for this line dataset

@@ -20,6 +20,8 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.TransformerHorizontalBarChart;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * BarChart with horizontal bar orientation. In this implementation, x- and y-axis are switched, meaning the YAxis class
@@ -27,7 +29,7 @@ import com.example.syntagi.patient_watch_application.charting.utils.Utils;
  *
  * @author Philipp Jahoda
  */
-public class HorizontalBarChart extends BarChart {
+public class HorizontalBarChart extends BarChart implements Serializable {
 
     public HorizontalBarChart(Context context) {
         super(context);

@@ -2,9 +2,10 @@ package com.example.syntagi.patient_watch_application.charting.utils;
 
 import android.text.TextUtils;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class NumberUtils {
+public class NumberUtils implements Serializable {
     public static Integer convertToInteger(String value) {
         if (TextUtils.isEmpty(value)) {
             return 0;

@@ -11,6 +11,8 @@ import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.highlight.Highlight;
 import com.example.syntagi.patient_watch_application.charting.utils.FSize;
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
+
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
 /**
@@ -19,7 +21,7 @@ import java.lang.ref.WeakReference;
  *
  * @author Philipp Jahoda
  */
-public class MarkerImage implements IMarker {
+public class MarkerImage implements IMarker,Serializable {
 
     private Context mContext;
     private Drawable mDrawable;

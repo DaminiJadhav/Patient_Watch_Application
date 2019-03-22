@@ -1,10 +1,12 @@
 
 package com.example.syntagi.patient_watch_application.charting.utils;
 
+import java.io.Serializable;
+
 /**
  * ViewPortHandler for HorizontalBarChart.
  */
-public class HorizontalViewPortHandler extends ViewPortHandler {
+public class HorizontalViewPortHandler extends ViewPortHandler implements Serializable {
 
 
 //    @Override

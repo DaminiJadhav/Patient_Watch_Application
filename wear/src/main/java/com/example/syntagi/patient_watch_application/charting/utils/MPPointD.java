@@ -1,6 +1,7 @@
 
 package com.example.syntagi.patient_watch_application.charting.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public class MPPointD extends ObjectPool.Poolable {
+public class MPPointD extends ObjectPool.Poolable implements Serializable {
 
     private static ObjectPool<MPPointD> pool;
 

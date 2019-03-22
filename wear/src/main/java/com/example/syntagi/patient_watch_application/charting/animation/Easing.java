@@ -1,12 +1,14 @@
 
 package com.example.syntagi.patient_watch_application.charting.animation;
 
+import java.io.Serializable;
+
 /**
  * Easing options.
  * 
  * @author Daniel Cohen Gindi
  */
-public class Easing {
+public class Easing implements Serializable {
 
     /**
      * Use EasingOption instead of EasingFunction to avoid crashes below Android

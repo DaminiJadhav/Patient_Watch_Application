@@ -3,9 +3,10 @@ package com.example.syntagi.patient_watch_application.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Data {
+public class Data implements Serializable {
 
     public Integer getCreated() {
         return created;

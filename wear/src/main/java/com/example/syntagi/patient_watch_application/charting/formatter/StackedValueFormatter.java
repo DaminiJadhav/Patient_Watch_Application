@@ -4,6 +4,7 @@ import com.example.syntagi.patient_watch_application.charting.data.BarEntry;
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
@@ -12,7 +13,7 @@ import java.text.DecimalFormat;
  * A formatter specifically for stacked BarChart that allows to specify whether the all stack values
  * or just the top value should be drawn.
  */
-public class StackedValueFormatter implements IValueFormatter
+public class StackedValueFormatter implements IValueFormatter,Serializable
 {
 
     /**

@@ -3,13 +3,14 @@ package com.example.syntagi.patient_watch_application.charting.utils;
 
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Comparator for comparing Entry-objects by their x-value.
  * Created by philipp on 17/06/15.
  */
-public class EntryXComparator implements Comparator<Entry> {
+public class EntryXComparator implements Comparator<Entry>,Serializable {
     @Override
     public int compare(Entry entry1, Entry entry2) {
         float diff = entry1.getX() - entry2.getX();

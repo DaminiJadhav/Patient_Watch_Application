@@ -8,6 +8,8 @@ import android.util.Log;
 import com.example.syntagi.patient_watch_application.charting.formatter.DefaultAxisValueFormatter;
 import com.example.syntagi.patient_watch_application.charting.formatter.IAxisValueFormatter;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import java.util.List;
  *
  * @author Philipp Jahoda
  */
-public abstract class AxisBase extends ComponentBase {
+public abstract class AxisBase extends ComponentBase implements Serializable {
 
     /**
      * custom formatter that is used instead of the auto-formatter if set

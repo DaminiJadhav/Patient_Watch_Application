@@ -18,9 +18,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class XAxisRenderer extends AxisRenderer {
+public class XAxisRenderer extends AxisRenderer implements Serializable {
 
     protected XAxis mXAxis;
 

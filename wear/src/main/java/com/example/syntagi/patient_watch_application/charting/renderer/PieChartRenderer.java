@@ -29,10 +29,11 @@ import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class PieChartRenderer extends DataRenderer {
+public class PieChartRenderer extends DataRenderer implements Serializable {
 
     protected PieChart mChart;
 

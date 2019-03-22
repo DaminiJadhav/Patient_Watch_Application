@@ -15,9 +15,10 @@ import com.example.syntagi.patient_watch_application.charting.utils.Transformer;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class YAxisRendererHorizontalBarChart extends YAxisRenderer {
+public class YAxisRendererHorizontalBarChart extends YAxisRenderer  implements Serializable {
 
     public YAxisRendererHorizontalBarChart(ViewPortHandler viewPortHandler, YAxis yAxis,
                                            Transformer trans) {

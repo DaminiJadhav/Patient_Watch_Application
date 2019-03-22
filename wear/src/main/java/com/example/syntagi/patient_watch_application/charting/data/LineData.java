@@ -3,6 +3,7 @@ package com.example.syntagi.patient_watch_application.charting.data;
 
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.ILineDataSet;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * 
  * @author Philipp Jahoda
  */
-public class LineData extends BarLineScatterCandleBubbleData<ILineDataSet> {
+public class LineData extends BarLineScatterCandleBubbleData<ILineDataSet> implements Serializable {
 
     public LineData() {
         super();

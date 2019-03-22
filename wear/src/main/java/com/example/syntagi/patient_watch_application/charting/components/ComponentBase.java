@@ -6,13 +6,15 @@ import android.graphics.Typeface;
 
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
+
 
 /**
  * This class encapsulates everything both Axis, Legend and LimitLines have in common.
  *
  * @author Philipp Jahoda
  */
-public abstract class ComponentBase {
+public abstract class ComponentBase implements Serializable {
 
     /**
      * flag that indicates if this axis / legend is enabled or not

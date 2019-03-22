@@ -4,6 +4,7 @@ package com.example.syntagi.patient_watch_application.charting.data.filter;
 import android.annotation.TargetApi;
 import android.os.Build;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Arrays;
  *
  * @author Philipp Baldauf & Phliipp Jahoda
  */
-public class Approximator {
+public class Approximator implements Serializable {
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public float[] reduceWithDouglasPeucker(float[] points, float tolerance) {

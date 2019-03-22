@@ -5,13 +5,15 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.view.View;
 
+import java.io.Serializable;
+
 /**
  * Class that contains information about the charts current viewport settings, including offsets, scale & translation
  * levels, ...
  *
  * @author Philipp Jahoda
  */
-public class ViewPortHandler {
+public class ViewPortHandler implements Serializable {
 
     /**
      * matrix used for touch events

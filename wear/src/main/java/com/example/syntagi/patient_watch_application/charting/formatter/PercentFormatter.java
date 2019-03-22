@@ -6,6 +6,7 @@ import com.example.syntagi.patient_watch_application.charting.components.AxisBas
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.utils.ViewPortHandler;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
@@ -14,7 +15,7 @@ import java.text.DecimalFormat;
  *
  * @author Philipp Jahoda
  */
-public class PercentFormatter implements IValueFormatter, IAxisValueFormatter
+public class PercentFormatter implements IValueFormatter, IAxisValueFormatter,Serializable
 {
 
     protected DecimalFormat mFormat;

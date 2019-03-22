@@ -61,10 +61,11 @@
 
         <activity android:name=".MyMedicineList" />
         <activity android:name=".MyVitalList" />
-
         <activity android:name=".MedicineDetailActivity" />
         <activity android:name=".AlarmActivity" />
         <activity android:name=".ChartActivity" />
+        <activity android:name=".MyAppointment" />
+        <activity android:name=".AppointmentFragment"></activity>
     </application>
 
 </manifest>

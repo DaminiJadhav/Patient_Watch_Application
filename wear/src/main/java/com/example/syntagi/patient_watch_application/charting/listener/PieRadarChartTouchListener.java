@@ -12,6 +12,7 @@ import com.example.syntagi.patient_watch_application.charting.highlight.Highligh
 import com.example.syntagi.patient_watch_application.charting.utils.MPPointF;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  *
  * @author Philipp Jahoda
  */
-public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChartBase<?>> {
+public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChartBase<?>> implements Serializable {
 
     private MPPointF mTouchStartPoint = MPPointF.getInstance(0,0);
 

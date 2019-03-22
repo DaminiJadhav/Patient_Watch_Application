@@ -5,12 +5,13 @@ import android.graphics.DashPathEffect;
 import com.example.syntagi.patient_watch_application.charting.interfaces.datasets.ILineScatterCandleRadarDataSet;
 import com.example.syntagi.patient_watch_application.charting.utils.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Philipp Jahoda on 11/07/15.
  */
-public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends BarLineScatterCandleBubbleDataSet<T> implements ILineScatterCandleRadarDataSet<T> {
+public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends BarLineScatterCandleBubbleDataSet<T> implements ILineScatterCandleRadarDataSet<T>,Serializable {
 
     protected boolean mDrawVerticalHighlightIndicator = true;
     protected boolean mDrawHorizontalHighlightIndicator = true;

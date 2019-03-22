@@ -1,10 +1,12 @@
 package com.example.syntagi.patient_watch_application.charting.highlight;
 
+import java.io.Serializable;
+
 /**
  * Created by Philipp Jahoda on 24/07/15. Class that represents the range of one value in a stacked bar entry. e.g.
  * stack values are -10, 5, 20 -> then ranges are (-10 - 0, 0 - 5, 5 - 25).
  */
-public final class Range {
+public final class Range implements Serializable {
 
 	public float from;
 	public float to;
