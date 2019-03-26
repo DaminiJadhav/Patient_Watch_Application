@@ -130,7 +130,7 @@ public class  MyMedicine extends Fragment {
 
         }
 
-    iv_showmedicine.setOnClickListener(new View.OnClickListener() {
+    iv_showmedicine.setOnClickListener( new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             MedicineDetailActivity.startActivity(MyMedicine.this,medicineData.getMedication());

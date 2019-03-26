@@ -38,6 +38,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     private ViewPager viewPager;
     private CustomPagerAdapter pagerAdapter;
     private TextView tvVitalCount;
+    ProgressDialog progressDialog;
     private ArrayList<GroupedVitalChartData> dataList = new ArrayList<>();
 
     Retrofit retrofit=null;
@@ -54,6 +55,10 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_vital,container,false);
         tvVitalCount=view.findViewById(R.id.emptyView);
+        progressDialog=new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading....");
+        progressDialog.setTitle("Vital Chart Data");
+        progressDialog.show();
         initViews(view);
         return view;
     }
@@ -135,6 +140,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         }
     }
 
+
 //    private void showVisibility(int... emptyView) {
 //        for (int ids:emptyView){
 //            getView().findViewById(ids).setVisibility(View.VISIBLE);
@@ -169,6 +175,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
             public void onResponse(Call<GroupedVitalChartResponse> call, Response<GroupedVitalChartResponse> response) {
 
                 if (response.isSuccessful()){
+                    progressDialog.dismiss();
                     GroupedVitalChartResponse groupedVitalChartResponse=response.body();
 
                       if (groupedVitalChartResponse.getError()){
@@ -184,19 +191,24 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
                     }
                 else {
                     Toast.makeText(getActivity(),"Code" + response.code(),Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 }
             }
             @Override
             public void onFailure(Call<GroupedVitalChartResponse> call, Throwable t) {
                 Toast.makeText(getActivity(),"Error" ,Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
             }
         });
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        progressDialog.dismiss();
+        super.onSaveInstanceState(outState);
+    }
 
-
-
-//    @Override
+    //    @Override
 //    public void onPostExecute(Object response, int taskCode, Object... params) {
 //        super.onPostExecute(response, taskCode, params);
 //        switch (taskCode) {

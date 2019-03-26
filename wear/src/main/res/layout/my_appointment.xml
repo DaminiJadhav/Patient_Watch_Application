@@ -7,9 +7,13 @@
         android:id="@+id/ll_appointment"
         style="@style/linear_layout_vertical"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
 
-        <com.google.android.material.card.MaterialCardView style="@style/materialcardview">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/materialcardview"
+            android:layout_alignStart="@+id/ll_appointment">
 
             <LinearLayout style="@style/linear_layout_vertical">
 
@@ -18,9 +22,10 @@
                     style="@style/ImageViewStyle2"
                     android:src="@drawable/ic_myorders" />
 
-                <RelativeLayout style="@style/wrap_wrap"
-                    android:layout_marginBottom="@dimen/marginBottom_5"
-                    android:layout_marginRight="@dimen/marginRight">
+                <RelativeLayout
+                    style="@style/wrap_wrap"
+                    android:layout_marginRight="@dimen/marginRight"
+                    android:layout_marginBottom="@dimen/marginBottom_5">
 
                     <TextView
                         android:id="@+id/tv_appointment"
@@ -32,7 +37,7 @@
                         android:id="@+id/tv_appointmentcount"
                         style="@style/relative_ellipse_textview"
                         android:background="@drawable/ic_ellipse"
-                        android:text="5" />
+                        />
 
                 </RelativeLayout>
 
@@ -40,4 +45,11 @@
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+
+    <FrameLayout
+       style="@style/match_match"
+        android:visibility="invisible"
+        android:id="@+id/framelayout_appoinment"></FrameLayout>
+
+
 </RelativeLayout>

@@ -3,10 +3,10 @@ package com.example.syntagi.patient_watch_application.Interfaces;
 
 import com.example.syntagi.patient_watch_application.models.LoginResponse;
 import com.example.syntagi.patient_watch_application.models.OtpResponse;
+import com.example.syntagi.patient_watch_application.models.appointments.AppointmentListResponse;
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.Post;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
-import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartResponse;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 
@@ -45,7 +45,7 @@ public interface ApiInterface {
     @GET("/syntagi/vitals/getAll")
     Call<VitalsModelResponse> getAllVitals(@Header("authToken") String authToken,@Header("roleType") String roleType);
 
-//    @GET("/syntagi/appointments/getPatientsPendingAppointments")
-//    Call<> getAppointment(@Query("patientId") String patientId,@Header("authToken") String authToken,@Header("roleType") String roleType);
+    @GET("/syntagi/appointments/getPatientsPendingAppointments")
+    Call<AppointmentListResponse> getAppointmentData(@Query("patientId") String patientId,@Header("authToken") String authToken,@Header("roleType") int roleType);
 
 }

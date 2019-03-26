@@ -1,22 +1,16 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.syntagi.patient_watch_application.charting.charts.CombinedChart;
 import com.example.syntagi.patient_watch_application.charting.data.Entry;
 import com.example.syntagi.patient_watch_application.charting.data.LineDataSet;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartData;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalChartData;
-
 import com.google.android.gms.common.util.CollectionUtils;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

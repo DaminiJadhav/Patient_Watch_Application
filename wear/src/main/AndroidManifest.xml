@@ -64,8 +64,7 @@
         <activity android:name=".MedicineDetailActivity" />
         <activity android:name=".AlarmActivity" />
         <activity android:name=".ChartActivity" />
-        <activity android:name=".MyAppointment" />
-        <activity android:name=".AppointmentFragment"></activity>
+        <activity android:name=".MyAppointment"></activity>
     </application>
 
 </manifest>

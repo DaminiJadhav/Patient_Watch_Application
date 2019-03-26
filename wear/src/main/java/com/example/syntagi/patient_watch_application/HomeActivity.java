@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-        private static final String USER_KEY ="Patient_Data" ;
+    private static final String USER_KEY ="Patient_Data" ;
     TextView firstnametxt,phonenumbertxt;
     LoginData loginData;
     ViewPager viewPager;
