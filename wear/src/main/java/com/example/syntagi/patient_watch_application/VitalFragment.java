@@ -57,7 +57,7 @@ public class VitalFragment extends Fragment implements CustomPagerAdapter.PagerA
         tvVitalCount=view.findViewById(R.id.emptyView);
         progressDialog=new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
-        progressDialog.setTitle("Vital Chart Data");
+//        progressDialog.setTitle("Vital Chart Data");
         progressDialog.show();
         initViews(view);
         return view;

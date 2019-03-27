@@ -81,7 +81,7 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
                 if (response.isSuccessful()){
                     progressDialog.dismiss();
                     AppointmentListResponse appointmentListResponse=response.body();
-                    appointmentDataList.clear();
+//                    appointmentDataList.clear();
                     if (!appointmentListResponse.getError()){
                     if(appointmentListResponse.getData()!=null){
                         appointmentDataList.addAll(appointmentListResponse.getData());
@@ -150,12 +150,14 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
     }
     private static String convertDateFormat(String currentDate,
                                            String currentDateFormatString, String reqDateFormat) {
-        SimpleDateFormat currentDateFormat = new SimpleDateFormat(
-                currentDateFormatString);
-        SimpleDateFormat format = new SimpleDateFormat(reqDateFormat);
+        SimpleDateFormat currentDateFormat = new SimpleDateFormat(currentDateFormatString);
+        SimpleDateFormat formater = new SimpleDateFormat(reqDateFormat);
         try {
-            Date d = currentDateFormat.parse(currentDate);
-            return format.format(d);
+            Date d=new Date();
+            if (d!=null){
+                d = currentDateFormat.parse(currentDate);
+                return formater.format(d);
+            }
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

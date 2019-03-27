@@ -11,11 +11,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.appointments.AppointmentListResponse;
 import com.google.gson.Gson;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -36,7 +34,7 @@ public class MyAppointmentFragment extends Fragment {
         View view=inflater.inflate(R.layout.my_appointment,container,false);
         appointment_imgview=view.findViewById(R.id.iv_appointment);
         linearLayout=view.findViewById(R.id.ll_appointment);
-        frameLayout=view.findViewById(R.id.framelayout_appoinment);
+        frameLayout=view.findViewById(R.id.framelayout_appointment);
         textView=view.findViewById(R.id.tv_appointmentcount);
 
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -45,7 +43,7 @@ public class MyAppointmentFragment extends Fragment {
         appointmentListResponse=gson.fromJson(json,AppointmentListResponse.class);
         if (appointmentListResponse!=null){
             int count = appointmentListResponse.getData().size();
-            textView.setText(count+"");
+            textView.setText(count+ "");
          }
 
 
@@ -61,7 +59,7 @@ public class MyAppointmentFragment extends Fragment {
 //                    Toast.makeText(getContext(),""+patientData.getPatientId(),Toast.LENGTH_LONG).show();
                     linearLayout.setVisibility(View.INVISIBLE);
                     frameLayout.setVisibility(View.VISIBLE);
-                    getFragmentManager().beginTransaction().add(R.id.framelayout_appoinment,AppointmentFragment.getInstance(patientData),getTag()).commit();
+                    getFragmentManager().beginTransaction().add(R.id.framelayout_appointment,AppointmentFragment.getInstance(patientData)).commit();
 
                 }
             }

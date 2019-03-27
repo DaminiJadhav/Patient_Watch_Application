@@ -3,6 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <LinearLayout
         android:id="@+id/ll_appointment"
         style="@style/linear_layout_vertical"
@@ -47,9 +49,10 @@
     </LinearLayout>
 
     <FrameLayout
-       style="@style/match_match"
+        style="@style/match_match"
         android:visibility="invisible"
-        android:id="@+id/framelayout_appoinment"></FrameLayout>
+        android:id="@+id/framelayout_appointment">
+    </FrameLayout>
 
 
 </RelativeLayout>

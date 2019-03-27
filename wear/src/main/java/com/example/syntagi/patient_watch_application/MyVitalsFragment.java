@@ -1,6 +1,5 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
@@ -53,7 +51,7 @@ public class MyVitalsFragment extends Fragment {
                 if (patientData != null) {
                     frameLayout.setVisibility(v.VISIBLE);
                     linearLayout.setVisibility(v.INVISIBLE);
-                    getFragmentManager().beginTransaction().add(R.id.lay_container, VitalFragment.getInstance(patientData, totalvitalcount), getTag()).commit();
+                    getFragmentManager().beginTransaction().add(R.id.lay_container, VitalFragment.getInstance(patientData, totalvitalcount)).commit();
                 }
             }
         });
