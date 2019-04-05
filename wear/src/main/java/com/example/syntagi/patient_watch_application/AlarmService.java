@@ -8,14 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.google.gson.Gson;
-
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
@@ -38,12 +34,9 @@ public class AlarmService extends IntentService {
         medicineData = gson.fromJson(json, MedicineData.class);
         if (medicineData != null) {
             medicinename = medicineData.getMedicineName();
-
 //            Toast.makeText(AlarmService.this,"Alarm Successfully Remind",Toast.LENGTH_LONG).show();
             sendNotification(medicinename);
         }
-//        Toast.makeText(AlarmService.this,"Intent:"+intent+ "Flag" +flags+ "StartID" +startId,Toast.LENGTH_LONG).show();
-
         return super.onStartCommand(intent, flags, startId);
     }
 

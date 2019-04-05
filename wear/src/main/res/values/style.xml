@@ -58,16 +58,12 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-
-
     <style name="TextInputLayout1" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/marginLeft</item>
         <item name="android:layout_marginRight">@dimen/marginRight</item>
     </style>
-
-
 
     <style name="margintop" parent="wrap_wrap">
          <item name="android:layout_marginTop">@dimen/screen_percentage_15</item>
@@ -110,7 +106,7 @@
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">center</item>
+
     </style>
 
     <style name="ImageViewStyle2" parent="wrap_wrap">
@@ -176,5 +172,22 @@
         <item name="android:checked">false</item>
     </style>
 
+    <style name="bell_notification">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@drawable/ic_notification1</item>
+    </style>
+
+    <style name="bell_notification_count">
+            <item name="android:layout_width">8dp</item>
+            <item name="android:layout_height">8dp</item>
+            <item name="android:layout_alignParentRight">true</item>
+            <item name="android:layout_marginTop">@dimen/marginTop_3</item>
+            <item name="android:layout_marginRight">@dimen/marginRight_3</item>
+            <item name="android:background">@drawable/notification_shape</item>
+            <item name="android:gravity">center</item>
+            <item name="android:textSize">6sp</item>
+    </style>
 
 </resources>

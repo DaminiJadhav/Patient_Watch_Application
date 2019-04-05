@@ -11,14 +11,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.syntagi.patient_watch_application.Interfaces.ApiInterface;
 import com.example.syntagi.patient_watch_application.models.LoginData;
+import com.example.syntagi.patient_watch_application.models.notification.NotificationData;
+import com.example.syntagi.patient_watch_application.models.notification.NotificationResponse;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.gson.Gson;
 import java.util.ArrayList;
@@ -26,13 +32,15 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String USER_KEY ="Patient_Data" ;
-    TextView firstnametxt,phonenumbertxt;
+    ImageView iv_notification;
+    TextView firstnametxt,phonenumbertxt,notificationCount;
     LoginData loginData;
     ViewPager viewPager;
     List<Fragment> fragments=new ArrayList<>();
     Retrofit retrofit;
     ApiInterface apiInterface;
     String getAllVitalData="http://13.127.133.104:8082";
+    String getAllUserData="http://13.127.133.104:8082";
 
 
     @Override
@@ -45,11 +53,20 @@ public class HomeActivity extends AppCompatActivity {
         fragments.add(new MyVitalsFragment());
         firstnametxt = findViewById(R.id.json_data_txt);
         phonenumbertxt=findViewById(R.id.json_data_txt2);
+        notificationCount=findViewById(R.id.tv_notification_count);
+        iv_notification=findViewById(R.id.iv_bell_icon);
         viewPager=findViewById(R.id.viewpager);
-
 
         FragmentManager fragmentManager=getSupportFragmentManager();
         viewPager.setAdapter(new MyAdapter(fragmentManager));
+
+        iv_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this,ShowAllUserData.class);
+                startActivity(intent);
+            }
+        });
 
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(HomeActivity.this);
         String json=sharedPreferences.getString(USER_KEY,"");
@@ -59,9 +76,11 @@ public class HomeActivity extends AppCompatActivity {
         {
             firstnametxt.setText("First Name:" +loginData.getPatientData().getFirstName());
             phonenumbertxt.setText("Phone Number:" +loginData.getPatientData().getPhoneNumber());
+//            firstnametxt.setText("User Id:" +loginData.getPatientData().getUpId());
         }
 
         getAllVital();
+        getAllUserDetail(loginData.getPatientData().getPatientId());
     }
 
     public void getAllVital(){
@@ -87,8 +106,6 @@ public class HomeActivity extends AppCompatActivity {
                             if (vitalsModelResponse.getError()){
                             Toast.makeText(HomeActivity.this,"" +vitalsModelResponse.getMessage(),Toast.LENGTH_LONG).show();
                         }
-
-//                        Toast.makeText(HomeActivity.this,"Vital Response Success",Toast.LENGTH_LONG).show();
                     }
                     else {
                         Toast.makeText(HomeActivity.this,"Code" +response.code(),Toast.LENGTH_LONG).show();
@@ -102,8 +119,42 @@ public class HomeActivity extends AppCompatActivity {
             });
     }
 
+    public void getAllUserDetail(String userId){
+        retrofit=new Retrofit.Builder().baseUrl(getAllUserData)
+                                       .addConverterFactory(GsonConverterFactory.create())
+                                       .build();
+        apiInterface=retrofit.create(ApiInterface.class);
+        apiInterface.getUserNotificationData(userId,loginData.getToken(),"2").enqueue(new Callback<NotificationResponse>() {
+            @Override
+            public void onResponse(Call<NotificationResponse> call, Response<NotificationResponse> response) {
+                if (response.isSuccessful()) {
+                    NotificationResponse notificationResponse = response.body();
+                    if (notificationResponse.getError()){
+                        Toast.makeText(HomeActivity.this,"" +notificationResponse.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                    if (notificationResponse != null) {
+                        List<NotificationData> notificationData = notificationResponse.getData();
+                        if (notificationData!=null){
+                            notificationCount.setText("" +notificationData.size());
+                            Toast.makeText(HomeActivity.this,""+notificationData.get(1).getTitle(),Toast.LENGTH_LONG).show();
 
-
+                        }
+                    }
+                    Gson gson = new Gson();
+                    String json = gson.toJson(notificationResponse, NotificationResponse.class);
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(HomeActivity.this).edit();
+                    editor.putString("Notification_Key", json);
+                    editor.apply();
+                } else {
+                    Toast.makeText(HomeActivity.this, "Code" +response.message(), Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<NotificationResponse> call, Throwable t) {
+                Toast.makeText(HomeActivity.this,"Error",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     class MyAdapter extends FragmentPagerAdapter{
 

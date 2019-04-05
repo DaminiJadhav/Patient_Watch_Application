@@ -31,13 +31,14 @@
     <dimen name="marginLeft_40">40dp</dimen>
     <dimen name="marginLeft_45">45dp</dimen>
 
+    <dimen name="marginRight_3">3dp</dimen>
     <dimen name="marginRight">5dp</dimen>
     <dimen name="marginRight_10">10dp</dimen>
     <dimen name="marginRight_20">20dp</dimen>
     <dimen name="marginRight_30">30dp</dimen>
     <dimen name="marginRight_80">80</dimen>
 
-
+    <dimen name="marginTop_3">3dp</dimen>
     <dimen name="marginTop_10">10dp</dimen>
     <dimen name="marginTop_20">20dp</dimen>
     <dimen name="marginTop_25">25dp</dimen>

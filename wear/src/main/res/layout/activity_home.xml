@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    android:orientation="vertical"
+    tools:context=".HomeActivity"
+    >
 
 
         <LinearLayout
             style="@style/linear_layout_vertical"
             >
+
+            <RelativeLayout
+                style="@style/match_wrap"
+                android:layout_margin="@dimen/margin_3">
+
+                <ImageView
+                    android:id="@+id/iv_bell_icon"
+                    style="@style/bell_notification" />
+
+                <TextView
+                    android:id="@+id/tv_notification_count"
+                    style="@style/bell_notification_count"
+                    android:layout_alignTop="@+id/iv_bell_icon"
+                    />
+            </RelativeLayout>
+
             <androidx.viewpager.widget.ViewPager
-               style="@style/match_match"
-                android:id="@+id/viewpager">
+                android:id="@+id/viewpager"
+                style="@style/match_match">
 
+                <TextView
+                    android:id="@+id/json_data_txt"
+                    style="@style/match_wrap"
+                    android:layout_gravity="center"
+                    android:text="@string/success" />
 
-        <com.google.android.material.textfield.TextInputLayout
-                        style="@style/TextInputLayout1"
-                        android:id="@+id/success_txtinputlayout">
-            <TextView
-                style="@style/match_wrap"
-                android:layout_gravity="center"
-                android:text="@string/success"
-                android:id="@+id/json_data_txt"/>
-
-            <TextView
-                style="@style/match_wrap"
-                android:layout_gravity="center"
-                android:id="@+id/json_data_txt2"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+                <TextView
+                    android:id="@+id/json_data_txt2"
+                    style="@style/match_wrap"
+                    android:layout_gravity="center" />
+                <!---->
             </androidx.viewpager.widget.ViewPager>
         </LinearLayout>
 
+</LinearLayout>
 
-</androidx.wear.widget.BoxInsetLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

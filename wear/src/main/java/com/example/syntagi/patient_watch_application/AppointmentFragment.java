@@ -82,9 +82,15 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
                     progressDialog.dismiss();
                     AppointmentListResponse appointmentListResponse=response.body();
 //                    appointmentDataList.clear();
-                    if (!appointmentListResponse.getError()){
+                    if (appointmentListResponse.getError()) {
+                        Toast.makeText(getContext(),""+appointmentListResponse.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
+                        if (!appointmentListResponse.getError()){
                     if(appointmentListResponse.getData()!=null){
+                        Toast.makeText(getContext(),"Success",Toast.LENGTH_LONG).show();
                         appointmentDataList.addAll(appointmentListResponse.getData());
+                        Log.w("AppointmentFragment","Appointment Save Successfully");
 
                         Gson gson=new Gson();
                         SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
@@ -92,6 +98,7 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
                         Log.d("AppointmentFragment","Save Json Data");
                         editor.putString(KEY_APPOINTMENT,json);
                         editor.apply();
+
 //                        size=appointmentListResponse.getData().size();
 //                        Toast.makeText(getContext(),"Size: " +size,Toast.LENGTH_LONG).show();
                     }

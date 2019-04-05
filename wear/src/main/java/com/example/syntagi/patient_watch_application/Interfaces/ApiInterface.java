@@ -7,6 +7,7 @@ import com.example.syntagi.patient_watch_application.models.appointments.Appoint
 import com.example.syntagi.patient_watch_application.models.medicine.CurrentMedicineResponse;
 import com.example.syntagi.patient_watch_application.Post;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineDetailData;
+import com.example.syntagi.patient_watch_application.models.notification.NotificationResponse;
 import com.example.syntagi.patient_watch_application.models.vitals.GroupedVitalChartResponse;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 
@@ -47,5 +48,8 @@ public interface ApiInterface {
 
     @GET("/syntagi/appointments/getPatientsPendingAppointments")
     Call<AppointmentListResponse> getAppointmentData(@Query("patientId") String patientId,@Header("authToken") String authToken,@Header("roleType") int roleType);
+
+    @GET("/syntagi/userNotifications/getAllByUser")
+    Call<NotificationResponse> getUserNotificationData(@Query("userId") String userId, @Header("authToken") String authToken, @Header("roleType") String roleType);
 
 }

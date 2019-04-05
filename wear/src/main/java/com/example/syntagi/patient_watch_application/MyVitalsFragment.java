@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.syntagi.patient_watch_application.models.PatientData;
 import com.example.syntagi.patient_watch_application.models.vitals.VitalsModelResponse;
 import com.google.gson.Gson;
