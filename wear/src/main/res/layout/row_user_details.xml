@@ -6,4 +6,7 @@
     <TextView
        style="@style/wrap_wrap"
         android:id="@+id/tv_username"/>
+    <TextView
+        style="@style/wrap_wrap"
+        android:id="@+id/tv_empty"/>
 </LinearLayout>

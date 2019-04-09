@@ -33,7 +33,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     private static final String USER_KEY ="Patient_Data" ;
     ImageView iv_notification;
-    TextView firstnametxt,phonenumbertxt,notificationCount;
+    TextView notificationCount;
     LoginData loginData;
     ViewPager viewPager;
     List<Fragment> fragments=new ArrayList<>();
@@ -51,8 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         fragments.add(new MyAppointmentFragment());
         fragments.add(new MyMedicineFragment());
         fragments.add(new MyVitalsFragment());
-        firstnametxt = findViewById(R.id.json_data_txt);
-        phonenumbertxt=findViewById(R.id.json_data_txt2);
+
         notificationCount=findViewById(R.id.tv_notification_count);
         iv_notification=findViewById(R.id.iv_bell_icon);
         viewPager=findViewById(R.id.viewpager);
@@ -74,8 +73,8 @@ public class HomeActivity extends AppCompatActivity {
         loginData=gson.fromJson(json,LoginData.class);
         if (loginData!=null)
         {
-            firstnametxt.setText("First Name:" +loginData.getPatientData().getFirstName());
-            phonenumbertxt.setText("Phone Number:" +loginData.getPatientData().getPhoneNumber());
+//            firstnametxt.setText("First Name:" +loginData.getPatientData().getFirstName());
+//            phonenumbertxt.setText("Phone Number:" +loginData.getPatientData().getPhoneNumber());
 //            firstnametxt.setText("User Id:" +loginData.getPatientData().getUpId());
         }
 
@@ -103,6 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                                     editor.putString("VitalData",json);
                                     editor.apply();
                         }
+
                             if (vitalsModelResponse.getError()){
                             Toast.makeText(HomeActivity.this,"" +vitalsModelResponse.getMessage(),Toast.LENGTH_LONG).show();
                         }
@@ -136,8 +136,6 @@ public class HomeActivity extends AppCompatActivity {
                         List<NotificationData> notificationData = notificationResponse.getData();
                         if (notificationData!=null){
                             notificationCount.setText("" +notificationData.size());
-                            Toast.makeText(HomeActivity.this,""+notificationData.get(1).getTitle(),Toast.LENGTH_LONG).show();
-
                         }
                     }
                     Gson gson = new Gson();

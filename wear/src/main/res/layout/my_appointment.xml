@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    style="@style/match_match">
 
     <LinearLayout
         android:id="@+id/ll_appointment"
         style="@style/linear_layout_vertical"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp">
+        >
 
         <com.google.android.material.card.MaterialCardView
             style="@style/materialcardview"

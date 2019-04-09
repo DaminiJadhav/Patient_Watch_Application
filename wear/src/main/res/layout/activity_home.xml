@@ -2,9 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    style="@style/linear_layout_vertical"
     tools:context=".HomeActivity"
     >
 
@@ -32,17 +30,6 @@
                 android:id="@+id/viewpager"
                 style="@style/match_match">
 
-                <TextView
-                    android:id="@+id/json_data_txt"
-                    style="@style/match_wrap"
-                    android:layout_gravity="center"
-                    android:text="@string/success" />
-
-                <TextView
-                    android:id="@+id/json_data_txt2"
-                    style="@style/match_wrap"
-                    android:layout_gravity="center" />
-                <!---->
             </androidx.viewpager.widget.ViewPager>
         </LinearLayout>
 

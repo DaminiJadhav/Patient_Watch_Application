@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
+
     <style name="wrap_wrap">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -56,6 +57,10 @@
 
     <style name="linear_layout_horizontal_match_wrap" parent="match_wrap">
         <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="linear_layout_vertical_wrap_wrap" parent="wrap_wrap">
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="TextInputLayout1" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -127,10 +132,8 @@
     <style name="relative_ellipse_textview">
         <item name="android:layout_width">22dp</item>
         <item name="android:layout_height">22dp</item>
-        <!--<item name="android:layout_centerInParent">true</item>-->
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_alignParentBottom">true</item>
-
          <item name="android:gravity">center</item>
     </style>
 
@@ -180,14 +183,27 @@
     </style>
 
     <style name="bell_notification_count">
-            <item name="android:layout_width">8dp</item>
-            <item name="android:layout_height">8dp</item>
+            <item name="android:layout_width">10dp</item>
+            <item name="android:layout_height">10dp</item>
             <item name="android:layout_alignParentRight">true</item>
             <item name="android:layout_marginTop">@dimen/marginTop_3</item>
             <item name="android:layout_marginRight">@dimen/marginRight_3</item>
             <item name="android:background">@drawable/notification_shape</item>
             <item name="android:gravity">center</item>
             <item name="android:textSize">6sp</item>
+            <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="tv_usernotification" parent="wrap_wrap">
+        <item name="android:textSize">8sp</item>
+        <item name="android:layout_margin">@dimen/margin_3</item>
+    </style>
+
+    <style name="tv_appointmentdate" parent="match_wrap">
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_appointment_tv_background</item>
+    </style>
+
 
 </resources>

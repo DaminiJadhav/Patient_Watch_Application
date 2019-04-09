@@ -11,5 +11,6 @@
     <color name="color_body_weight">#ffff00</color>
     <color name="color_notification">#FC1B0B</color>
     <color name="color_notification_text">#FFFEFE</color>
+    <color name="color_appointment_tv_background">#ed1d1d1d</color>
 </resources>
 

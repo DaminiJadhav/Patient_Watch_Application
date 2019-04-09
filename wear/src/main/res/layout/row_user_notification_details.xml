@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/match_match">
+
+        <com.google.android.material.card.MaterialCardView
+         style="@style/match_wrap"
+         android:layout_margin="@dimen/margin_3">
+
+
+         <LinearLayout
+             style="@style/linear_layout_vertical"
+             >
+
+             <TextView
+                 style="@style/tv_usernotification"
+                 android:id="@+id/tv_user_description"
+                 />
+
+             <TextView
+                 style="@style/tv_usernotification"
+                 android:id="@+id/tv_user_date"
+                 />
+
+         </LinearLayout>
+
+     </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

@@ -15,8 +15,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 //        Toast.makeText(context, "ALARM ........", Toast.LENGTH_SHORT).show();
 //            AlarmActivity inst=AlarmActivity.instance();
 //            inst.setAlarmText("Alarm ! Wake Up !Wake Up");
-
-
 //        Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
            Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -27,11 +25,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             Vibrator v= (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
             v.vibrate(20000);
         }
-
         Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
         if (ringtone!=null){
             ringtone.play();
-
         }
            Intent  intent1 = new Intent(context,AlarmService.class);
            if (intent1!=null){
@@ -40,8 +36,5 @@ public class AlarmReceiver extends BroadcastReceiver {
            else {
                context.stopService(intent1);
            }
-
     }
-
-
 }

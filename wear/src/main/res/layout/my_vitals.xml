@@ -35,8 +35,6 @@
                         style="@style/relative_ellipse_textview"
                         android:background="@drawable/ic_ellipse"
                         android:id="@+id/tv_vitalcount"
-                        android:gravity="center"
-                        android:text=""
                         />
                </RelativeLayout>
             </LinearLayout>

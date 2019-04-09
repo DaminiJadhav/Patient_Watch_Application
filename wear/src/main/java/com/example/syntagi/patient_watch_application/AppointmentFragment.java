@@ -98,7 +98,6 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
                         Log.d("AppointmentFragment","Save Json Data");
                         editor.putString(KEY_APPOINTMENT,json);
                         editor.apply();
-
 //                        size=appointmentListResponse.getData().size();
 //                        Toast.makeText(getContext(),"Size: " +size,Toast.LENGTH_LONG).show();
                     }
@@ -146,13 +145,11 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
     class Holder{
         private TextView tvName,tvStatus,tvDate,tvMonth;
 
-
         public Holder(View view) {
            tvName = view.findViewById(R.id.tv_appointmentname);
            tvStatus=view.findViewById(R.id.tv_appointmentstatus);
            tvMonth=view.findViewById(R.id.tv_month);
            tvDate=view.findViewById(R.id.tv_date);
-
        }
     }
     private static String convertDateFormat(String currentDate,
