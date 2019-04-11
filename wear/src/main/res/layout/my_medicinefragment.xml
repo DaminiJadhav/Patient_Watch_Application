@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
+    style="@style/linear_layout_vertical"
     >
 
         <LinearLayout
@@ -30,20 +28,20 @@
             >
             <TableRow>
                 <ImageView
-                    style="@style/image_width41_height40"
+                    style="@style/image_width41_height35"
                     android:src="@drawable/ic_brkfast"
                     android:id="@+id/iv_brkfast"
                     />
                 <ImageView
-                    style="@style/image_width41_height40"
+                    style="@style/image_width41_height35"
                     android:src="@drawable/ic_lunch"
                     android:id="@+id/iv_lunch"/>
                 <ImageView
-                    style="@style/image_width41_height40"
+                    style="@style/image_width41_height35"
                     android:src="@drawable/ic_eve"
                     android:id="@+id/iv_eve"/>
                 <ImageView
-                    style="@style/image_width41_height40"
+                    style="@style/image_width41_height35"
                     android:src="@drawable/ic_dinner"
                     android:id="@+id/iv_dinner"/>
             </TableRow>
@@ -52,24 +50,42 @@
                <TextView
                   style="@style/TextViewStyle_layoutgravity"
                    android:id="@+id/txt_morningdose"
-                   android:textSize="10dp"
-
                     />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_noondose"
-                    android:textSize="10dp"
                    />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_eveningdose"
-                    android:textSize="10dp"
                     />
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"
                     android:id="@+id/txt_nightdose"
-                    android:textSize="10dp"
                     />
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    style="@style/TextViewStyle_layoutgravity"
+                    android:id="@+id/txt_morningtime"
+                    />
+
+                <TextView
+                    style="@style/TextViewStyle_layoutgravity"
+                    android:id="@+id/txt_lunchtime"
+                    />
+
+                <TextView
+                    style="@style/TextViewStyle_layoutgravity"
+                    android:id="@+id/txt_noontime"
+                    />
+
+                <TextView
+                    style="@style/TextViewStyle_layoutgravity"
+                    android:id="@+id/txt_nighttime"
+                    />
+
             </TableRow>
 
         </TableLayout>
@@ -78,14 +94,15 @@
     </RelativeLayout>
 
    <RelativeLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       style="@style/wrap_wrap"
        android:layout_margin="@dimen/margin_3"
        >
 
         <TextView
             style="@style/wrap_wrap"
             android:id="@+id/tv_reminder"
+            android:textSize="12dp"
+            android:layout_centerVertical="true"
             android:text="Reminder"/>
 
        <Switch

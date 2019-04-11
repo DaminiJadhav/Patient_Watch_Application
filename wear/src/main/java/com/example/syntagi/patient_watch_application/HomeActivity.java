@@ -32,7 +32,10 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String USER_KEY ="Patient_Data" ;
-    ImageView iv_notification;
+    private static final String  KEY_CONNECTIONS="Patient_Details";
+    private static final String KEY_APPOINTMENT="AppointmentData";
+
+    ImageView iv_notification,iv_logout;
     TextView notificationCount;
     LoginData loginData;
     ViewPager viewPager;
@@ -54,7 +57,9 @@ public class HomeActivity extends AppCompatActivity {
 
         notificationCount=findViewById(R.id.tv_notification_count);
         iv_notification=findViewById(R.id.iv_bell_icon);
+        iv_logout=findViewById(R.id.iv_logout_btn);
         viewPager=findViewById(R.id.viewpager);
+
 
         FragmentManager fragmentManager=getSupportFragmentManager();
         viewPager.setAdapter(new MyAdapter(fragmentManager));
@@ -67,6 +72,27 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        iv_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(HomeActivity.this);
+            if(preferences!=null){
+            SharedPreferences.Editor editor=preferences.edit();
+            editor.remove(USER_KEY);
+            editor.remove(KEY_CONNECTIONS);
+            editor.remove(KEY_APPOINTMENT);
+            editor.remove("PhoneNumber");
+            editor.remove("VitalData");
+            editor.remove("getmedicinename");
+            editor.remove("Notification_Key");
+            Intent intent=new Intent(HomeActivity.this,EnterPhoneNumberActivity.class);
+            startActivity(intent);
+//            Toast.makeText(HomeActivity.this,"clear All Data Successfully",Toast.LENGTH_LONG).show();
+            editor.commit();
+                }
+             }
+        });
+
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(HomeActivity.this);
         String json=sharedPreferences.getString(USER_KEY,"");
         Gson gson=new Gson();
@@ -77,7 +103,6 @@ public class HomeActivity extends AppCompatActivity {
 //            phonenumbertxt.setText("Phone Number:" +loginData.getPatientData().getPhoneNumber());
 //            firstnametxt.setText("User Id:" +loginData.getPatientData().getUpId());
         }
-
         getAllVital();
         getAllUserDetail(loginData.getPatientData().getPatientId());
     }

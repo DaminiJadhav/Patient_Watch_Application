@@ -18,6 +18,7 @@ import com.example.syntagi.patient_watch_application.models.appointments.Appoint
 import com.example.syntagi.patient_watch_application.models.appointments.AppointmentListResponse;
 import com.example.syntagi.patient_watch_application.models.appointments.AppointmentStatus;
 import com.example.syntagi.patient_watch_application.models.appointments.TimeSlot;
+import com.example.syntagi.patient_watch_application.utils.CustomDateUtils;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -125,11 +126,11 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
         }
         AppointmentData appointmentData = appointmentDataList.get(position);
         holder.tvName.setText(appointmentData.getPatientData().getName()+" -> "+appointmentData.getPhysicianData().getProfile().getFullname());
-        holder.tvDate.setText(convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","dd"));
-        holder.tvMonth.setText(convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","MMM"));
+        holder.tvDate.setText(CustomDateUtils.convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","dd"));
+        holder.tvMonth.setText(CustomDateUtils.convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","MMM"));
         AppointmentStatus appointmentStatus = AppointmentStatus.findByCode(appointmentData.getAppointmentStatus());
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","EEEE"));
+        stringBuilder.append(CustomDateUtils.convertDateFormat(appointmentData.getDate(),"dd-MM-yyyy","EEEE"));
         stringBuilder.append(" ");
         TimeSlot timeSlot = appointmentData.getTimeSlot();
         if (timeSlot!=null){
@@ -152,26 +153,14 @@ public class AppointmentFragment extends Fragment implements CustomListAdapterIn
            tvDate=view.findViewById(R.id.tv_date);
        }
     }
-    private static String convertDateFormat(String currentDate,
-                                           String currentDateFormatString, String reqDateFormat) {
-        SimpleDateFormat currentDateFormat = new SimpleDateFormat(currentDateFormatString);
-        SimpleDateFormat formater = new SimpleDateFormat(reqDateFormat);
-        try {
-            Date d=new Date();
-            if (d!=null){
-                d = currentDateFormat.parse(currentDate);
-                return formater.format(d);
-            }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return currentDate;
-    }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         progressDialog.dismiss();
         super.onSaveInstanceState(outState);
+
+
+
+
     }
 }

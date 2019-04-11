@@ -5,34 +5,47 @@
     style="@style/linear_layout_vertical"
     tools:context=".HomeActivity"
     >
-
-
-        <LinearLayout
-            style="@style/linear_layout_vertical"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             >
-
-            <RelativeLayout
-                style="@style/match_wrap"
-                android:layout_margin="@dimen/margin_3">
-
-                <ImageView
-                    android:id="@+id/iv_bell_icon"
-                    style="@style/bell_notification" />
-
-                <TextView
-                    android:id="@+id/tv_notification_count"
-                    style="@style/bell_notification_count"
-                    android:layout_alignTop="@+id/iv_bell_icon"
-                    />
-            </RelativeLayout>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 style="@style/match_match">
 
             </androidx.viewpager.widget.ViewPager>
-        </LinearLayout>
 
+            <RelativeLayout
+                style="@style/match_wrap"
+                android:layout_marginRight="@dimen/marginRight_10"
+                android:layout_marginTop="@dimen/marginTop_10"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_bell_icon"
+                    style="@style/bell_notification"
+                    android:layout_toLeftOf="@+id/iv_logout_btn"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_notification_count"
+                    style="@style/bell_notification_count"
+                    android:layout_alignTop="@+id/iv_bell_icon"
+                    android:layout_toLeftOf="@+id/iv_logout_btn"
+                    />
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/iv_logout_btn"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="3dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_logout"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
 </LinearLayout>
 
 

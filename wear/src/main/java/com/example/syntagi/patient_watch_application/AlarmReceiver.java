@@ -7,6 +7,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.Toast;
 
 public class AlarmReceiver extends BroadcastReceiver {
@@ -15,8 +16,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 //        Toast.makeText(context, "ALARM ........", Toast.LENGTH_SHORT).show();
 //            AlarmActivity inst=AlarmActivity.instance();
 //            inst.setAlarmText("Alarm ! Wake Up !Wake Up");
-//        Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
            Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
+           Log.w("AlarmReceiver","Alarm successfully set");
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
         if (alarmUri == null)

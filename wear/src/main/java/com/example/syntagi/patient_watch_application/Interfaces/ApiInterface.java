@@ -30,7 +30,6 @@ public interface ApiInterface {
     @POST("/syntagi/patient/loginAndGenerateOtp")
     Call<LoginResponse> getpost(@Body Post post);
 
-
     @GET("/syntagi/sms/validateOtp")
     Call<OtpResponse> varify_otp(@Query("type") String type, @Query("value") String value, @Query("otp") String otp);
 

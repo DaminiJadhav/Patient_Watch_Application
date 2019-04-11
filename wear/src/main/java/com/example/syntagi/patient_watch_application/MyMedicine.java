@@ -13,6 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
@@ -27,11 +28,12 @@ import androidx.fragment.app.Fragment;
 import static android.content.Context.ALARM_SERVICE;
 
 public class  MyMedicine extends Fragment {
-    TextView reminder;
+    TextView reminder,tv_morningtime,tv_lunchtime,tv_evetime,tv_dinnertime;
     ImageView iv_showmedicine,brkfast,lunch,eve,dinner;
     MedicationEndsOn medicineData;
     Switch aSwitch;
     AlarmManager alarmManager;
+    Bundle bundle;
 //    Uri uri;
 
 
@@ -39,9 +41,7 @@ public class  MyMedicine extends Fragment {
         MyMedicine myMedicine=new MyMedicine();
         myMedicine.medicineData = medicineData;
         return myMedicine;
-
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class  MyMedicine extends Fragment {
         TextView tvMedicineName,tvMedicineEndDate,morningdose,lunchdose,eveningdose,nightdose;
 
         alarmManager= (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
-
 
         tvMedicineEndDate = view.findViewById(R.id.tv_medicine_end_date);
         iv_showmedicine=view.findViewById(R.id.iv_showmedicineicon);
@@ -64,6 +63,18 @@ public class  MyMedicine extends Fragment {
         eve=view.findViewById(R.id.iv_eve);
         dinner=view.findViewById(R.id.iv_dinner);
         aSwitch=view.findViewById(R.id.reminderswitch);
+        tv_morningtime=view.findViewById(R.id.txt_morningtime);
+        tv_lunchtime=view.findViewById(R.id.txt_lunchtime);
+        tv_evetime=view.findViewById(R.id.txt_noontime);
+        tv_dinnertime=view.findViewById(R.id.txt_nighttime);
+
+//        if(bundle!=null){
+//            Intent intent=new Intent();
+//            if (intent!=null){
+//                bundle.putSerializable("key_morning",Reminder.MOR);
+//                intent.putExtras(bundle);
+//            }
+//        }
 
         aSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +88,6 @@ public class  MyMedicine extends Fragment {
                 }
                 else {
                     Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
@@ -94,7 +104,15 @@ public class  MyMedicine extends Fragment {
         {
             if (medicineFrequencies.get(i).getMorningDose()>0){
                 morningdose.setText("" +medicineFrequencies.get(i).getMorningDose());
+//                Reminder reminder1= (Reminder) bundle.getSerializable("key_morning");
+//                if (reminder1!=null){
+//                    Toast.makeText(getContext(),"time success on reminder",Toast.LENGTH_LONG).show();
+//                }
+//                tv_morningtime.setText("" +reminder1);
+//                tv_morningtime.setText("" +Reminder.MOR);
                 brkfast.setVisibility(View.VISIBLE);
+                reminder.setVisibility(View.VISIBLE);
+                aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 brkfast.setVisibility(View.INVISIBLE);
@@ -104,7 +122,10 @@ public class  MyMedicine extends Fragment {
 
             if (medicineFrequencies.get(i).getNoonDose()>0){
                 lunchdose.setText("" +medicineFrequencies.get(i).getNoonDose());
+                Toast.makeText(getContext(),"",Toast.LENGTH_LONG);
                 lunch.setVisibility(View.VISIBLE);
+                reminder.setVisibility(View.VISIBLE);
+                aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 lunch.setVisibility(View.INVISIBLE);
@@ -113,6 +134,9 @@ public class  MyMedicine extends Fragment {
             }
             if (medicineFrequencies.get(i).getEveningDose()>0){
                 eveningdose.setText("" +medicineFrequencies.get(i).getEveningDose());
+                eve.setVisibility(View.VISIBLE);
+                reminder.setVisibility(View.VISIBLE);
+                aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 eve.setVisibility(View.INVISIBLE);
@@ -121,6 +145,9 @@ public class  MyMedicine extends Fragment {
             }
             if (medicineFrequencies.get(i).getNightDose()>0){
                 nightdose.setText("" +medicineFrequencies.get(i).getNightDose());
+                dinner.setVisibility(View.VISIBLE);
+                reminder.setVisibility(View.VISIBLE);
+                aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 dinner.setVisibility(View.INVISIBLE);

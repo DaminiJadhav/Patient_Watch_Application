@@ -9,7 +9,7 @@
     <color name="title_color_dialog">#3e3d3d</color>
     <color name="color_pulse_rate">#22aabb</color>
     <color name="color_body_weight">#ffff00</color>
-    <color name="color_notification">#FC1B0B</color>
+    <color name="color_notification">#FD1D0E</color>
     <color name="color_notification_text">#FFFEFE</color>
     <color name="color_appointment_tv_background">#ed1d1d1d</color>
 </resources>

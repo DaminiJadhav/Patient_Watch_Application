@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.models.notification.NotificationData;
 import com.example.syntagi.patient_watch_application.models.notification.NotificationResponse;
+import com.example.syntagi.patient_watch_application.utils.CustomDateUtils;
+import com.google.android.gms.common.util.DataUtils;
 import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +61,7 @@ public class ShowAllUserData extends AppCompatActivity implements CustomListAdap
         if (notificationData != null) {
 // /           Toast.makeText(ShowAllUserData.this,"success",Toast.LENGTH_LONG).show();
             adapterHolder.tvUserDescription.setText("" + notificationData.getDescription());
-            adapterHolder.tvdate.setText(convertCreated(notificationData.getCreated()));
+            adapterHolder.tvdate.setText(CustomDateUtils.convertCreated(notificationData.getCreated()));
         }
         return convertView;
     }
@@ -73,19 +75,4 @@ public class ShowAllUserData extends AppCompatActivity implements CustomListAdap
         }
     }
 
-    public static String convertCreated(long millisecond){
-        Date date = new Date(millisecond);
-        Calendar calendar=Calendar.getInstance();
-        calendar.setTimeInMillis(millisecond);
-        Calendar calendarCurrent= Calendar.getInstance();
-        if(calendar.get(Calendar.YEAR)==calendarCurrent.get(Calendar.YEAR)){
-            return formatDate(date,"dd MMM, HH:mm");
-        }
-        return formatDate(date,"dd MMM, yyyy HH:mm");
-    }
-
-    public static String formatDate(Date date, String format) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        return sdf.format(date);
-    }
-}
+   }

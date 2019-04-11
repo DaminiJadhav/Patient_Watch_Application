@@ -1,15 +1,20 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.app.IntentService;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.google.gson.Gson;
 import androidx.annotation.Nullable;
@@ -19,6 +24,7 @@ import androidx.core.app.NotificationCompat;
 public class AlarmService extends IntentService {
     private NotificationManager alarmNotificationManager;
     MedicineData medicineData;
+    String CHANNEL_ID ="channel_id";
     String medicinename;
 
     public AlarmService() {
@@ -34,7 +40,7 @@ public class AlarmService extends IntentService {
         medicineData = gson.fromJson(json, MedicineData.class);
         if (medicineData != null) {
             medicinename = medicineData.getMedicineName();
-//            Toast.makeText(AlarmService.this,"Alarm Successfully Remind",Toast.LENGTH_LONG).show();
+//            Toast.makeText(AlarmService.this,"Alarm Remind",Toast.LENGTH_LONG).show();
             sendNotification(medicinename);
         }
         return super.onStartCommand(intent, flags, startId);
@@ -42,19 +48,7 @@ public class AlarmService extends IntentService {
 
     @Override
     public void onHandleIntent(Intent intent) {
-
-//        if (intent!=null){
-//
-//            Bundle bundle=intent.getExtras();
-//            if (bundle!=null){
-//                medicineData= (MedicineData) bundle.getSerializable("medicineDetails");
-//                medicinename=medicineData.getMedicineName();
-//                Toast.makeText(AlarmService.this,"Success",Toast.LENGTH_LONG).show();
-//            }
-//        }
-//
-
-//        sendNotification("Medicine Time!!!!");
+//        sendNotification("Medicine Time!!!!!");
     }
 
     private void sendNotification(String msg) {
@@ -65,8 +59,22 @@ public class AlarmService extends IntentService {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, AlarmActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.BASE){
+            CharSequence name="my_channel";
+            String Description="This is my channel";
+            int importance=NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mchannel=new NotificationChannel(CHANNEL_ID,name,importance);
+            mchannel.setDescription(Description);
+            mchannel.enableLights(true);
+            mchannel.setLightColor(Color.RED);
+            mchannel.enableVibration(true);
+            mchannel.setVibrationPattern(new long[]{100,200,300,400,500,400,300,200,400});
+            alarmNotificationManager.createNotificationChannel(mchannel);
+        }
+
         Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.alarm_ring);
-        NotificationCompat.Builder alamNotificationBuilder = new NotificationCompat.Builder(this, "channel_id")
+        NotificationCompat.Builder alamNotificationBuilder = new NotificationCompat.Builder(this,CHANNEL_ID)
                 .setContentTitle("Reminder")
                 .setSmallIcon(R.drawable.reminder)
                 .setSound(soundUri, AudioManager.STREAM_NOTIFICATION)
@@ -76,17 +84,15 @@ public class AlarmService extends IntentService {
                 .setAutoCancel(true);
 
 
+        Log.i("AlarmService","Successfully Send Alarm ");
         alamNotificationBuilder.setContentIntent(contentIntent);
         alarmNotificationManager.notify(1, alamNotificationBuilder.build());
 //        cancelNotification(AlarmService.this,1);
         Log.d("AlarmService", "Notification sent.");
     }
-
     public static void cancelNotification(Context context, int notifyId) {
         String cancelnotification = Context.NOTIFICATION_SERVICE;
         NotificationManager manager = (NotificationManager) context.getSystemService(cancelnotification);
         manager.cancel(notifyId);
-
-
     }
 }
