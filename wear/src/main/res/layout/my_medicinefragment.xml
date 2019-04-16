@@ -17,7 +17,7 @@
 
     <RelativeLayout
        style="@style/match_wrap"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/marginTop_5"
         android:padding="10dp"
         android:layout_below="@+id/medicinenamelinearlayout"
         >
@@ -64,7 +64,9 @@
                     android:id="@+id/txt_nightdose"
                     />
             </TableRow>
-            <TableRow>
+
+            <TableRow
+                android:layout_marginTop="@dimen/marginTop_3">
 
                 <TextView
                     style="@style/TextViewStyle_layoutgravity"

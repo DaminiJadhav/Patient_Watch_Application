@@ -52,7 +52,6 @@ public class CustomDateUtils {
         return format.parse(dateString);
     }
 
-
     public static String convertCreated(long millisecond){
         Date date = new Date(millisecond);
         Calendar calendar=Calendar.getInstance();

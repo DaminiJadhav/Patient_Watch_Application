@@ -34,7 +34,7 @@
 
     <style name="TextViewStyle_layoutgravity" parent="wrap_wrap">
         <item name="android:layout_gravity">center</item>
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">8dp</item>
     </style>
 
     <style name="TextViewStyle1" parent="wrap_wrap">
@@ -204,5 +204,13 @@
         <item name="android:textColor">@color/color_appointment_tv_background</item>
     </style>
 
+    <style name="iv_logout">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">10dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">@dimen/marginLeft_3</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@drawable/ic_logout</item>
+    </style>
 
 </resources>

@@ -26,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EnterPhoneNumberActivity extends WearableActivity {
 //    7291847440
+//    7709235373
     private static final String USER_KEY = "Patient_Data";
     private static final String  KEY_CONNECTIONS="Patient_Details";
     TextInputLayout textInputLayout;
@@ -115,7 +116,7 @@ public class EnterPhoneNumberActivity extends WearableActivity {
                     if (patientData != null) {
                         Bundle bundle = new Bundle();
                         bundle.putString("PhoneNumber", phone_no_ed.getText().toString().trim());
-//                        bundle.putSerializable("Patient_Data",patientData);
+//                        bundle.p  utSerializable("Patient_Data",patientData);
                         Intent intent = new Intent(EnterPhoneNumberActivity.this, OtpActivity.class);
                         intent.putExtras(bundle);
                         startActivity(intent);

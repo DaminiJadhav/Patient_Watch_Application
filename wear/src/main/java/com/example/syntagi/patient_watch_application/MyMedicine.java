@@ -2,9 +2,14 @@ package com.example.syntagi.patient_watch_application;
 
 import android.Manifest;
 import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +22,10 @@ import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicationEndsOn;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineFrequency;
+import com.example.syntagi.patient_watch_application.utils.CustomDateUtils;
 
+import java.util.Calendar;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -28,13 +34,14 @@ import androidx.fragment.app.Fragment;
 import static android.content.Context.ALARM_SERVICE;
 
 public class  MyMedicine extends Fragment {
+    private static final long REPEAT_TIME=10000;
     TextView reminder,tv_morningtime,tv_lunchtime,tv_evetime,tv_dinnertime;
     ImageView iv_showmedicine,brkfast,lunch,eve,dinner;
     MedicationEndsOn medicineData;
+    List<MedicineFrequency> medicineFrequencies;
     Switch aSwitch;
     AlarmManager alarmManager;
     Bundle bundle;
-//    Uri uri;
 
 
     public static MyMedicine getInstance(MedicationEndsOn medicineData) {
@@ -68,23 +75,11 @@ public class  MyMedicine extends Fragment {
         tv_evetime=view.findViewById(R.id.txt_noontime);
         tv_dinnertime=view.findViewById(R.id.txt_nighttime);
 
-//        if(bundle!=null){
-//            Intent intent=new Intent();
-//            if (intent!=null){
-//                bundle.putSerializable("key_morning",Reminder.MOR);
-//                intent.putExtras(bundle);
-//            }
-//        }
-
         aSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (aSwitch.isChecked()){
-                    Intent intent=new Intent(getContext(),AlarmActivity.class);
-                    startActivity(intent);
-           if (ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED){
-//                        addReminderInCalender();
-                        }
+                    starttime();
                 }
                 else {
                     Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
@@ -98,42 +93,40 @@ public class  MyMedicine extends Fragment {
 
         final MedicineData medicineData1=medicineData.getMedication();
 
-        List<MedicineFrequency> medicineFrequencies=medicineData1.getFrequencies();
+       medicineFrequencies=medicineData1.getFrequencies();
 
+//        Reminder medicine_reminder = Reminder.findById(medicineData1.getReminderId());
+//        String time = medicine_reminder.getTime();
         for (int i=0;i<medicineFrequencies.size();i++)
         {
             if (medicineFrequencies.get(i).getMorningDose()>0){
                 morningdose.setText("" +medicineFrequencies.get(i).getMorningDose());
-//                Reminder reminder1= (Reminder) bundle.getSerializable("key_morning");
-//                if (reminder1!=null){
-//                    Toast.makeText(getContext(),"time success on reminder",Toast.LENGTH_LONG).show();
-//                }
-//                tv_morningtime.setText("" +reminder1);
-//                tv_morningtime.setText("" +Reminder.MOR);
+                tv_morningtime.setText(Reminder.MOR.getTime());
                 brkfast.setVisibility(View.VISIBLE);
                 reminder.setVisibility(View.VISIBLE);
                 aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 brkfast.setVisibility(View.INVISIBLE);
-                reminder.setVisibility(View.INVISIBLE);
+                this.reminder.setVisibility(View.INVISIBLE);
                 aSwitch.setVisibility(View.INVISIBLE);
             }
 
             if (medicineFrequencies.get(i).getNoonDose()>0){
                 lunchdose.setText("" +medicineFrequencies.get(i).getNoonDose());
-                Toast.makeText(getContext(),"",Toast.LENGTH_LONG);
+                tv_lunchtime.setText(Reminder.NOON.getTime());
                 lunch.setVisibility(View.VISIBLE);
                 reminder.setVisibility(View.VISIBLE);
                 aSwitch.setVisibility(View.VISIBLE);
             }
             else {
                 lunch.setVisibility(View.INVISIBLE);
-                reminder.setVisibility(View.INVISIBLE);
+                this.reminder.setVisibility(View.INVISIBLE);
                 aSwitch.setVisibility(View.INVISIBLE);
             }
             if (medicineFrequencies.get(i).getEveningDose()>0){
                 eveningdose.setText("" +medicineFrequencies.get(i).getEveningDose());
+                tv_evetime.setText(Reminder.EVE.getTime());
                 eve.setVisibility(View.VISIBLE);
                 reminder.setVisibility(View.VISIBLE);
                 aSwitch.setVisibility(View.VISIBLE);
@@ -145,6 +138,8 @@ public class  MyMedicine extends Fragment {
             }
             if (medicineFrequencies.get(i).getNightDose()>0){
                 nightdose.setText("" +medicineFrequencies.get(i).getNightDose());
+                tv_dinnertime.setText(Reminder.NIGHT.getTime());
+//                Toast.makeText(getContext(),""+Reminder.NIGHT.getTime(),Toast.LENGTH_LONG).show();
                 dinner.setVisibility(View.VISIBLE);
                 reminder.setVisibility(View.VISIBLE);
                 aSwitch.setVisibility(View.VISIBLE);
@@ -154,9 +149,7 @@ public class  MyMedicine extends Fragment {
                 reminder.setVisibility(View.INVISIBLE);
                 aSwitch.setVisibility(View.INVISIBLE);
             }
-
         }
-
     iv_showmedicine.setOnClickListener( new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -165,6 +158,50 @@ public class  MyMedicine extends Fragment {
     });
         return view;
     }
+
+    public void starttime(){
+    for (MedicineFrequency freq:medicineFrequencies ){
+        if (freq.isMorning()){
+            Calendar calendar=Reminder.getCalender(Reminder.MOR.getTime());
+            Intent intent=new Intent(getContext(),AlarmReceiver.class);
+            int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.MOR.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT,CustomDateUtils.REMINDER_ID_FORMAT));
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
+            AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+            alarmManager.cancel(pendingIntent);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), DateUtils.DAY_IN_MILLIS, pendingIntent);
+            }
+            if (freq.isNoon()){
+                Calendar calendar=Reminder.getCalender(Reminder.NOON.getTime());
+                Intent intent=new Intent(getContext(),AlarmReceiver.class);
+                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.NOON.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT,CustomDateUtils.REMINDER_ID_FORMAT));
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), DateUtils.DAY_IN_MILLIS, pendingIntent);
+            }
+            if (freq.isEvening()){
+                Calendar calendar=Reminder.getCalender(Reminder.EVE.getTime());
+                Intent intent=new Intent(getContext(),AlarmReceiver.class);
+                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.EVE.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT,CustomDateUtils.REMINDER_ID_FORMAT));
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), DateUtils.DAY_IN_MILLIS, pendingIntent);
+            }
+           if (freq.isNight()){
+               Calendar calendar=Reminder.getCalender(Reminder.NIGHT.getTime());
+               Intent intent=new Intent(getContext(),AlarmReceiver.class);
+               int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.NIGHT.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT,CustomDateUtils.REMINDER_ID_FORMAT));
+               PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
+               AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+               alarmManager.cancel(pendingIntent);
+               alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), DateUtils.DAY_IN_MILLIS, pendingIntent);
+
+           }
+        }
+    }
+
+
     public void onstart(){
         onstart();
     }

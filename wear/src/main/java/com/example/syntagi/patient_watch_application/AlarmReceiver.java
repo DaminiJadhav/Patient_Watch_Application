@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class AlarmReceiver extends BroadcastReceiver {
        @Override
     public void onReceive(Context context, Intent intent) {
+
 //        Toast.makeText(context, "ALARM ........", Toast.LENGTH_SHORT).show();
 //            AlarmActivity inst=AlarmActivity.instance();
 //            inst.setAlarmText("Alarm ! Wake Up !Wake Up");
@@ -38,4 +39,15 @@ public class AlarmReceiver extends BroadcastReceiver {
                context.stopService(intent1);
            }
     }
+
+//    public void receivealarm(Context context,Intent intent){
+//           if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")){
+//               Intent alarmintent=new Intent(context,AlarmReceiver.class);
+//               PendingIntent pendingIntent=PendingIntent.getBroadcast(context,0,alarmintent,0);
+//               AlarmManager manager= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//               int interval=8000;
+//               manager.setInexactRepeating(Al armManager.RTC_WAKEUP,System.currentTimeMillis(),interval,pendingIntent);
+//               Toast.makeText(context,"Alarm Set",Toast.LENGTH_LONG).show();
+//           }
+//    }
 }

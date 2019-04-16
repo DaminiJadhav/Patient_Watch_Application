@@ -22,8 +22,7 @@
     <dimen name="margin_30">30dp</dimen>
     <dimen name="margin_35">35dp</dimen>
 
-
-
+    <dimen name="marginLeft_3">3dp</dimen>
     <dimen name="marginLeft">5dp</dimen>
     <dimen name="marginLeft_10">10dp</dimen>
     <dimen name="marginLeft_20">20dp</dimen>
@@ -36,7 +35,7 @@
     <dimen name="marginRight_10">10dp</dimen>
     <dimen name="marginRight_20">20dp</dimen>
     <dimen name="marginRight_30">30dp</dimen>
-    <dimen name="marginRight_80">80</dimen>
+    <dimen name="marginRight_80">80dp</dimen>
 
     <dimen name="marginTop_3">3dp</dimen>
     <dimen name="marginTop_5">5dp</dimen>

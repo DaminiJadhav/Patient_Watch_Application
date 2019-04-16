@@ -1,9 +1,7 @@
 package com.example.syntagi.patient_watch_application.enum_package;
 
 import android.text.TextUtils;
-
 import com.example.syntagi.patient_watch_application.utils.CustomDateUtils;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,7 +16,7 @@ public enum Reminder {
     NIGHT(3, "09:00 PM");
 
     public int remId;
-    public int timeVal;
+//    public int timeVal;
     public String time;
 
     Reminder(int remId, String time) {
