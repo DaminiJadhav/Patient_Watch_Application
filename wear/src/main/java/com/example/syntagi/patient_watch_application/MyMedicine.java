@@ -1,15 +1,10 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +23,6 @@ import java.util.Calendar;
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -37,7 +31,7 @@ public class  MyMedicine extends Fragment {
     private static final long REPEAT_TIME=10000;
     TextView reminder,tv_morningtime,tv_lunchtime,tv_evetime,tv_dinnertime;
     ImageView iv_showmedicine,brkfast,lunch,eve,dinner;
-    MedicationEndsOn medicineData;
+    MedicationEndsOn medicationEndsOn;
     List<MedicineFrequency> medicineFrequencies;
     Switch aSwitch;
     AlarmManager alarmManager;
@@ -46,7 +40,7 @@ public class  MyMedicine extends Fragment {
 
     public static MyMedicine getInstance(MedicationEndsOn medicineData) {
         MyMedicine myMedicine=new MyMedicine();
-        myMedicine.medicineData = medicineData;
+        myMedicine.medicationEndsOn = medicineData;
         return myMedicine;
     }
     @Nullable
@@ -80,18 +74,24 @@ public class  MyMedicine extends Fragment {
             public void onClick(View v) {
                 if (aSwitch.isChecked()){
                     starttime();
+                    DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
+                    databaseHandler.addmedicine(medicationEndsOn.getMedication(),Reminder.MOR);
+//                    databaseHandler.getAllMedicineData();
+                    databaseHandler.getAllData();
+                    databaseHandler.deleteRow();
+//                   ReminderActivity.startReminderActivity(MyMedicine.this, medicationEndsOn.getMedication() );
                 }
                 else {
                     Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        if (medicineData!=null){
-            tvMedicineName.setText("" +medicineData.getMedication().getMedicineName());
-            tvMedicineEndDate.setText("End date:  " +medicineData.getEndDate());
+        if (medicationEndsOn !=null){
+            tvMedicineName.setText("" + medicationEndsOn.getMedication().getMedicineName());
+            tvMedicineEndDate.setText("End date:  " + medicationEndsOn.getEndDate());
         }
 
-        final MedicineData medicineData1=medicineData.getMedication();
+        final MedicineData medicineData1= medicationEndsOn.getMedication();
 
        medicineFrequencies=medicineData1.getFrequencies();
 
@@ -153,7 +153,7 @@ public class  MyMedicine extends Fragment {
     iv_showmedicine.setOnClickListener( new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            MedicineDetailActivity.startActivity(MyMedicine.this,medicineData.getMedication());
+            MedicineDetailActivity.startActivity(MyMedicine.this, medicationEndsOn.getMedication());
         }
     });
         return view;

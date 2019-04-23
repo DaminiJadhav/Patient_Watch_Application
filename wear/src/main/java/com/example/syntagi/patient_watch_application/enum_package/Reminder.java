@@ -13,7 +13,7 @@ public enum Reminder {
     MOR(0, "08:00 AM"),
     NOON(1, "01:00 PM"),
     EVE(2, "05:00 PM"),
-    NIGHT(3, "09:00 PM");
+    NIGHT(3, "05:59 PM");
 
     public int remId;
 //    public int timeVal;
@@ -24,7 +24,8 @@ public enum Reminder {
         this.time = time;
     }
 
-    public static Calendar getCalender(String time) {
+
+    public static Calendar  getCalender(String time) {
         Calendar calendar = Calendar.getInstance();
         if (!TextUtils.isEmpty(time)) {
             try {

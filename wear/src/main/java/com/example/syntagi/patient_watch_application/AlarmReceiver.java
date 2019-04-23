@@ -33,6 +33,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
            Intent  intent1 = new Intent(context,AlarmService.class);
            if (intent1!=null){
+               Log.d("AlarmService","start service ");
                context.startService(intent1);
            }
            else {

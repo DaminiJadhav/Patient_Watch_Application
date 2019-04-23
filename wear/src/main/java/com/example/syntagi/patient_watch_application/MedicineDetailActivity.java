@@ -67,6 +67,7 @@ public class MedicineDetailActivity extends AppCompatActivity {
             editor.apply();
         }
 
+
         layHeader = findViewById(R.id.lay_header_data);
         layOther = findViewById(R.id.lay_other_data);
 
