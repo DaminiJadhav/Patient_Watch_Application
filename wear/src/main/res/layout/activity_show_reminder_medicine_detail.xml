@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ShowReminderMedicineDetailActivity">
 
-    <TextView
-        style="@style/wrap_wrap"
-        android:textStyle="bold"
-        android:id="@+id/tv_empty"/>
+    <ListView
+        android:id="@+id/lv_showallmedicinenames"
+        style="@style/match_match">
+    </ListView>
 
 </LinearLayout>

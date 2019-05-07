@@ -6,5 +6,6 @@
    >
  <ListView
      style="@style/match_match"
+     android:divider="@null"
      android:id="@+id/lv_appointment"/>
 </LinearLayout>

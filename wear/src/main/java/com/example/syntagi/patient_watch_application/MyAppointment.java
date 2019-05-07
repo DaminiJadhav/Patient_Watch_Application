@@ -28,7 +28,7 @@ private static final String KEY_CONNECTIONS = "Patient_Details";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_appointment2);
         viewPager=findViewById(R.id.viewpager_appointment);
-        Toast.makeText(MyAppointment.this,"Success",Toast.LENGTH_LONG).show();
+//        Toast.makeText(MyAppointment.this,"Success",Toast.LENGTH_LONG).show();
 
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(MyAppointment.this);
         String json=sharedPreferences.getString(KEY_CONNECTIONS,"");

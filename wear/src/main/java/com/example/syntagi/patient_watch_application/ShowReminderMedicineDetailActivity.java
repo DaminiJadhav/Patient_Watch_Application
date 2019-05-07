@@ -1,64 +1,76 @@
 package com.example.syntagi.patient_watch_application;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.database.Cursor;
 import android.os.Bundle;
-import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.syntagi.patient_watch_application.enum_package.Reminder;
-import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
+import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ShowReminderMedicineDetailActivity extends AppCompatActivity {
-TextView textView;
+public class ShowReminderMedicineDetailActivity extends AppCompatActivity implements CustomListAdapterInterface {
+    ListView listView;
+    List<MedicineDatabaseModel> medicinedatalist=new ArrayList<>();
+    CustomListAdapter customListAdapter;
     DatabaseHandler databaseHandler=new DatabaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reminder_medicine_detail);
-       textView=findViewById(R.id.tv_empty);
-        viewAll();
+       listView=findViewById(R.id.lv_showallmedicinenames);
+       customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
+//        Toast.makeText(ShowReminderMedicineDetailActivity.this,"" +customListAdapter,Toast.LENGTH_LONG).show();
+        listView.setAdapter(customListAdapter);
+        showdata();
     }
 
-    public void viewAll(){
-        Cursor res=databaseHandler.getAllData();
-        if (res.getCount()==0){
-            showmessage("Error","Nothing found");
-            return;
+    public void showdata(){
+        List<MedicineDatabaseModel> medicineDatabaseModels=databaseHandler.getAllMedicine();
+//        StringBuffer data=new StringBuffer();
+        for (int i=0;i<medicineDatabaseModels.size();i++){
+              medicinedatalist.addAll(medicineDatabaseModels);
+//            data.append(medicineDatabase.getMedicineTime()).append(",").
+//                    append(medicineDatabase.getMedicineName()).append("<br/>");
         }
-        StringBuffer buffer=new StringBuffer();
-        while (res.moveToNext()){
-            Toast.makeText(ShowReminderMedicineDetailActivity.this,"view all data successfully",Toast.LENGTH_LONG).show();
-            buffer.append("Id :" +res.getString(0)+"\n");
-            buffer.append("Time :" +res.getString(1)+"\n");
-            buffer.append("Name :" +res.getString(2)+"\n");
-          }
-        showmessage("Data",buffer.toString());
-
+        customListAdapter.notifyDataSetChanged();
+//        medicinedatalist.clear();
+//        textView.setText(Html.fromHtml(data.toString()));
     }
 
-    public void showmessage(String title,String message){
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
-        public void showdata(){
-    //        List<MedicineData> medicineData=databaseHandler.getAllMedicineData();
-    //        StringBuffer data=new StringBuffer();
-    //        for (int i=0;i<medicineData.size();i++){
-    //            MedicineData medicinedata=medicineData.get(i);
-    //            Reminder reminder=null;
-    ////            Reminder reminder1=new Reminder(1,reminder.getTime());
-    //            data.append(reminder.getTime()).append(",").
-    //                    append(medicinedata.getMedicineName()).append("<br/>");
-    //        }
-    ////        textView.setText(Html.fromHtml(data.toString()));
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent, int resourceID, LayoutInflater inflater) {
+        AdapterHolder adapterHolder;
+        if (convertView==null){
+            convertView=inflater.inflate(resourceID,parent,false);
+            adapterHolder=new AdapterHolder(convertView);
+            convertView.setTag(adapterHolder);
         }
+        else {
+            adapterHolder= (AdapterHolder) convertView.getTag();
+        }
+        MedicineDatabaseModel medicineDatabaseModel=medicinedatalist.get(position);
+        if (medicineDatabaseModel!=null){
+            adapterHolder.mid.setText("" + medicineDatabaseModel.getId());
+            adapterHolder.mtime.setText("" +medicineDatabaseModel.getMedicineTime());
+            adapterHolder.mname.setText("" +medicineDatabaseModel.getMedicineName());
+        }
+
+        return convertView;
+    }
+
+
+    class AdapterHolder{
+        private TextView mid,mtime,mname;
+        public AdapterHolder(View view){
+            mid=view.findViewById(R.id.tv_medicineid);
+            mtime=view.findViewById(R.id.tv_medicinetime);
+            mname=view.findViewById(R.id.tv_medicinename);
+        }
+    }
 
 }

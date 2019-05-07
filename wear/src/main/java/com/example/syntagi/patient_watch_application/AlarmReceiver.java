@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,6 +32,13 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (ringtone!=null){
             ringtone.play();
         }
+
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//            context.startForegroundService(new Intent(context,AlarmService.class));
+//        }
+//        else {
+//            context.startService(new Intent(context,AlarmService.class));
+//        }
            Intent  intent1 = new Intent(context,AlarmService.class);
            if (intent1!=null){
                Log.d("AlarmService","start service ");
@@ -40,15 +48,4 @@ public class AlarmReceiver extends BroadcastReceiver {
                context.stopService(intent1);
            }
     }
-
-//    public void receivealarm(Context context,Intent intent){
-//           if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")){
-//               Intent alarmintent=new Intent(context,AlarmReceiver.class);
-//               PendingIntent pendingIntent=PendingIntent.getBroadcast(context,0,alarmintent,0);
-//               AlarmManager manager= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//               int interval=8000;
-//               manager.setInexactRepeating(Al armManager.RTC_WAKEUP,System.currentTimeMillis(),interval,pendingIntent);
-//               Toast.makeText(context,"Alarm Set",Toast.LENGTH_LONG).show();
-//           }
-//    }
 }

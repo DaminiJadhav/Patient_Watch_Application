@@ -24,7 +24,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowReminderMedicineDetailActivity"></activity>
+        <activity android:name=".ShowReminderMedicineDetailActivity">
+
+        </activity>
         <activity android:name=".ReminderActivity" />
         <activity android:name=".ShowAllUserData" />
 
@@ -51,12 +53,14 @@
                 <!-- <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED"/> -->
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>  `
         </activity>
 
+        <!--<service android:name="com.example.syntagi.patient_watch_application.AlarmService"/>-->
         <service
             android:name=".AlarmService"
-            android:enabled="true" />
+            android:enabled="true"
+            />
 
         <receiver
             android:name=".AlarmReceiver"
