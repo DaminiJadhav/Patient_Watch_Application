@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
             editor.remove(KEY_APPOINTMENT);
             editor.remove("PhoneNumber");
             editor.remove("VitalData");
-            editor.remove("getmedicinename");
+//            editor.remove("getmedicinename");
             editor.remove("Notification_Key");
             Intent intent=new Intent(HomeActivity.this,EnterPhoneNumberActivity.class);
             startActivity(intent);

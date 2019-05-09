@@ -53,7 +53,7 @@
                 <!-- <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED"/> -->
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>  `
+            </intent-filter>
         </activity>
 
         <!--<service android:name="com.example.syntagi.patient_watch_application.AlarmService"/>-->

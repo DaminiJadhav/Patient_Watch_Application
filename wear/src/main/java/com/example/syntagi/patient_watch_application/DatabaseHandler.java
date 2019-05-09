@@ -10,6 +10,8 @@ import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -69,30 +71,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
            medicinedata.setMedicineName(name);
            medicineDataList.add(medicinedata);
        }
-       return medicineDataList;
+        return medicineDataList;
     }
 
     public void deleteRow() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_MEDICINE + " WHERE " + KEY_ID +"='" +medicinedata.getId()+ "'" + " AND " +KEY_MEDICINE_TIME+ "='" +medicinedata.getMedicineTime()+ "'" + " AND " +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName());
+//        db.execSQL("DELETE FROM " + TABLE_MEDICINE);
+        db.execSQL("DELETE FROM " +TABLE_MEDICINE + " WHERE "  +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName()+ "'");
         db.close();
     }
 
-//    public void showData(){
-//        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-//        sqLiteDatabase.execSQL("select * from Medicine where " +KEY_ID+ "=" +medicinedata.getId()+ "=" +KEY_MEDICINE_NAME+ "=" +medicinedata.getMedicineName());
-//        Cursor cursor=sqLiteDatabase.rawQuery("select * from Medicine where +id='1' and medicine_name='CROCIN' and medicine_time='02:30 PM'",null);
-//        StringBuffer stringBuffer=new StringBuffer();
-//        int mid = cursor.getInt(cursor.getColumnIndex(KEY_ID));
-//
-//        sqLiteDatabase.close();
-//    }
 
-    public Cursor getAllData(){
-        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-        Cursor res=sqLiteDatabase.rawQuery("select * from " +TABLE_MEDICINE ,null);
-        return res;
-    }
+        public void deleteReminderRow(){
+        SQLiteDatabase db=this.getWritableDatabase();
+            db.execSQL("DELETE FROM " + TABLE_MEDICINE + " WHERE " +KEY_ID+ "='" +medicinedata.getId()+ "'" + " AND "+KEY_MEDICINE_TIME+ "='" + medicinedata.getMedicineTime() + "'" + " AND " +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName()+ "'");
+            db.close();
+         }
 
     public String getAllMedicineData() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

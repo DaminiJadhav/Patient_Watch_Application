@@ -23,8 +23,7 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reminder_medicine_detail);
        listView=findViewById(R.id.lv_showallmedicinenames);
-       customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
-//        Toast.makeText(ShowReminderMedicineDetailActivity.this,"" +customListAdapter,Toast.LENGTH_LONG).show();
+        customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
         listView.setAdapter(customListAdapter);
         showdata();
     }
@@ -33,12 +32,13 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
         List<MedicineDatabaseModel> medicineDatabaseModels=databaseHandler.getAllMedicine();
 //        StringBuffer data=new StringBuffer();
         for (int i=0;i<medicineDatabaseModels.size();i++){
-              medicinedatalist.addAll(medicineDatabaseModels);
+            medicinedatalist.clear();
+            medicinedatalist.addAll(medicineDatabaseModels);
 //            data.append(medicineDatabase.getMedicineTime()).append(",").
 //                    append(medicineDatabase.getMedicineName()).append("<br/>");
         }
+//        databaseHandler.deleteReminderRow();
         customListAdapter.notifyDataSetChanged();
-//        medicinedatalist.clear();
 //        textView.setText(Html.fromHtml(data.toString()));
     }
 
@@ -59,10 +59,8 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
             adapterHolder.mtime.setText("" +medicineDatabaseModel.getMedicineTime());
             adapterHolder.mname.setText("" +medicineDatabaseModel.getMedicineName());
         }
-
         return convertView;
     }
-
 
     class AdapterHolder{
         private TextView mid,mtime,mname;

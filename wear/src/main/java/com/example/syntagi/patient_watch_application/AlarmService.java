@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
 import com.google.gson.Gson;
@@ -42,16 +44,19 @@ public class AlarmService extends IntentService {
         medicineData = gson.fromJson(json, MedicineData.class);
         if (medicineData != null) {
             medicinename = medicineData.getMedicineName();
-            Log.d("AlarmService","reminder notification ");
 //            sendNotification(medicinename);
         }
+        Toast.makeText(getApplicationContext(),"Medicine Data successfully on AlarmService activity",Toast.LENGTH_LONG).show();
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onHandleIntent(Intent intent) {
         sendNotification("Time To Take medicine");
-//        databaseHandler.deleteRow();
+//        databaseHandler=new DatabaseHandler(getApplicationContext());
+//       databaseHandler.deleteRow();
+//        databaseHandler.deleteReminderRow();
+
     }
 
     private void sendNotification(String msg) {
@@ -62,7 +67,6 @@ public class AlarmService extends IntentService {
 //        Toast.makeText(AlarmService.this,"Alarm notification successfully",Toast.LENGTH_LONG).show();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MyMedicine.class), PendingIntent.FLAG_UPDATE_CURRENT);
-
 
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.BASE){
             CharSequence name="my_channel";
@@ -97,11 +101,10 @@ public class AlarmService extends IntentService {
         alarmNotificationManager.notify(5005005, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
     }
-
-    @Override
-    public void onDestroy() {
-      databaseHandler=new DatabaseHandler(getApplicationContext());
-//      databaseHandler.deleteRow();
-      super.onDestroy();
-    }
+//    @Override
+//    public void onDestroy() {
+//      databaseHandler=new DatabaseHandler(getApplicationContext());
+////      databaseHandler.deleteRow();
+//      super.onDestroy();
+//    }
 }
