@@ -2,6 +2,7 @@ package com.example.syntagi.patient_watch_application;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ShowReminderMedicineDetailActivity extends AppCompatActivity implements CustomListAdapterInterface {
@@ -18,14 +23,32 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
     CustomListAdapter customListAdapter;
     DatabaseHandler databaseHandler=new DatabaseHandler(this);
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reminder_medicine_detail);
+        getCurrentTime();
+//        Time today = new Time(Time.getCurrentTimezone());
+//        today.setToNow();
+//        Date currentTime= Calendar.getInstance().getTime();
+//        if (currentTime!=null){
+//            databaseHandler.deleteReminderRow(currentTime);
+//            Log.d("AlarmService","Current Time");
+//        }
        listView=findViewById(R.id.lv_showallmedicinenames);
         customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
         listView.setAdapter(customListAdapter);
         showdata();
+    }
+    public void getCurrentTime(){
+
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm a");
+        String strdate=dateFormat.format(calendar.getTime());
+            if (strdate!=null){
+                databaseHandler.deleteReminderRow(strdate);
+            }
     }
 
     public void showdata(){
@@ -70,5 +93,7 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
             mname=view.findViewById(R.id.tv_medicinename);
         }
     }
+
+
 
 }

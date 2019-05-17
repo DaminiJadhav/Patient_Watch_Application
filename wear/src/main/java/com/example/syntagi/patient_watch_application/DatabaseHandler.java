@@ -81,10 +81,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-
-        public void deleteReminderRow(){
+        public void deleteReminderRow(String time){
         SQLiteDatabase db=this.getWritableDatabase();
-            db.execSQL("DELETE FROM " + TABLE_MEDICINE + " WHERE " +KEY_ID+ "='" +medicinedata.getId()+ "'" + " AND "+KEY_MEDICINE_TIME+ "='" + medicinedata.getMedicineTime() + "'" + " AND " +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName()+ "'");
+        db.execSQL("DELETE FROM " +TABLE_MEDICINE + " WHERE " +KEY_MEDICINE_TIME + "='" +time+ "'");
+//        db.execSQL("DELETE FROM " + TABLE_MEDICINE + " WHERE " +KEY_ID+ "='" +medicinedata.getId()+ "'" + " AND "+KEY_MEDICINE_TIME+ "='" + medicinedata.getMedicineTime() + "'" + " AND " +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName()+ "'");
             db.close();
          }
 

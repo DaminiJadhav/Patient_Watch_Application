@@ -15,12 +15,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
 import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
@@ -38,14 +44,29 @@ public class AlarmService extends IntentService {
     }
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+        String data = intent.getStringExtra("Key_morning");
+        Toast.makeText(this,"success" +data,Toast.LENGTH_LONG).show();
+
+        bundle=intent.getExtras();
+        if (bundle!=null){
+            String morning=bundle.getString("MorningReminder");
+            String night=bundle.getString("NightReminder");
+            if (morning==Reminder.MOR.getTime()){
+                Toast.makeText(this,"Success Mor",Toast.LENGTH_LONG).show()
+            if (night==Reminder.NIGHT.getTime()){
+                Toast.makeText(this,"Success Night",Toast.LENGTH_LONG).show();
+            }
+        }
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
         String json = sharedPreferences.getString("getmedicinename", "");
         Gson gson = new Gson();
         medicineData = gson.fromJson(json, MedicineData.class);
         if (medicineData != null) {
             medicinename = medicineData.getMedicineName();
+
 //            sendNotification(medicinename);
         }
+
         Toast.makeText(getApplicationContext(),"Medicine Data successfully on AlarmService activity",Toast.LENGTH_LONG).show();
         return super.onStartCommand(intent, flags, startId);
     }
@@ -53,10 +74,6 @@ public class AlarmService extends IntentService {
     @Override
     public void onHandleIntent(Intent intent) {
         sendNotification("Time To Take medicine");
-//        databaseHandler=new DatabaseHandler(getApplicationContext());
-//       databaseHandler.deleteRow();
-//        databaseHandler.deleteReminderRow();
-
     }
 
     private void sendNotification(String msg) {
@@ -64,6 +81,11 @@ public class AlarmService extends IntentService {
         alarmNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
+//        Date currentTime= Calendar.getInstance().getTime();
+//        if (currentTime!=null){
+//            databaseHandler.deleteReminderRow(currentTime);
+//            Log.d("AlarmService","Current Time");
+//        }
 //        Toast.makeText(AlarmService.this,"Alarm notification successfully",Toast.LENGTH_LONG).show();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MyMedicine.class), PendingIntent.FLAG_UPDATE_CURRENT);
@@ -90,7 +112,6 @@ public class AlarmService extends IntentService {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg)
                 .setAutoCancel(true);
-
         if (alarmNotificationManager!=null){
             Intent intent=new Intent(AlarmService.this,ShowReminderMedicineDetailActivity.class);
             startActivity(intent);
@@ -101,10 +122,4 @@ public class AlarmService extends IntentService {
         alarmNotificationManager.notify(5005005, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
     }
-//    @Override
-//    public void onDestroy() {
-//      databaseHandler=new DatabaseHandler(getApplicationContext());
-////      databaseHandler.deleteRow();
-//      super.onDestroy();
-//    }
 }

@@ -62,7 +62,6 @@ public class MyAppointmentFragment extends Fragment {
                     linearLayout.setVisibility(View.INVISIBLE);
                     frameLayout.setVisibility(View.VISIBLE);
                     getFragmentManager().beginTransaction().add(R.id.framelayout_appointment,AppointmentFragment.getInstance(patientData)).commit();
-
                 }
             }
         });

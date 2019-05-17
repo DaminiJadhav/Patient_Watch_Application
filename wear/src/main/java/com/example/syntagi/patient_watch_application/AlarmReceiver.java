@@ -1,5 +1,6 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,8 +33,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (ringtone!=null){
             ringtone.play();
         }
-
+//
 //        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//
 //            context.startForegroundService(new Intent(context,AlarmService.class));
 //        }
 //        else {
