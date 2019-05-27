@@ -161,12 +161,7 @@ public class MyMedicine extends Fragment {
             if (freq.isMorning()) {
                 Calendar calendar = Reminder.getCalender(Reminder.MOR.getTime());
                 Intent intent = new Intent(getContext(), AlarmReceiver.class);
-                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.MOR.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));
-                intent.putExtra(AppConstants.BUNDLE_KEYS.MORNING_REMINDER,Reminder.MOR.getTime());
-                Bundle bundle=new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.MORNING_REMINDER,Reminder.MOR.getTime());
-                intent.putExtras(bundle);
-//                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
+                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.MOR.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));//                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
 //                int _id= databaseHandler.addmedicine(medicationEndsOn.getMedication(), Reminder.MOR);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
@@ -179,10 +174,6 @@ public class MyMedicine extends Fragment {
                 Calendar calendar = Reminder.getCalender(Reminder.NOON.getTime());
                 Intent intent = new Intent(getContext(), AlarmReceiver.class);
                 int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.NOON.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));
-                intent.putExtra(AppConstants.BUNDLE_KEYS.NOON_REMINDER,Reminder.NOON.getTime());
-                Bundle bundle=new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.NOON_REMINDER,Reminder.NOON.getTime());
-                intent.putExtras(bundle);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);
@@ -194,10 +185,6 @@ public class MyMedicine extends Fragment {
                 Calendar calendar = Reminder.getCalender(Reminder.EVE.getTime());
                 Intent intent = new Intent(getContext(), AlarmReceiver.class);
                 int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.EVE.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));
-                intent.putExtra(AppConstants.BUNDLE_KEYS.EVENING_REMINDER,Reminder.EVE.getTime());
-                Bundle bundle=new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.EVENING_REMINDER,Reminder.EVE.getTime());
-                intent.putExtras(bundle);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);
@@ -209,22 +196,16 @@ public class MyMedicine extends Fragment {
             if (freq.isNight()) {
                 Calendar calendar = Reminder.getCalender(Reminder.NIGHT.getTime());
                 Intent intent = new Intent(getContext(), AlarmReceiver.class);
-//                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.NIGHT.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));
-               intent.putExtra(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER,Reminder.NIGHT.getTime());
-                Bundle bundle=new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER,Reminder.NIGHT.getTime());
-                intent.putExtras(bundle);
-                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
-                int _id= databaseHandler.addmedicine(medicationEndsOn.getMedication(), Reminder.NIGHT);
+                int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.NIGHT.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));
+//                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
+//                 databaseHandler.addmedicine(medicationEndsOn.getMedication(), Reminder.NIGHT);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), DateUtils.DAY_IN_MILLIS, pendingIntent);
-//                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
-//                databaseHandler.addmedicine(medicationEndsOn.getMedication(),Reminder.NIGHT);
+                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
+                databaseHandler.addmedicine(medicationEndsOn.getMedication(),Reminder.NIGHT);
             }
-//            intent.putExtra("key",data);
-//            String data = intent.getStringExtra("key");
         }
     }
     public void onstart() {

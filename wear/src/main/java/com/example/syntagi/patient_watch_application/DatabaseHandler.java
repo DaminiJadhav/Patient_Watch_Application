@@ -9,6 +9,8 @@ import android.util.Log;
 import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
 import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,8 +61,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<MedicineDatabaseModel> getAllMedicine(){
        SQLiteDatabase db=this.getWritableDatabase();
        List<MedicineDatabaseModel> medicineDataList=new ArrayList<>();
-       String query="select * from Medicine";
-       Cursor cursor=db.rawQuery(query,null);
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm a");
+        String strdate=dateFormat.format(calendar.getTime());
+        String query="select * from Medicine";
+//        Date date=new Date();
+//        int hour=date.getHours();
+       Cursor cursor=db.rawQuery("SELECT * FROM " +TABLE_MEDICINE+ " WHERE " +KEY_MEDICINE_TIME + "='" +strdate + "'",null);
+//     Cursor cursor=db.rawQuery(query,null);
        while (cursor.moveToNext()){
            int id=cursor.getInt(cursor.getColumnIndex(KEY_ID));
            String time=cursor.getString(cursor.getColumnIndex(KEY_MEDICINE_TIME));

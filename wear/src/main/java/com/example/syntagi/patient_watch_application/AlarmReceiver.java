@@ -12,6 +12,8 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 public class AlarmReceiver extends BroadcastReceiver {
        @Override
     public void onReceive(Context context, Intent intent) {
@@ -34,20 +36,20 @@ public class AlarmReceiver extends BroadcastReceiver {
             ringtone.play();
         }
 //
-//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-//
-//            context.startForegroundService(new Intent(context,AlarmService.class));
-//        }
-//        else {
-//            context.startService(new Intent(context,AlarmService.class));
-//        }
-           Intent  intent1 = new Intent(context,AlarmService.class);
-           if (intent1!=null){
-               Log.d("AlarmService","start service ");
-               context.startService(intent1);
-           }
-           else {
-               context.stopService(intent1);
-           }
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//            ContextCompat.startForegroundService(context,new Intent(context,AlarmService.class));
+            context.startForegroundService(new Intent(context,AlarmService.class));
+        }
+        else {
+            context.startService(new Intent(context,AlarmService.class));
+        }
+//           Intent  intent1 = new Intent(context,AlarmService.class);
+//           if (intent1!=null){
+//               Log.d("AlarmService","start service ");
+//               context.startService(intent1);
+//           }
+//           else {
+//               context.stopService(intent1);
+//           }
     }
 }

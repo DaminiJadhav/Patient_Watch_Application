@@ -1,31 +1,25 @@
 package com.example.syntagi.patient_watch_application;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.syntagi.patient_watch_application.enum_package.Reminder;
 import com.example.syntagi.patient_watch_application.models.medicine.MedicineData;
-import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineDatabaseModel;
 import com.google.gson.Gson;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -44,31 +38,34 @@ public class AlarmService extends IntentService {
     }
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        String data = intent.getStringExtra("Key_morning");
-        Toast.makeText(this,"success" +data,Toast.LENGTH_LONG).show();
 
-        bundle=intent.getExtras();
-        if (bundle!=null){
-            String morning=bundle.getString("MorningReminder");
-            String night=bundle.getString("NightReminder");
-            if (morning==Reminder.MOR.getTime()){
-                Toast.makeText(this,"Success Mor",Toast.LENGTH_LONG).show()
-            if (night==Reminder.NIGHT.getTime()){
-                Toast.makeText(this,"Success Night",Toast.LENGTH_LONG).show();
-            }
-        }
+        // bundle=intent.getExtras();
+//        if (bundle!=null){
+//            String morning=bundle.getString(AppConstants.BUNDLE_KEYS.MORNING_REMINDER);
+//            String night=bundle.getString(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER);
+//            if (morning==Reminder.MOR.getTime()){
+//                Toast.makeText(this,"Success Morning",Toast.LENGTH_LONG).show();
+//            }
+//            if (night==Reminder.NIGHT.getTime()){
+//                Toast.makeText(this,"Success Night",Toast.LENGTH_LONG).show();
+//            }
+//        }
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
         String json = sharedPreferences.getString("getmedicinename", "");
         Gson gson = new Gson();
         medicineData = gson.fromJson(json, MedicineData.class);
         if (medicineData != null) {
             medicinename = medicineData.getMedicineName();
-
 //            sendNotification(medicinename);
         }
-
-        Toast.makeText(getApplicationContext(),"Medicine Data successfully on AlarmService activity",Toast.LENGTH_LONG).show();
         return super.onStartCommand(intent, flags, startId);
+//        return START_STICKY;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        startForeground(1,new Notification());
     }
 
     @Override
@@ -89,7 +86,6 @@ public class AlarmService extends IntentService {
 //        Toast.makeText(AlarmService.this,"Alarm notification successfully",Toast.LENGTH_LONG).show();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MyMedicine.class), PendingIntent.FLAG_UPDATE_CURRENT);
-
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.BASE){
             CharSequence name="my_channel";
             String Description="This is my channel";
@@ -121,5 +117,18 @@ public class AlarmService extends IntentService {
         alamNotificationBuilder.setContentIntent(contentIntent);
         alarmNotificationManager.notify(5005005, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+//        String morning=intent.getStringExtra(AppConstants.BUNDLE_KEYS.MORNING_REMINDER);
+//        String night=intent.getStringExtra(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER);
+//        if (morning!=null){
+//            databaseHandler.deleteReminderRow(morning);
+//        }
+//        if (night!=null){
+//            databaseHandler.deleteReminderRow(night);
+//        }
+        return super.onBind(intent);
     }
 }
