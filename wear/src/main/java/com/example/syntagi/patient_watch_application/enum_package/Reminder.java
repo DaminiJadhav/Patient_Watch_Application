@@ -10,10 +10,10 @@ import java.util.Date;
  */
 
 public enum Reminder {
-    MOR(0, "08:00 AM"),
+    MOR(0, "11:53 AM"),
     NOON(1, "01:00 PM"),
     EVE(2, "05:00 PM"),
-    NIGHT(3, "05:06 PM");
+    NIGHT(3, "04:35 PM");
 
     public int remId;
 //    public int timeVal;

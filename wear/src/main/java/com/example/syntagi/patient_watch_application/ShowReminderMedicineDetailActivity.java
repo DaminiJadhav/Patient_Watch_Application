@@ -1,6 +1,8 @@
 package com.example.syntagi.patient_watch_application;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,14 +29,14 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reminder_medicine_detail);
-//        getCurrentTime();
-//        Time today = new Time(Time.getCurrentTimezone());
-//        today.setToNow();
-//
        listView=findViewById(R.id.lv_showallmedicinenames);
         customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
         listView.setAdapter(customListAdapter);
-        showdata();
+
+        Intent intent=this.getIntent();
+        String time=intent.getStringExtra(AppConstants.BUNDLE_KEYS.REMINDER_TIME);
+        Log.i("ShowReminderMedicneDetailActivity","set reminder time =" +time);
+        showdata(time);
     }
     public void getCurrentTime(){
         Calendar calendar=Calendar.getInstance();
@@ -45,8 +47,8 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
             }
     }
 
-    public void showdata(){
-        List<MedicineDatabaseModel> medicineDatabaseModels=databaseHandler.getAllMedicine();
+    public void showdata(String time){
+        List<MedicineDatabaseModel> medicineDatabaseModels=databaseHandler.getAllMedicine(time);
 //        StringBuffer data=new StringBuffer();
         for (int i=0;i<medicineDatabaseModels.size();i++){
             medicinedatalist.clear();

@@ -13,7 +13,6 @@ import com.example.syntagi.patient_watch_application.sqlitedatabase.MedicineData
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -58,16 +57,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return (int) id;
     }
 
-    public List<MedicineDatabaseModel> getAllMedicine(){
+    public List<MedicineDatabaseModel> getAllMedicine(String reminderTime){
+        Log.i("DatabaseHandler","reminder time: " +reminderTime);
        SQLiteDatabase db=this.getWritableDatabase();
        List<MedicineDatabaseModel> medicineDataList=new ArrayList<>();
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm a");
         String strdate=dateFormat.format(calendar.getTime());
-        String query="select * from Medicine";
+//        String query="select * from Medicine";
 //        Date date=new Date();
 //        int hour=date.getHours();
-       Cursor cursor=db.rawQuery("SELECT * FROM " +TABLE_MEDICINE+ " WHERE " +KEY_MEDICINE_TIME + "='" +strdate + "'",null);
+       Cursor cursor=db.rawQuery("SELECT * FROM " +TABLE_MEDICINE+ " WHERE " +KEY_MEDICINE_TIME + "='" +reminderTime + "'",null);
 //     Cursor cursor=db.rawQuery(query,null);
        while (cursor.moveToNext()){
            int id=cursor.getInt(cursor.getColumnIndex(KEY_ID));

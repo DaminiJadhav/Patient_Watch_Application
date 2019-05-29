@@ -41,7 +41,6 @@ public class OtpActivity extends AppCompatActivity {
         if (bundle!=null){
             phoneNumber = bundle.getString("PhoneNumber");
         }
-
     }
 
     @Override
@@ -89,7 +88,6 @@ public class OtpActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     progressDoalog.dismiss();
                                 }
-
                             } else {
                                 Toast.makeText(OtpActivity.this, "Code is " + response.code(), Toast.LENGTH_SHORT).show();
                             }

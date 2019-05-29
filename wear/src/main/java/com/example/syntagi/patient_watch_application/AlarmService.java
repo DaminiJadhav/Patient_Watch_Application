@@ -38,18 +38,16 @@ public class AlarmService extends IntentService {
     }
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+//        String morning = intent.getStringExtra("Key_Morning");
+//        Log.i("Alarmservice","morning result: "+morning);
+//
+//        String noon=intent.getStringExtra("Key_Noon");
+//        Log.i("Alarmservice","noon result: " +noon);
+//
+//        String evening =intent.getStringExtra("Key_Evening");
+//        Log.i("Alarmservice","evening result :" +evening);
 
-        // bundle=intent.getExtras();
-//        if (bundle!=null){
-//            String morning=bundle.getString(AppConstants.BUNDLE_KEYS.MORNING_REMINDER);
-//            String night=bundle.getString(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER);
-//            if (morning==Reminder.MOR.getTime()){
-//                Toast.makeText(this,"Success Morning",Toast.LENGTH_LONG).show();
-//            }
-//            if (night==Reminder.NIGHT.getTime()){
-//                Toast.makeText(this,"Success Night",Toast.LENGTH_LONG).show();
-//            }
-//        }
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
         String json = sharedPreferences.getString("getmedicinename", "");
         Gson gson = new Gson();
@@ -70,10 +68,12 @@ public class AlarmService extends IntentService {
 
     @Override
     public void onHandleIntent(Intent intent) {
-        sendNotification("Time To Take medicine");
+        String reminderTime= intent.getStringExtra("ReminderTime");
+        Log.i("Alarmservice","result: " +reminderTime);
+        sendNotification("Time To Take medicine",reminderTime);
     }
 
-    private void sendNotification(String msg) {
+    private void sendNotification(String msg,String time) {
         Log.d("AlarmService", "Preparing to send notification...: " + msg);
         alarmNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
@@ -108,27 +108,15 @@ public class AlarmService extends IntentService {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg)
                 .setAutoCancel(true);
+
         if (alarmNotificationManager!=null){
             Intent intent=new Intent(AlarmService.this,ShowReminderMedicineDetailActivity.class);
+            intent.putExtra(AppConstants.BUNDLE_KEYS.REMINDER_TIME,time);
             startActivity(intent);
         }
 
-        Log.i("AlarmService","Successfully Send Alarm ");
         alamNotificationBuilder.setContentIntent(contentIntent);
         alarmNotificationManager.notify(5005005, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-//        String morning=intent.getStringExtra(AppConstants.BUNDLE_KEYS.MORNING_REMINDER);
-//        String night=intent.getStringExtra(AppConstants.BUNDLE_KEYS.NIGHT_REMINDER);
-//        if (morning!=null){
-//            databaseHandler.deleteReminderRow(morning);
-//        }
-//        if (night!=null){
-//            databaseHandler.deleteReminderRow(night);
-//        }
-        return super.onBind(intent);
     }
 }

@@ -1,10 +1,8 @@
 package com.example.syntagi.patient_watch_application;
 
-import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -12,36 +10,43 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
-
 public class AlarmReceiver extends BroadcastReceiver {
        @Override
     public void onReceive(Context context, Intent intent) {
 
-//        Toast.makeText(context, "ALARM ........", Toast.LENGTH_SHORT).show();
-//            AlarmActivity inst=AlarmActivity.instance();
-//            inst.setAlarmText("Alarm ! Wake Up !Wake Up");
-           Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
-           Log.w("AlarmReceiver","Alarm successfully set");
-        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+//           String morning=intent.getStringExtra("Morning");
+//           Log.i("AlarmReceiver","Morning time = " +morning);
+//
+//           String noon=intent.getStringExtra("noon");
+//           Log.i("AlarmReceiver","Noon time = " +noon);
+//
+//           String evening=intent.getStringExtra("evening");
+//           Log.i("AlarmReceiver","Evening time = " +evening);
 
-        if (alarmUri == null)
-        {
+           String time=intent.getStringExtra("time");
+           Log.i("AlarmReceiver","time = " +time);
+
+           Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
+        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        if (alarmUri == null){
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Vibrator v= (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
             v.vibrate(20000);
         }
-        Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
-        if (ringtone!=null){
-            ringtone.play();
-        }
-//
+
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
 //            ContextCompat.startForegroundService(context,new Intent(context,AlarmService.class));
-            context.startForegroundService(new Intent(context,AlarmService.class));
+            intent=new Intent(context,AlarmService.class);
+//            intent.putExtra("Key_Morning",morning);
+//            intent.putExtra("Key_Noon",noon);
+//            intent.putExtra("Key_Evening",evening);
+            intent.putExtra("ReminderTime",time);
+            context.startForegroundService(intent);
+            Log.i("AlarmReceiver","start Foreground service");
         }
         else {
-            context.startService(new Intent(context,AlarmService.class));
+            context.startService(intent);
+            Log.i("AlarmReceiver","start service");
         }
 //           Intent  intent1 = new Intent(context,AlarmService.class);
 //           if (intent1!=null){
