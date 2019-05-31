@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowReminderMedicineDetailActivity">
 
+    <!--<LinearLayout-->
+        <!--style="@style/linear_layout_horizontal_match_wrap"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_above="@+id/ll_medicineTime"-->
+        <!--android:id="@+id/ll_medicineAlert"-->
+        <!--&gt;-->
+    <!--<ImageView-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_margin="@dimen/margin_3"-->
+        <!--android:src="@drawable/reminder"/>-->
+
+     <!--<TextView-->
+         <!--android:layout_width="wrap_content"-->
+         <!--android:layout_height="wrap_content"-->
+         <!--android:text="Medicine Alert"-->
+         <!--android:textSize="10sp"-->
+         <!--android:layout_marginTop="@dimen/marginTop_8"-->
+         <!--android:textStyle="bold"/>-->
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/ll_medicineTime"-->
+        <!--android:layout_marginLeft="@dimen/marginLeft_3"-->
+        <!--android:layout_above="@id/lv_showallmedicinenames"-->
+        <!--&gt;-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="08:00"-->
+        <!--android:id="@+id/tv_time"-->
+        <!--android:textSize="10sp"-->
+       <!--/>-->
+    <!--</LinearLayout>-->
     <ListView
         android:id="@+id/lv_showallmedicinenames"
-        style="@style/match_match">
-    </ListView>
+        style="@style/match_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/lay_btn" />
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/lay_btn"
+        style="@style/linear_layout_horizontal_match_wrap"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_5"
+        >
+
+        <!--<include layout="@layout/buttonreminderactivity"/>-->
+
+        <Button
+            android:id="@+id/btn_close"
+            style="@style/btn_reminderstyle"
+            android:text="Close"
+           />
+
+        <Button
+            android:id="@+id/btn_snooze"
+            style="@style/btn_reminderstyle"
+            android:layout_marginLeft="@dimen/marginLeft_3"
+            android:text="Snooze"
+             />
+
+    </LinearLayout>
+</RelativeLayout>

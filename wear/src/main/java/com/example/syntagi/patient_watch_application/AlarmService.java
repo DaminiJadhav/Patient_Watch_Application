@@ -38,16 +38,6 @@ public class AlarmService extends IntentService {
     }
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-//        String morning = intent.getStringExtra("Key_Morning");
-//        Log.i("Alarmservice","morning result: "+morning);
-//
-//        String noon=intent.getStringExtra("Key_Noon");
-//        Log.i("Alarmservice","noon result: " +noon);
-//
-//        String evening =intent.getStringExtra("Key_Evening");
-//        Log.i("Alarmservice","evening result :" +evening);
-
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AlarmService.this);
         String json = sharedPreferences.getString("getmedicinename", "");
         Gson gson = new Gson();
@@ -77,13 +67,6 @@ public class AlarmService extends IntentService {
         Log.d("AlarmService", "Preparing to send notification...: " + msg);
         alarmNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
-
-//        Date currentTime= Calendar.getInstance().getTime();
-//        if (currentTime!=null){
-//            databaseHandler.deleteReminderRow(currentTime);
-//            Log.d("AlarmService","Current Time");
-//        }
-//        Toast.makeText(AlarmService.this,"Alarm notification successfully",Toast.LENGTH_LONG).show();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MyMedicine.class), PendingIntent.FLAG_UPDATE_CURRENT);
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.BASE){

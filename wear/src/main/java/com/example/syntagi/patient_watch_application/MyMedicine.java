@@ -83,7 +83,7 @@ public class MyMedicine extends Fragment {
 //                    databaseHandler.getAllData();
 //                    databaseHandler.getAllMedicine();
                 } else {
-                    databaseHandler.deleteRow();
+//                    databaseHandler.deleteRow();
                     Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
                 }
             }

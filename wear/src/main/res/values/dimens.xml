@@ -39,8 +39,8 @@
 
     <dimen name="marginTop_3">3dp</dimen>
     <dimen name="marginTop_5">5dp</dimen>
+    <dimen name="marginTop_8">8dp</dimen>
     <dimen name="marginTop_10">10dp</dimen>
-    <dimen name="marginTop_20">20dp</dimen>
     <dimen name="marginTop_25">25dp</dimen>
     <dimen name="marginTop_30">30dp</dimen>
     <dimen name="marginTop_35">35dp</dimen>

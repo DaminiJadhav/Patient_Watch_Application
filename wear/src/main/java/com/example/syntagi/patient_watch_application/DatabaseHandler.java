@@ -65,8 +65,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm a");
         String strdate=dateFormat.format(calendar.getTime());
 //        String query="select * from Medicine";
-//        Date date=new Date();
-//        int hour=date.getHours();
        Cursor cursor=db.rawQuery("SELECT * FROM " +TABLE_MEDICINE+ " WHERE " +KEY_MEDICINE_TIME + "='" +reminderTime + "'",null);
 //     Cursor cursor=db.rawQuery(query,null);
        while (cursor.moveToNext()){

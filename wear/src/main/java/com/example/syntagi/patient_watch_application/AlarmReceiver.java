@@ -13,16 +13,6 @@ import android.widget.Toast;
 public class AlarmReceiver extends BroadcastReceiver {
        @Override
     public void onReceive(Context context, Intent intent) {
-
-//           String morning=intent.getStringExtra("Morning");
-//           Log.i("AlarmReceiver","Morning time = " +morning);
-//
-//           String noon=intent.getStringExtra("noon");
-//           Log.i("AlarmReceiver","Noon time = " +noon);
-//
-//           String evening=intent.getStringExtra("evening");
-//           Log.i("AlarmReceiver","Evening time = " +evening);
-
            String time=intent.getStringExtra("time");
            Log.i("AlarmReceiver","time = " +time);
 
@@ -37,9 +27,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
 //            ContextCompat.startForegroundService(context,new Intent(context,AlarmService.class));
             intent=new Intent(context,AlarmService.class);
-//            intent.putExtra("Key_Morning",morning);
-//            intent.putExtra("Key_Noon",noon);
-//            intent.putExtra("Key_Evening",evening);
             intent.putExtra("ReminderTime",time);
             context.startForegroundService(intent);
             Log.i("AlarmReceiver","start Foreground service");
