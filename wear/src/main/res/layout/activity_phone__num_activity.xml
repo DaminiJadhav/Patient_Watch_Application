@@ -34,9 +34,8 @@
                 android:id="@+id/generate_opt_btn"
                 android:text="@string/continue_activity"
                 style="@style/btn_style1"
+                android:textColor="@color/color_notification_text"
                 />
-
         </LinearLayout>
-
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>

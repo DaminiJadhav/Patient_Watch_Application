@@ -83,8 +83,8 @@ public class MyMedicine extends Fragment {
 //                    databaseHandler.getAllData();
 //                    databaseHandler.getAllMedicine();
                 } else {
-//                    databaseHandler.deleteRow();
-                    Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
+                    databaseHandler.deleteRow(medicationEndsOn.getMedication().getMedicineName());
+//                    Toast.makeText(getContext(), "Switch off", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -164,9 +164,6 @@ public class MyMedicine extends Fragment {
                 int _id = Integer.parseInt(CustomDateUtils.convertDateFormat(Reminder.MOR.getTime(), CustomDateUtils.REMINDER_TIME_FORMAT, CustomDateUtils.REMINDER_ID_FORMAT));//                DatabaseHandler databaseHandler=new DatabaseHandler(getContext());
 //                int _id= databaseHandler.addmedicine(medicationEndsOn.getMedication(), Reminder.MOR);
                intent.putExtra("time",Reminder.MOR.getTime());
-//               Bundle bundle=new Bundle();
-//               bundle.putString("Morningtime",Reminder.MOR.getTime());
-//                intent.putExtras(bundle);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), _id, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);

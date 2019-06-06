@@ -39,9 +39,15 @@
 
     <style name="TextViewStyle1" parent="wrap_wrap">
         <!--<item name="android:layout_marginLeft">@dimen/marginLeft_45</item>-->
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
+    </style>
+S
+    <style name="textview_medicineReminder" parent="wrap_wrap">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">@dimen/marginLeft_10</item>
     </style>
 
     <style name="linear_layout_vertical" parent="match_match">
@@ -212,7 +218,7 @@
     
     <style name="showmedicinereminders" parent="wrap_wrap">
         <!--<item name="android:gravity">center</item>-->
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">8sp</item>
     </style>
 
     <style name="btn_reminderstyle">

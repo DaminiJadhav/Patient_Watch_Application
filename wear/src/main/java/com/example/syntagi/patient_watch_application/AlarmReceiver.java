@@ -3,6 +3,7 @@ package com.example.syntagi.patient_watch_application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -15,14 +16,20 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
            String time=intent.getStringExtra("time");
            Log.i("AlarmReceiver","time = " +time);
-
            Toast.makeText(context,"Medicine Time!!!!",Toast.LENGTH_LONG).show();
+
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        Log.i("AlarmReceiver","set Default Ringtone" +alarmUri);
         if (alarmUri == null){
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Vibrator v= (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
             v.vibrate(20000);
+            Log.i("AlarmReceiver","Vibrate" +v);
         }
+           Ringtone ringtone=RingtoneManager.getRingtone(context,alarmUri);
+            Log.i("AlarmReceiver","Set Ringtone" +ringtone);
+            ringtone.play();
+            ringtone.stop();
 
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
 //            ContextCompat.startForegroundService(context,new Intent(context,AlarmService.class));

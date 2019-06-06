@@ -80,10 +80,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return medicineDataList;
     }
 
-    public void deleteRow() {
+    public void deleteRow(String medicinename) {
         SQLiteDatabase db = this.getWritableDatabase();
 //        db.execSQL("DELETE FROM " + TABLE_MEDICINE);
-        db.execSQL("DELETE FROM " +TABLE_MEDICINE + " WHERE "  +KEY_MEDICINE_NAME+ "='" +medicinedata.getMedicineName()+ "'");
+        db.execSQL("DELETE FROM " +TABLE_MEDICINE +  " WHERE "  +KEY_MEDICINE_NAME+ "='" +medicinename+ "'");
         db.close();
     }
 

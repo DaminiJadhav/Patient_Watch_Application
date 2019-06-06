@@ -25,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ShowReminderMedicineDetailActivity extends AppCompatActivity implements CustomListAdapterInterface {
     Button close,snooze;
-    TextView time;
+    TextView medicineTime;
     ListView listView;
     List<MedicineDatabaseModel> medicinedatalist=new ArrayList<>();
     CustomListAdapter customListAdapter;
@@ -39,13 +39,14 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
         listView=findViewById(R.id.lv_showallmedicinenames);
         close=findViewById(R.id.btn_close);
         snooze=findViewById(R.id.btn_snooze);
-        time=findViewById(R.id.tv_time);
+        medicineTime=findViewById(R.id.tv_time);
         customListAdapter=new CustomListAdapter(ShowReminderMedicineDetailActivity.this,R.layout.row_medicinedetail_reminder,medicinedatalist,this);
         listView.setAdapter(customListAdapter);
         final Intent intent=this.getIntent();
         final String time=intent.getStringExtra(AppConstants.BUNDLE_KEYS.REMINDER_TIME);
         Log.i("ShowReminderMedicneDetailActivity","set reminder time =" +time);
         showdata(time);
+        medicineTime.setText(time);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,32 +74,10 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
                 Log.i("ShowReminderMedicneDetailActivity","success");
             }
         });
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.btn_close:
-//                finish();
-//                Toast.makeText(this, "Close Activity", Toast.LENGTH_SHORT).show();
-//                return true;
-//            case R.id.btn_snooze:
-//                Toast.makeText(this,"Reminder remind after 5 minute",Toast.LENGTH_LONG).show();
-//                return true;
-//            default:
-//                Toast.makeText(this, "Not Work Well", Toast.LENGTH_SHORT).show();
-//                return super.onOptionsItemSelected(item);
-//        }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void getCurrentTime(){
-        Calendar calendar=Calendar.getInstance();
-        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm a");
-        String strdate=dateFormat.format(calendar.getTime());
-            if (strdate!=null){
-                databaseHandler.deleteReminderRow(strdate);
-            }
     }
 
     public void showdata(String time){
@@ -129,7 +108,7 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
         MedicineDatabaseModel medicineDatabaseModel=medicinedatalist.get(position);
         if (medicineDatabaseModel!=null){
 //            adapterHolder.mid.setText("" + medicineDatabaseModel.getId());
-            adapterHolder.mtime.setText("" +medicineDatabaseModel.getMedicineTime());
+//            adapterHolder.mtime.setText("" +medicineDatabaseModel.getMedicineTime());
             adapterHolder.mname.setText("" +medicineDatabaseModel.getMedicineName());
         }
         return convertView;
@@ -139,7 +118,7 @@ public class ShowReminderMedicineDetailActivity extends AppCompatActivity implem
         private TextView mid,mtime,mname;
         public AdapterHolder(View view){
 //            mid=view.findViewById(R.id.tv_medicineid);
-            mtime=view.findViewById(R.id.tv_medicinetime);
+//            mtime=view.findViewById(R.id.tv_medicinetime);
             mname=view.findViewById(R.id.tv_medicinename);
         }
     }

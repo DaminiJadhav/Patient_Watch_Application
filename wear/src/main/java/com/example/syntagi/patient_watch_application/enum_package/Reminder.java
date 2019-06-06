@@ -13,7 +13,7 @@ public enum Reminder {
     MOR(0, "11:43 AM"),
     NOON(1, "01:00 PM"),
     EVE(2, "05:00 PM"),
-    NIGHT(3, "06:04 PM");
+    NIGHT(3, "03:15 PM");
 
     public int remId;
 //    public int timeVal;
